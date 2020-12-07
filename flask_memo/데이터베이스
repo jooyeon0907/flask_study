@@ -1,0 +1,82 @@
+
+## Flask의 데이터베이스 
+ - Flask는 기본적으로 데이터베이스를 지원하지 X 
+ 	-> 응용 프로그램에 강제로 적용하는 대신 응용 프로그램에 가장 적합한 데이터베이스를 선택할 수 있는 자유가 있다.
+
+@ ORM (Object Relation Model)
+ - Python의 객체에 데이터 모델을 정의하고 이를 데이터베이스와 매핑해줌 
+ - 코드는 특정 데이터베이스에 종속되지 않고, 기본 객체만으로 데이터를 기술할 수 있기 대문에 조금 더 OPP 스러운 코드 작성
+ 
+ @SQLAlchemy 
+ - Python에서 ORM으로 많이 쓰이는 것 중 하나. 
+ - Flask에서 플러그인처럼 사용하기 쉽게 만들어진 Flask-SQLAlchemy가 있다
+
+*가상 환경 활성화 상태에서 설치 
+(venv) $ pip install flask-sqlalchemy
+
+*사용할 파일에서 import 해오기
+	from flask_sqlalchemy import SQLAchemy 
+
+
+@ 데이터베이스 마이그레이션
+ - 데이터베이스 model을 변경하거나 데이터베이스를 업그레이드 해야할 때 Migration 작업을 진행 
+ 
+ *flask-migrate
+  - Flask에서 alembic의 사용을 편하게 만든 라이브러리
+
+  (venv) $ pip install flask-migrate
+
+
+@ 데이터베이스
+
+
+
+
+@ 마이그레이션 저장소 생성 
+(venv) $ flask db init
+  Creating directory /home/miguel/microblog/migrations ... done
+  Creating directory /home/miguel/microblog/migrations/versions ... done
+  Generating /home/miguel/microblog/migrations/alembic.ini ... done
+  Generating /home/miguel/microblog/migrations/env.py ... done
+  Generating /home/miguel/microblog/migrations/README ... done
+  Generating /home/miguel/microblog/migrations/script.py.mako ... done
+  Please edit configuration/connection/logging settings in
+  '/home/miguel/microblog/migrations/alembic.ini' before proceeding.
+
+
+@ 마이그레이션 스크립트 생성 
+(venv) $ flask db migrate -m "users table"
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.autogenerate.compare] Detected added table 'user'
+INFO  [alembic.autogenerate.compare] Detected added index 'ix_user_email' on '['email']'
+INFO  [alembic.autogenerate.compare] Detected added index 'ix_user_username' on '['username']'
+  Generating /home/miguel/microblog/migrations/versions/e517276bb1c2_users_table.py ... done
+
+@ 
+(venv) $ flask db upgrade
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> e517276bb1c2, users table
+
+->app.db 파일 추가됨 , 즉 SQLite 데이터베이스 
+ * flask db downgrade -> 마이그레이션 실행 취소 
+
+@ 데이터베이스 
+
+* user 변수에 User 데이터 모델 class에 대한 인스턴스를 만들어 저장
+	u = User(username='susan', email='susan@example.com')
+
+* db.serssion.add() 변경사항(새로운 내용)을 데이터베이스에 올릴 준비
+ 	db.session.add(u)
+
+* db.session.commmit() - 데이터베이스에 새로운 내용을 반영 
+ 	db.session.commit()
+
+* db.session.rollback() - 변경사항 취 
+
+* 데이터 가져오기
+	User.query.all() 
+
+
+

@@ -1,0 +1,46 @@
+## flask 설치하기
+
+**진행할 프로젝트 안에 가상환경 구축 
+1. 프로젝트 폴더 생성 
+	$ mkdir project
+2. 프로젝트 내에 가상 환경 만들기
+	 $ python3 -m venv venv(가상환경이름)
+3. 환경활성화하기 
+ - 프로젝트에서 작업하기 전에 해당 환경을 활성화 (활성화된 상태에서 작업해야됨 )
+	 $ . venv/bin/activate
+4. Flaks 설치
+- 활성화 된 환경 내에서 Flask 설치
+	$ pip install Flask
+
+
+**가상환경 종료 명령어 : deactivate(비활성화)
+
+	
+	Project
+		-flask 
+		 	-가상환경 만들기 ($ python -m venv flask)
+		 	-가상환경 안에서 설치 
+		 	$ flask/bin/pip install flask
+			$ flask/bin/pip install flask-login
+			$ flask/bin/pip install flask-openid
+			$ flask/bin/pip install flask-mail
+			$ flask/bin/pip install flask-sqlalchemy
+			$ flask/bin/pip install sqlalchemy-migrate
+			$ flask/bin/pip install flask-whooshalchemy
+			$ flask/bin/pip install flask-wtf
+			$ flask/bin/pip install flask-babel
+			$ flask/bin/pip install guess_language
+			$ flask/bin/pip install flipflop
+			$ flask/bin/pip install coverage
+			
+
+
+
+## 
+
+
+
+
+
+
+

@@ -1,0 +1,2428 @@
+ahope@ahope-B250M-DS3H:~/jooyeon/flask_prac2/project1/app/templates$ pip3 install Flask-WTF
+Requirement already satisfied: Flask-WTF in /home/ahope/.local/lib/python3.8/site-packages (0.14.3)
+Requirement already satisfied: WTForms in /home/ahope/.local/lib/python3.8/site-packages (from Flask-WTF) (2.3.3)
+Requirement already satisfied: itsdangerous in /usr/local/lib/python3.8/dist-packages (from Flask-WTF) (1.1.0)
+Requirement already satisfied: Flask in /home/ahope/.local/lib/python3.8/site-packages (from Flask-WTF) (1.1.1)
+Requirement already satisfied: MarkupSafe in /home/ahope/.local/lib/python3.8/site-packages (from WTForms->Flask-WTF) (1.1.1)
+Requirement already satisfied: Jinja2>=2.10.1 in /home/ahope/.local/lib/python3.8/site-packages (from Flask->Flask-WTF) (2.10.3)
+Requirement already satisfied: click>=5.1 in /usr/lib/python3/dist-packages (from Flask->Flask-WTF) (7.0)
+Requirement already satisfied: Werkzeug>=0.15 in /home/ahope/.local/lib/python3.8/site-packages (from Flask->Flask-WTF) (0.16.0)
+ahope@ahope-B250M-DS3H:~/jooyeon/flask_prac2/project1/app/templates$ cd ../..
+ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ ls
+__pycache__  app  config.py  hello.py  run.py  tmp  venv
+ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ . venv/bin/activate
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ pip3 install Flask-WTF
+Requirement already satisfied: Flask-WTF in /home/ahope/.local/lib/python3.8/site-packages (0.14.3)
+Requirement already satisfied: WTForms in /home/ahope/.local/lib/python3.8/site-packages (from Flask-WTF) (2.3.3)
+Requirement already satisfied: Flask in /home/ahope/.local/lib/python3.8/site-packages (from Flask-WTF) (1.1.1)
+Requirement already satisfied: itsdangerous in /usr/local/lib/python3.8/dist-packages (from Flask-WTF) (1.1.0)
+Requirement already satisfied: MarkupSafe in /home/ahope/.local/lib/python3.8/site-packages (from WTForms->Flask-WTF) (1.1.1)
+Requirement already satisfied: click>=5.1 in /usr/lib/python3/dist-packages (from Flask->Flask-WTF) (7.0)
+Requirement already satisfied: Jinja2>=2.10.1 in /home/ahope/.local/lib/python3.8/site-packages (from Flask->Flask-WTF) (2.10.3)
+Requirement already satisfied: Werkzeug>=0.15 in /home/ahope/.local/lib/python3.8/site-packages (from Flask->Flask-WTF) (0.16.0)
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ 
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ 
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ 
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ ㅔㅈㅇ
+ㅔㅈㅇ: 명령을 찾을 수 없습니다
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ pwd
+/home/ahope/jooyeon/flask_study/flask_prac2/project1
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ 
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ cd ..
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2$ ll
+합계 12
+drwxrwxr-x 3 ahope ahope 4096 12월  3 14:52 ./
+drwxrwxr-x 4 ahope ahope 4096 12월  3 16:53 ../
+drwxrwxr-x 6 ahope ahope 4096 12월  3 17:07 project1/
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2$ cd ..
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study$ ll
+합계 16
+drwxrwxr-x 4 ahope ahope 4096 12월  3 16:53 ./
+drwxrwxr-x 5 ahope ahope 4096 12월  3 17:15 ../
+drwxrwxr-x 2 ahope ahope 4096 12월  3 10:15 flask_prac/
+drwxrwxr-x 3 ahope ahope 4096 12월  3 14:52 flask_prac2/
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study$ ll
+합계 16
+drwxrwxr-x 4 ahope ahope 4096 12월  3 16:53 ./
+drwxrwxr-x 5 ahope ahope 4096 12월  3 17:15 ../
+drwxrwxr-x 2 ahope ahope 4096 12월  3 10:15 flask_prac/
+drwxrwxr-x 3 ahope ahope 4096 12월  3 14:52 flask_prac2/
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study$ cd ~/
+(venv) ahope@ahope-B250M-DS3H:~$ ll
+합계 212
+drwxr-xr-x 36 ahope ahope  4096 12월  3 15:58  ./
+drwxr-xr-x  3 root  root   4096 11월  9 16:39  ../
+drwxrwxr-x 12 ahope ahope  4096 12월  3 14:11  .PlayOnLinux/
+drwxrwxr-x  5 ahope ahope  4096 11월 17 15:18  .android/
+-rw-------  1 ahope ahope 21912 12월  3 14:50  .bash_history
+-rw-r--r--  1 ahope ahope   220 11월  9 16:39  .bash_logout
+-rw-r--r--  1 ahope ahope  3771 11월  9 16:39  .bashrc
+drwxr-xr-x 21 ahope ahope  4096 12월  3 16:06  .cache/
+drwxr-xr-x 21 ahope ahope  4096 12월  1 14:13  .config/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 16:53  .fontconfig/
+drwx------  3 ahope ahope  4096 11월  9 17:17  .gnome/
+drwx------  3 ahope ahope  4096 12월  3 09:44  .gnupg/
+drwxrwxr-x  2 ahope ahope  4096 11월 19 19:02  .gphoto/
+drwxrwxr-x  6 ahope ahope  4096 11월 17 14:20  .gradle/
+drwxrwxr-x  4 ahope ahope  4096 11월 17 14:15  .java/
+drwxr-xr-x  5 ahope ahope  4096 11월 10 14:59  .local/
+drwx------  5 ahope ahope  4096 11월  9 16:56  .mozilla/
+-rw-------  1 ahope ahope   482 11월 19 20:05  .mysql_history
+-rw-------  1 ahope ahope     0 12월  1 14:10  .node_repl_history
+drwx------  3 ahope ahope  4096 11월  9 17:16  .pki/
+-rw-r--r--  1 ahope ahope   807 11월  9 16:39  .profile
+drwxrwxr-x  2 ahope ahope  4096 12월  3 17:16  .pylint.d/
+-rw-------  1 ahope ahope   393 12월  3 12:47  .python_history
+drwx------  2 ahope ahope  4096 11월  9 17:07  .ssh/
+drwxrwxr-x  3 ahope ahope  4096 12월  1 09:54  .subversion/
+-rw-r--r--  1 ahope ahope     0 11월  9 16:50  .sudo_as_admin_successful
+drwx------  6 ahope ahope  4096 11월 13 11:23  .thunderbird/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 19:17  .vim/
+-rw-------  1 ahope ahope 17520 12월  3 15:58  .viminfo
+drwxrwxr-x  3 ahope ahope  4096 12월  1 14:13  .vscode/
+drwxrwxr-x  3 ahope ahope  4096 11월 17 14:15  Android/
+lrwxrwxrwx  1 ahope ahope    37 12월  3 09:36 "PlayOnLinux's virtual drives" -> /home/ahope/.PlayOnLinux//wineprefix//
+drwxrwxr-x  3 ahope ahope  4096 11월 10 12:33  Postman/
+drwxrwxr-x  7 ahope ahope  4096 12월  3 12:00  flask/
+drwxrwxr-x  5 ahope ahope  4096 12월  3 17:15  jooyeon/
+drwxrwxr-x  3 ahope ahope  4096 12월  3 10:05  myproject/
+drwxrwxr-x 17 ahope ahope  4096 12월  1 10:09  old-files/
+drwxr-xr-x  6 ahope ahope  4096 12월  1 14:13  snap/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 16:50  공개/
+drwxr-xr-x  2 ahope ahope  4096 12월  3 16:04  다운로드/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 16:50  문서/
+drwxr-xr-x  2 ahope ahope  4096 12월  1 09:49  바탕화면/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 16:50  비디오/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 16:50  사진/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 16:50  음악/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 16:50  템플릿/
+(venv) ahope@ahope-B250M-DS3H:~$ cd flask/
+(venv) ahope@ahope-B250M-DS3H:~/flask$ ll
+합계 36
+drwxrwxr-x  7 ahope ahope 4096 12월  3 12:00 ./
+drwxr-xr-x 36 ahope ahope 4096 12월  3 15:58 ../
+-rw-r--r--  1 root  root    40 12월  3 10:52 .gitignore
+drwxrwxr-x  2 ahope ahope 4096 12월  3 10:54 bin/
+drwxrwxr-x  2 ahope ahope 4096 12월  3 10:29 include/
+drwxrwxr-x  3 ahope ahope 4096 12월  3 10:29 lib/
+lrwxrwxrwx  1 ahope ahope    3 12월  3 10:29 lib64 -> lib/
+drwxr-xrwx  5 root  root  4096 12월  3 14:37 microblog/
+-rw-rw-r--  1 ahope ahope  201 12월  3 10:52 pyvenv.cfg
+drwxrwxr-x  3 ahope ahope 4096 12월  3 10:29 share/
+(venv) ahope@ahope-B250M-DS3H:~/flask$ cd microblog/
+(venv) ahope@ahope-B250M-DS3H:~/flask/microblog$ ll
+합계 24
+drwxr-xrwx 5 root  root  4096 12월  3 14:37 ./
+drwxrwxr-x 7 ahope ahope 4096 12월  3 12:00 ../
+drwxr-xrwx 5 root  root  4096 12월  3 12:56 app/
+drwxrwxr-x 6 ahope ahope 4096 12월  3 12:48 flask/
+-rwxrwxr-x 1 ahope ahope   59 12월  3 14:37 run.py*
+drwxr-xrwx 2 root  root  4096 12월  3 10:57 tmp/
+(venv) ahope@ahope-B250M-DS3H:~/flask/microblog$ source flask/
+bin/        include/    lib/        lib64/      pyvenv.cfg  share/      
+(venv) ahope@ahope-B250M-DS3H:~/flask/microblog$ source flask/bin/activate
+(flask) ahope@ahope-B250M-DS3H:~/flask/microblog$ pip3 list
+Package       Version
+------------- -------
+click         7.1.2  
+Flask         1.1.2  
+Flask-Login   0.5.0  
+itsdangerous  1.1.0  
+Jinja2        2.11.2 
+MarkupSafe    1.1.1  
+pip           20.0.2 
+pkg-resources 0.0.0  
+setuptools    44.0.0 
+Werkzeug      1.0.1  
+(flask) ahope@ahope-B250M-DS3H:~/flask/microblog$ cd ..
+(flask) ahope@ahope-B250M-DS3H:~/flask$ cd ..
+(flask) ahope@ahope-B250M-DS3H:~$ ll
+합계 212
+drwxr-xr-x 36 ahope ahope  4096 12월  3 15:58  ./
+drwxr-xr-x  3 root  root   4096 11월  9 16:39  ../
+drwxrwxr-x 12 ahope ahope  4096 12월  3 14:11  .PlayOnLinux/
+drwxrwxr-x  5 ahope ahope  4096 11월 17 15:18  .android/
+-rw-------  1 ahope ahope 21912 12월  3 14:50  .bash_history
+-rw-r--r--  1 ahope ahope   220 11월  9 16:39  .bash_logout
+-rw-r--r--  1 ahope ahope  3771 11월  9 16:39  .bashrc
+drwxr-xr-x 21 ahope ahope  4096 12월  3 16:06  .cache/
+drwxr-xr-x 21 ahope ahope  4096 12월  1 14:13  .config/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 16:53  .fontconfig/
+drwx------  3 ahope ahope  4096 11월  9 17:17  .gnome/
+drwx------  3 ahope ahope  4096 12월  3 09:44  .gnupg/
+drwxrwxr-x  2 ahope ahope  4096 11월 19 19:02  .gphoto/
+drwxrwxr-x  6 ahope ahope  4096 11월 17 14:20  .gradle/
+drwxrwxr-x  4 ahope ahope  4096 11월 17 14:15  .java/
+drwxr-xr-x  5 ahope ahope  4096 11월 10 14:59  .local/
+drwx------  5 ahope ahope  4096 11월  9 16:56  .mozilla/
+-rw-------  1 ahope ahope   482 11월 19 20:05  .mysql_history
+-rw-------  1 ahope ahope     0 12월  1 14:10  .node_repl_history
+drwx------  3 ahope ahope  4096 11월  9 17:16  .pki/
+-rw-r--r--  1 ahope ahope   807 11월  9 16:39  .profile
+drwxrwxr-x  2 ahope ahope  4096 12월  3 17:16  .pylint.d/
+-rw-------  1 ahope ahope   393 12월  3 12:47  .python_history
+drwx------  2 ahope ahope  4096 11월  9 17:07  .ssh/
+drwxrwxr-x  3 ahope ahope  4096 12월  1 09:54  .subversion/
+-rw-r--r--  1 ahope ahope     0 11월  9 16:50  .sudo_as_admin_successful
+drwx------  6 ahope ahope  4096 11월 13 11:23  .thunderbird/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 19:17  .vim/
+-rw-------  1 ahope ahope 17520 12월  3 15:58  .viminfo
+drwxrwxr-x  3 ahope ahope  4096 12월  1 14:13  .vscode/
+drwxrwxr-x  3 ahope ahope  4096 11월 17 14:15  Android/
+lrwxrwxrwx  1 ahope ahope    37 12월  3 09:36 "PlayOnLinux's virtual drives" -> /home/ahope/.PlayOnLinux//wineprefix//
+drwxrwxr-x  3 ahope ahope  4096 11월 10 12:33  Postman/
+drwxrwxr-x  7 ahope ahope  4096 12월  3 12:00  flask/
+drwxrwxr-x  5 ahope ahope  4096 12월  3 17:15  jooyeon/
+drwxrwxr-x  3 ahope ahope  4096 12월  3 10:05  myproject/
+drwxrwxr-x 17 ahope ahope  4096 12월  1 10:09  old-files/
+drwxr-xr-x  6 ahope ahope  4096 12월  1 14:13  snap/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 16:50  공개/
+drwxr-xr-x  2 ahope ahope  4096 12월  3 16:04  다운로드/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 16:50  문서/
+drwxr-xr-x  2 ahope ahope  4096 12월  1 09:49  바탕화면/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 16:50  비디오/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 16:50  사진/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 16:50  음악/
+drwxr-xr-x  2 ahope ahope  4096 11월  9 16:50  템플릿/
+(flask) ahope@ahope-B250M-DS3H:~$ pwd
+/home/ahope
+(flask) ahope@ahope-B250M-DS3H:~$ cd ~/jooyeon/flask_study/flask_prac2/project1
+(flask) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ ll
+합계 36
+drwxrwxr-x 6 ahope ahope 4096 12월  3 17:07 ./
+drwxrwxr-x 3 ahope ahope 4096 12월  3 14:52 ../
+drwxrwxr-x 2 ahope ahope 4096 12월  3 15:22 __pycache__/
+drwxrwxr-x 5 ahope ahope 4096 12월  3 17:16 app/
+-rw-rw-r-- 1 ahope ahope   59 12월  3 17:09 config.py
+-rw-rw-r-- 1 ahope ahope  110 12월  3 14:58 hello.py
+-rwxrwxr-x 1 ahope ahope   59 12월  3 14:37 run.py*
+drwxrwxr-x 2 ahope ahope 4096 12월  3 15:17 tmp/
+drwxrwxr-x 6 ahope ahope 4096 12월  3 14:53 venv/
+(flask) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ source venv/
+bin/        include/    lib/        lib64/      pyvenv.cfg  share/      
+(flask) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ source venv/bin/activate
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ ./run.py 
+bash: ./run.py: flask/bin/python: bad interpreter: 그런 파일이나 디렉터리가 없습니다
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ sudo vi run.py 
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ ./run.py 
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 310-141-004
+^C(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ pip3 list
+Package                Version             
+---------------------- --------------------
+appdirs                1.4.4               
+apturl                 0.5.2               
+astroid                2.4.2               
+attrs                  20.3.0              
+Automat                20.2.0              
+autopep8               1.5.4               
+bcrypt                 3.1.7               
+blinker                1.4                 
+Brlapi                 0.7.0               
+certifi                2019.9.11           
+chardet                3.0.4               
+cheroot                8.4.5               
+Click                  7.0                 
+colorama               0.4.3               
+command-not-found      0.3                 
+constantly             15.1.0              
+cryptography           2.8                 
+cssselect              1.1.0               
+cupshelpers            1.0                 
+dbus-python            1.2.16              
+defer                  1.0.6               
+distlib                0.3.1               
+distro                 1.4.0               
+distro-info            0.23ubuntu1         
+dnspython              1.16.0              
+duplicity              0.8.12.0            
+entrypoints            0.3                 
+fasteners              0.14.1              
+filelock               3.0.12              
+Flask                  1.1.1               
+Flask-SQLAlchemy       2.4.1               
+Flask-WTF              0.14.3              
+flup                   1.0.3               
+future                 0.18.2              
+gpg                    1.13.1-unknown      
+h2                     2.6.2               
+hpack                  3.0.0               
+httplib2               0.14.0              
+hyper                  0.7.0               
+hyperframe             3.2.0               
+hyperlink              20.0.1              
+idna                   2.8                 
+incremental            17.5.0              
+isort                  5.6.4               
+itemadapter            0.2.0               
+itemloaders            1.0.4               
+itsdangerous           1.1.0               
+jaraco.functools       3.0.1               
+Jinja2                 2.10.3              
+jmespath               0.10.0              
+keyring                18.0.1              
+language-selector      0.1                 
+launchpadlib           1.10.13             
+lazr.restfulclient     0.14.2              
+lazr.uri               1.0.3               
+lazy-object-proxy      1.4.3               
+lockfile               0.12.2              
+louis                  3.12.0              
+lxml                   4.6.2               
+macaroonbakery         1.3.1               
+Mako                   1.1.0               
+Markdown               3.1.1               
+MarkupSafe             1.1.1               
+mccabe                 0.6.1               
+monotonic              1.5                 
+more-itertools         8.6.0               
+mysqlclient            1.4.4               
+netifaces              0.10.4              
+oauthlib               3.1.0               
+olefile                0.46                
+packaging              20.3                
+paramiko               2.6.0               
+parsel                 1.6.0               
+pexpect                4.6.0               
+Pillow                 7.0.0               
+pip                    20.0.2              
+Protego                0.1.16              
+protobuf               3.6.1               
+psutil                 5.5.1               
+pyasn1                 0.4.8               
+pyasn1-modules         0.2.8               
+pycairo                1.16.2              
+pycodestyle            2.6.0               
+pycrypto               2.6.1               
+pycups                 1.9.73              
+PyDispatcher           2.0.5               
+Pygments               2.3.1               
+PyGObject              3.36.0              
+PyHamcrest             2.0.2               
+PyJWT                  1.7.1               
+pylint                 2.6.0               
+pymacaroons            0.13.0              
+PyNaCl                 1.3.0               
+pyOpenSSL              20.0.0              
+pyparsing              2.4.6               
+pyRFC3339              1.1                 
+python-apt             2.0.0+ubuntu0.20.4.1
+python-dateutil        2.8.1               
+python-debian          0.1.36ubuntu1       
+pytz                   2019.3              
+pyxdg                  0.26                
+PyYAML                 5.1.2               
+queuelib               1.5.0               
+reportlab              3.5.34              
+requests               2.22.0              
+requests-unixsocket    0.2.0               
+schedule               0.6.0               
+Scrapy                 2.4.1               
+SecretStorage          2.3.1               
+service-identity       18.1.0              
+setuptools             45.2.0              
+simplejson             3.16.0              
+six                    1.14.0              
+SQLAlchemy             1.3.10              
+ssh-import-id          5.10                
+systemd-python         234                 
+toml                   0.10.2              
+Twisted                20.3.0              
+ubuntu-advantage-tools 20.3                
+ubuntu-drivers-common  0.0.0               
+ufw                    0.36                
+unattended-upgrades    0.1                 
+urllib3                1.25.6              
+usb-creator            0.3.7               
+virtualenv             20.2.1              
+w3lib                  1.22.0              
+wadllib                1.3.3               
+web.py                 0.61                
+Werkzeug               0.16.0              
+wheel                  0.34.2              
+wrapt                  1.12.1              
+WTForms                2.3.3               
+xkit                   0.0.0               
+zope.interface         5.2.0               
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ pip3 list 
+ gPackage                Version             
+---------------------- --------------------
+appdirs                1.4.4               
+apturl                 0.5.2               
+astroid                2.4.2               
+attrs                  20.3.0              
+Automat                20.2.0              
+autopep8               1.5.4               
+bcrypt                 3.1.7               
+blinker                1.4                 
+Brlapi                 0.7.0               
+certifi                2019.9.11           
+chardet                3.0.4               
+cheroot                8.4.5               
+Click                  7.0                 
+colorama               0.4.3               
+command-not-found      0.3                 
+constantly             15.1.0              
+cryptography           2.8                 
+cssselect              1.1.0               
+cupshelpers            1.0                 
+dbus-python            1.2.16              
+defer                  1.0.6               
+distlib                0.3.1               
+distro                 1.4.0               
+distro-info            0.23ubuntu1         
+dnspython              1.16.0              
+duplicity              0.8.12.0            
+entrypoints            0.3                 
+fasteners              0.14.1              
+filelock               3.0.12              
+Flask                  1.1.1               
+Flask-SQLAlchemy       2.4.1               
+Flask-WTF              0.14.3              
+flup                   1.0.3               
+future                 0.18.2              
+gpg                    1.13.1-unknown      
+h2                     2.6.2               
+hpack                  3.0.0               
+httplib2               0.14.0              
+hyper                  0.7.0               
+hyperframe             3.2.0               
+hyperlink              20.0.1              
+idna                   2.8                 
+incremental            17.5.0              
+isort                  5.6.4               
+itemadapter            0.2.0               
+itemloaders            1.0.4               
+itsdangerous           1.1.0               
+jaraco.functools       3.0.1               
+Jinja2                 2.10.3              
+jmespath               0.10.0              
+keyring                18.0.1              
+language-selector      0.1                 
+launchpadlib           1.10.13             
+lazr.restfulclient     0.14.2              
+lazr.uri               1.0.3               
+lazy-object-proxy      1.4.3               
+lockfile               0.12.2              
+louis                  3.12.0              
+lxml                   4.6.2               
+macaroonbakery         1.3.1               
+Mako                   1.1.0               
+Markdown               3.1.1               
+MarkupSafe             1.1.1               
+mccabe                 0.6.1               
+monotonic              1.5                 
+more-itertools         8.6.0               
+mysqlclient            1.4.4               
+netifaces              0.10.4              
+oauthlib               3.1.0               
+olefile                0.46                
+packaging              20.3                
+paramiko               2.6.0               
+parsel                 1.6.0               
+pexpect                4.6.0               
+Pillow                 7.0.0               
+pip                    20.0.2              
+Protego                0.1.16              
+protobuf               3.6.1               
+psutil                 5.5.1               
+pyasn1                 0.4.8               
+pyasn1-modules         0.2.8               
+pycairo                1.16.2              
+pycodestyle            2.6.0               
+pycrypto               2.6.1               
+pycups                 1.9.73              
+PyDispatcher           2.0.5               
+Pygments               2.3.1               
+PyGObject              3.36.0              
+PyHamcrest             2.0.2               
+PyJWT                  1.7.1               
+pylint                 2.6.0               
+pymacaroons            0.13.0              
+PyNaCl                 1.3.0               
+pyOpenSSL              20.0.0              
+pyparsing              2.4.6               
+pyRFC3339              1.1                 
+python-apt             2.0.0+ubuntu0.20.4.1
+python-dateutil        2.8.1               
+python-debian          0.1.36ubuntu1       
+pytz                   2019.3              
+pyxdg                  0.26                
+PyYAML                 5.1.2               
+queuelib               1.5.0               
+reportlab              3.5.34              
+requests               2.22.0              
+requests-unixsocket    0.2.0               
+schedule               0.6.0               
+Scrapy                 2.4.1               
+SecretStorage          2.3.1               
+service-identity       18.1.0              
+setuptools             45.2.0              
+simplejson             3.16.0              
+six                    1.14.0              
+SQLAlchemy             1.3.10              
+ssh-import-id          5.10                
+systemd-python         234                 
+toml                   0.10.2              
+Twisted                20.3.0              
+ubuntu-advantage-tools 20.3                
+ubuntu-drivers-common  0.0.0               
+ufw                    0.36                
+unattended-upgrades    0.1                 
+urllib3                1.25.6              
+usb-creator            0.3.7               
+virtualenv             20.2.1              
+w3lib                  1.22.0              
+wadllib                1.3.3               
+web.py                 0.61                
+Werkzeug               0.16.0              
+wheel                  0.34.2              
+wrapt                  1.12.1              
+WTForms                2.3.3               
+xkit                   0.0.0               
+zope.interface         5.2.0               
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ pip3 list  | grep flask_wtf
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ pip3 install flask_wtf
+Requirement already satisfied: flask_wtf in /home/ahope/.local/lib/python3.8/site-packages (0.14.3)
+Requirement already satisfied: itsdangerous in /usr/local/lib/python3.8/dist-packages (from flask_wtf) (1.1.0)
+Requirement already satisfied: WTForms in /home/ahope/.local/lib/python3.8/site-packages (from flask_wtf) (2.3.3)
+Requirement already satisfied: Flask in /home/ahope/.local/lib/python3.8/site-packages (from flask_wtf) (1.1.1)
+Requirement already satisfied: MarkupSafe in /home/ahope/.local/lib/python3.8/site-packages (from WTForms->flask_wtf) (1.1.1)
+Requirement already satisfied: Jinja2>=2.10.1 in /home/ahope/.local/lib/python3.8/site-packages (from Flask->flask_wtf) (2.10.3)
+Requirement already satisfied: Werkzeug>=0.15 in /home/ahope/.local/lib/python3.8/site-packages (from Flask->flask_wtf) (0.16.0)
+Requirement already satisfied: click>=5.1 in /usr/lib/python3/dist-packages (from Flask->flask_wtf) (7.0)
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ pip install flask_wtf
+
+Command 'pip' not found, but there are 18 similar ones.
+
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ ll
+합계 40
+drwxrwxr-x 6 ahope ahope 4096 12월  3 17:42 ./
+drwxrwxr-x 3 ahope ahope 4096 12월  3 14:52 ../
+-rw-r--r-- 1 root  root    58 12월  3 17:42 1
+drwxrwxr-x 2 ahope ahope 4096 12월  3 17:42 __pycache__/
+drwxrwxr-x 5 ahope ahope 4096 12월  3 17:16 app/
+-rw-rw-r-- 1 ahope ahope   59 12월  3 17:09 config.py
+-rw-rw-r-- 1 ahope ahope  110 12월  3 14:58 hello.py
+-rwxrwxr-x 1 ahope ahope   58 12월  3 17:42 run.py*
+drwxrwxr-x 2 ahope ahope 4096 12월  3 15:17 tmp/
+drwxrwxr-x 6 ahope ahope 4096 12월  3 14:53 venv/
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ ll venv/
+bin/        include/    lib/        lib64/      pyvenv.cfg  share/      
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ ll venv/bin/
+Activate.ps1      activate.fish     epylint           pip               pylint            python3
+activate          easy_install      flask             pip3              pyreverse         symilar
+activate.csh      easy_install-3.8  isort             pip3.8            python            
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ ll venv/bin/
+합계 76
+drwxrwxr-x 2 ahope ahope 4096 12월  3 17:07 ./
+drwxrwxr-x 6 ahope ahope 4096 12월  3 14:53 ../
+-rw-r--r-- 1 ahope ahope 8834 12월  3 14:53 Activate.ps1
+-rw-r--r-- 1 ahope ahope 2225 12월  3 14:53 activate
+-rw-r--r-- 1 ahope ahope 1277 12월  3 14:53 activate.csh
+-rw-r--r-- 1 ahope ahope 2429 12월  3 14:53 activate.fish
+-rwxrwxr-x 1 ahope ahope  271 12월  3 14:53 easy_install*
+-rwxrwxr-x 1 ahope ahope  271 12월  3 14:53 easy_install-3.8*
+-rwxrwxr-x 1 ahope ahope  272 12월  3 17:07 epylint*
+-rwxrwxr-x 1 ahope ahope  249 12월  3 14:54 flask*
+-rwxrwxr-x 1 ahope ahope  262 12월  3 17:07 isort*
+-rwxrwxr-x 1 ahope ahope  262 12월  3 14:53 pip*
+-rwxrwxr-x 1 ahope ahope  262 12월  3 14:53 pip3*
+-rwxrwxr-x 1 ahope ahope  262 12월  3 14:53 pip3.8*
+-rwxrwxr-x 1 ahope ahope  270 12월  3 17:07 pylint*
+-rwxrwxr-x 1 ahope ahope  276 12월  3 17:07 pyreverse*
+lrwxrwxrwx 1 ahope ahope    7 12월  3 14:53 python -> python3*
+lrwxrwxrwx 1 ahope ahope   16 12월  3 14:53 python3 -> /usr/bin/python3*
+-rwxrwxr-x 1 ahope ahope  272 12월  3 17:07 symilar*
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ venv/bin/pip3 list
+bash: venv/bin/pip3: /home/ahope/jooyeon/flask_prac2/project1/venv/bin/python3: bad interpreter: 그런 파일이나 디렉터리가 없습니다
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ ./venv/bin/pip3 list
+bash: ./venv/bin/pip3: /home/ahope/jooyeon/flask_prac2/project1/venv/bin/python3: bad interpreter: 그런 파일이나 디렉터리가 없습니다
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ cd venv/bin/
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./py
+pylint     pyreverse  python     python3    
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./py
+pylint     pyreverse  python     python3    
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./python3
+Python 3.8.5 (default, Jul 28 2020, 12:59:40) 
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exit
+Use exit() or Ctrl-D (i.e. EOF) to exit
+>>> 
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./pip
+bash: ./pip: /home/ahope/jooyeon/flask_prac2/project1/venv/bin/python3: bad interpreter: 그런 파일이나 디렉터리가 없습니다
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./pip3
+bash: ./pip3: /home/ahope/jooyeon/flask_prac2/project1/venv/bin/python3: bad interpreter: 그런 파일이나 디렉터리가 없습니다
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ pip3
+
+Usage:   
+  pip3 <command> [options]
+
+Commands:
+  install                     Install packages.
+  download                    Download packages.
+  uninstall                   Uninstall packages.
+  freeze                      Output installed packages in requirements format.
+  list                        List installed packages.
+  show                        Show information about installed packages.
+  check                       Verify installed packages have compatible dependencies.
+  config                      Manage local and global configuration.
+  search                      Search PyPI for packages.
+  wheel                       Build wheels from your requirements.
+  hash                        Compute hashes of package archives.
+  completion                  A helper command used for command completion.
+  debug                       Show information useful for debugging.
+  help                        Show help for commands.
+
+General Options:
+  -h, --help                  Show help.
+  --isolated                  Run pip in an isolated mode, ignoring environment variables and user
+                              configuration.
+  -v, --verbose               Give more output. Option is additive, and can be used up to 3 times.
+  -V, --version               Show version and exit.
+  -q, --quiet                 Give less output. Option is additive, and can be used up to 3 times
+                              (corresponding to WARNING, ERROR, and CRITICAL logging levels).
+  --log <path>                Path to a verbose appending log.
+  --proxy <proxy>             Specify a proxy in the form [user:passwd@]proxy.server:port.
+  --retries <retries>         Maximum number of retries each connection should attempt (default 5 times).
+  --timeout <sec>             Set the socket timeout (default 15 seconds).
+  --exists-action <action>    Default action when a path already exists: (s)witch, (i)gnore, (w)ipe,
+                              (b)ackup, (a)bort.
+  --trusted-host <hostname>   Mark this host or host:port pair as trusted, even though it does not have
+                              valid or any HTTPS.
+  --cert <path>               Path to alternate CA bundle.
+  --client-cert <path>        Path to SSL client certificate, a single file containing the private key and
+                              the certificate in PEM format.
+  --cache-dir <dir>           Store the cache data in <dir>.
+  --no-cache-dir              Disable the cache.
+  --disable-pip-version-check
+                              Don't periodically check PyPI to determine whether a new version of pip is
+                              available for download. Implied with --no-index.
+  --no-color                  Suppress colored output
+  --no-python-version-warning
+                              Silence deprecation warnings for upcoming unsupported Pythons.
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ pip3 list
+Package                Version             
+---------------------- --------------------
+appdirs                1.4.4               
+apturl                 0.5.2               
+astroid                2.4.2               
+attrs                  20.3.0              
+Automat                20.2.0              
+autopep8               1.5.4               
+bcrypt                 3.1.7               
+blinker                1.4                 
+Brlapi                 0.7.0               
+certifi                2019.9.11           
+chardet                3.0.4               
+cheroot                8.4.5               
+Click                  7.0                 
+colorama               0.4.3               
+command-not-found      0.3                 
+constantly             15.1.0              
+cryptography           2.8                 
+cssselect              1.1.0               
+cupshelpers            1.0                 
+dbus-python            1.2.16              
+defer                  1.0.6               
+distlib                0.3.1               
+distro                 1.4.0               
+distro-info            0.23ubuntu1         
+dnspython              1.16.0              
+duplicity              0.8.12.0            
+entrypoints            0.3                 
+fasteners              0.14.1              
+filelock               3.0.12              
+Flask                  1.1.1               
+Flask-SQLAlchemy       2.4.1               
+Flask-WTF              0.14.3              
+flup                   1.0.3               
+future                 0.18.2              
+gpg                    1.13.1-unknown      
+h2                     2.6.2               
+hpack                  3.0.0               
+httplib2               0.14.0              
+hyper                  0.7.0               
+hyperframe             3.2.0               
+hyperlink              20.0.1              
+idna                   2.8                 
+incremental            17.5.0              
+isort                  5.6.4               
+itemadapter            0.2.0               
+itemloaders            1.0.4               
+itsdangerous           1.1.0               
+jaraco.functools       3.0.1               
+Jinja2                 2.10.3              
+jmespath               0.10.0              
+keyring                18.0.1              
+language-selector      0.1                 
+launchpadlib           1.10.13             
+lazr.restfulclient     0.14.2              
+lazr.uri               1.0.3               
+lazy-object-proxy      1.4.3               
+lockfile               0.12.2              
+louis                  3.12.0              
+lxml                   4.6.2               
+macaroonbakery         1.3.1               
+Mako                   1.1.0               
+Markdown               3.1.1               
+MarkupSafe             1.1.1               
+mccabe                 0.6.1               
+monotonic              1.5                 
+more-itertools         8.6.0               
+mysqlclient            1.4.4               
+netifaces              0.10.4              
+oauthlib               3.1.0               
+olefile                0.46                
+packaging              20.3                
+paramiko               2.6.0               
+parsel                 1.6.0               
+pexpect                4.6.0               
+Pillow                 7.0.0               
+pip                    20.0.2              
+Protego                0.1.16              
+protobuf               3.6.1               
+psutil                 5.5.1               
+pyasn1                 0.4.8               
+pyasn1-modules         0.2.8               
+pycairo                1.16.2              
+pycodestyle            2.6.0               
+pycrypto               2.6.1               
+pycups                 1.9.73              
+PyDispatcher           2.0.5               
+Pygments               2.3.1               
+PyGObject              3.36.0              
+PyHamcrest             2.0.2               
+PyJWT                  1.7.1               
+pylint                 2.6.0               
+pymacaroons            0.13.0              
+PyNaCl                 1.3.0               
+pyOpenSSL              20.0.0              
+pyparsing              2.4.6               
+pyRFC3339              1.1                 
+python-apt             2.0.0+ubuntu0.20.4.1
+python-dateutil        2.8.1               
+python-debian          0.1.36ubuntu1       
+pytz                   2019.3              
+pyxdg                  0.26                
+PyYAML                 5.1.2               
+queuelib               1.5.0               
+reportlab              3.5.34              
+requests               2.22.0              
+requests-unixsocket    0.2.0               
+schedule               0.6.0               
+Scrapy                 2.4.1               
+SecretStorage          2.3.1               
+service-identity       18.1.0              
+setuptools             45.2.0              
+simplejson             3.16.0              
+six                    1.14.0              
+SQLAlchemy             1.3.10              
+ssh-import-id          5.10                
+systemd-python         234                 
+toml                   0.10.2              
+Twisted                20.3.0              
+ubuntu-advantage-tools 20.3                
+ubuntu-drivers-common  0.0.0               
+ufw                    0.36                
+unattended-upgrades    0.1                 
+urllib3                1.25.6              
+usb-creator            0.3.7               
+virtualenv             20.2.1              
+w3lib                  1.22.0              
+wadllib                1.3.3               
+web.py                 0.61                
+Werkzeug               0.16.0              
+wheel                  0.34.2              
+wrapt                  1.12.1              
+WTForms                2.3.3               
+xkit                   0.0.0               
+zope.interface         5.2.0               
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ pip install flask-wtf
+
+Command 'pip' not found, but there are 18 similar ones.
+
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ pip3 install flask-wtf
+Requirement already satisfied: flask-wtf in /home/ahope/.local/lib/python3.8/site-packages (0.14.3)
+Requirement already satisfied: WTForms in /home/ahope/.local/lib/python3.8/site-packages (from flask-wtf) (2.3.3)
+Requirement already satisfied: itsdangerous in /usr/local/lib/python3.8/dist-packages (from flask-wtf) (1.1.0)
+Requirement already satisfied: Flask in /home/ahope/.local/lib/python3.8/site-packages (from flask-wtf) (1.1.1)
+Requirement already satisfied: MarkupSafe in /home/ahope/.local/lib/python3.8/site-packages (from WTForms->flask-wtf) (1.1.1)
+Requirement already satisfied: click>=5.1 in /usr/lib/python3/dist-packages (from Flask->flask-wtf) (7.0)
+Requirement already satisfied: Jinja2>=2.10.1 in /home/ahope/.local/lib/python3.8/site-packages (from Flask->flask-wtf) (2.10.3)
+Requirement already satisfied: Werkzeug>=0.15 in /home/ahope/.local/lib/python3.8/site-packages (from Flask->flask-wtf) (0.16.0)
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ pip3 install flask
+Requirement already satisfied: flask in /home/ahope/.local/lib/python3.8/site-packages (1.1.1)
+Requirement already satisfied: itsdangerous>=0.24 in /usr/local/lib/python3.8/dist-packages (from flask) (1.1.0)
+Requirement already satisfied: Jinja2>=2.10.1 in /home/ahope/.local/lib/python3.8/site-packages (from flask) (2.10.3)
+Requirement already satisfied: Werkzeug>=0.15 in /home/ahope/.local/lib/python3.8/site-packages (from flask) (0.16.0)
+Requirement already satisfied: click>=5.1 in /usr/lib/python3/dist-packages (from flask) (7.0)
+Requirement already satisfied: MarkupSafe>=0.23 in /home/ahope/.local/lib/python3.8/site-packages (from Jinja2>=2.10.1->flask) (1.1.1)
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ pip3 install flask-login
+Collecting flask-login
+  Using cached Flask_Login-0.5.0-py2.py3-none-any.whl (16 kB)
+Requirement already satisfied: Flask in /home/ahope/.local/lib/python3.8/site-packages (from flask-login) (1.1.1)
+Requirement already satisfied: itsdangerous>=0.24 in /usr/local/lib/python3.8/dist-packages (from Flask->flask-login) (1.1.0)
+Requirement already satisfied: click>=5.1 in /usr/lib/python3/dist-packages (from Flask->flask-login) (7.0)
+Requirement already satisfied: Jinja2>=2.10.1 in /home/ahope/.local/lib/python3.8/site-packages (from Flask->flask-login) (2.10.3)
+Requirement already satisfied: Werkzeug>=0.15 in /home/ahope/.local/lib/python3.8/site-packages (from Flask->flask-login) (0.16.0)
+Requirement already satisfied: MarkupSafe>=0.23 in /home/ahope/.local/lib/python3.8/site-packages (from Jinja2>=2.10.1->Flask->flask-login) (1.1.1)
+Installing collected packages: flask-login
+Successfully installed flask-login-0.5.0
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ sudo pip3 install flask-login
+Collecting flask-login
+  Using cached Flask_Login-0.5.0-py2.py3-none-any.whl (16 kB)
+Requirement already satisfied: Flask in /usr/local/lib/python3.8/dist-packages (from flask-login) (1.1.2)
+Requirement already satisfied: click>=5.1 in /usr/lib/python3/dist-packages (from Flask->flask-login) (7.0)
+Requirement already satisfied: Werkzeug>=0.15 in /usr/local/lib/python3.8/dist-packages (from Flask->flask-login) (1.0.1)
+Requirement already satisfied: Jinja2>=2.10.1 in /usr/local/lib/python3.8/dist-packages (from Flask->flask-login) (2.11.2)
+Requirement already satisfied: itsdangerous>=0.24 in /usr/local/lib/python3.8/dist-packages (from Flask->flask-login) (1.1.0)
+Requirement already satisfied: MarkupSafe>=0.23 in /usr/lib/python3/dist-packages (from Jinja2>=2.10.1->Flask->flask-login) (1.1.0)
+Installing collected packages: flask-login
+Successfully installed flask-login-0.5.0
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ sudo pip3 install flask-wtf
+Collecting flask-wtf
+  Using cached Flask_WTF-0.14.3-py2.py3-none-any.whl (13 kB)
+Requirement already satisfied: itsdangerous in /usr/local/lib/python3.8/dist-packages (from flask-wtf) (1.1.0)
+Requirement already satisfied: Flask in /usr/local/lib/python3.8/dist-packages (from flask-wtf) (1.1.2)
+Collecting WTForms
+  Using cached WTForms-2.3.3-py2.py3-none-any.whl (169 kB)
+Requirement already satisfied: Werkzeug>=0.15 in /usr/local/lib/python3.8/dist-packages (from Flask->flask-wtf) (1.0.1)
+Requirement already satisfied: Jinja2>=2.10.1 in /usr/local/lib/python3.8/dist-packages (from Flask->flask-wtf) (2.11.2)
+Requirement already satisfied: click>=5.1 in /usr/lib/python3/dist-packages (from Flask->flask-wtf) (7.0)
+Requirement already satisfied: MarkupSafe in /usr/lib/python3/dist-packages (from WTForms->flask-wtf) (1.1.0)
+Installing collected packages: WTForms, flask-wtf
+Successfully installed WTForms-2.3.3 flask-wtf-0.14.3
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ pip3 list
+Package                Version             
+---------------------- --------------------
+appdirs                1.4.4               
+apturl                 0.5.2               
+astroid                2.4.2               
+attrs                  20.3.0              
+Automat                20.2.0              
+autopep8               1.5.4               
+bcrypt                 3.1.7               
+blinker                1.4                 
+Brlapi                 0.7.0               
+certifi                2019.9.11           
+chardet                3.0.4               
+cheroot                8.4.5               
+Click                  7.0                 
+colorama               0.4.3               
+command-not-found      0.3                 
+constantly             15.1.0              
+cryptography           2.8                 
+cssselect              1.1.0               
+cupshelpers            1.0                 
+dbus-python            1.2.16              
+defer                  1.0.6               
+distlib                0.3.1               
+distro                 1.4.0               
+distro-info            0.23ubuntu1         
+dnspython              1.16.0              
+duplicity              0.8.12.0            
+entrypoints            0.3                 
+fasteners              0.14.1              
+filelock               3.0.12              
+Flask                  1.1.1               
+Flask-Login            0.5.0               
+Flask-SQLAlchemy       2.4.1               
+Flask-WTF              0.14.3              
+flup                   1.0.3               
+future                 0.18.2              
+gpg                    1.13.1-unknown      
+h2                     2.6.2               
+hpack                  3.0.0               
+httplib2               0.14.0              
+hyper                  0.7.0               
+hyperframe             3.2.0               
+hyperlink              20.0.1              
+idna                   2.8                 
+incremental            17.5.0              
+isort                  5.6.4               
+itemadapter            0.2.0               
+itemloaders            1.0.4               
+itsdangerous           1.1.0               
+jaraco.functools       3.0.1               
+Jinja2                 2.10.3              
+jmespath               0.10.0              
+keyring                18.0.1              
+language-selector      0.1                 
+launchpadlib           1.10.13             
+lazr.restfulclient     0.14.2              
+lazr.uri               1.0.3               
+lazy-object-proxy      1.4.3               
+lockfile               0.12.2              
+louis                  3.12.0              
+lxml                   4.6.2               
+macaroonbakery         1.3.1               
+Mako                   1.1.0               
+Markdown               3.1.1               
+MarkupSafe             1.1.1               
+mccabe                 0.6.1               
+monotonic              1.5                 
+more-itertools         8.6.0               
+mysqlclient            1.4.4               
+netifaces              0.10.4              
+oauthlib               3.1.0               
+olefile                0.46                
+packaging              20.3                
+paramiko               2.6.0               
+parsel                 1.6.0               
+pexpect                4.6.0               
+Pillow                 7.0.0               
+pip                    20.0.2              
+Protego                0.1.16              
+protobuf               3.6.1               
+psutil                 5.5.1               
+pyasn1                 0.4.8               
+pyasn1-modules         0.2.8               
+pycairo                1.16.2              
+pycodestyle            2.6.0               
+pycrypto               2.6.1               
+pycups                 1.9.73              
+PyDispatcher           2.0.5               
+Pygments               2.3.1               
+PyGObject              3.36.0              
+PyHamcrest             2.0.2               
+PyJWT                  1.7.1               
+pylint                 2.6.0               
+pymacaroons            0.13.0              
+PyNaCl                 1.3.0               
+pyOpenSSL              20.0.0              
+pyparsing              2.4.6               
+pyRFC3339              1.1                 
+python-apt             2.0.0+ubuntu0.20.4.1
+python-dateutil        2.8.1               
+python-debian          0.1.36ubuntu1       
+pytz                   2019.3              
+pyxdg                  0.26                
+PyYAML                 5.1.2               
+queuelib               1.5.0               
+reportlab              3.5.34              
+requests               2.22.0              
+requests-unixsocket    0.2.0               
+schedule               0.6.0               
+Scrapy                 2.4.1               
+SecretStorage          2.3.1               
+service-identity       18.1.0              
+setuptools             45.2.0              
+simplejson             3.16.0              
+six                    1.14.0              
+SQLAlchemy             1.3.10              
+ssh-import-id          5.10                
+systemd-python         234                 
+toml                   0.10.2              
+Twisted                20.3.0              
+ubuntu-advantage-tools 20.3                
+ubuntu-drivers-common  0.0.0               
+ufw                    0.36                
+unattended-upgrades    0.1                 
+urllib3                1.25.6              
+usb-creator            0.3.7               
+virtualenv             20.2.1              
+w3lib                  1.22.0              
+wadllib                1.3.3               
+web.py                 0.61                
+Werkzeug               0.16.0              
+wheel                  0.34.2              
+wrapt                  1.12.1              
+WTForms                2.3.3               
+xkit                   0.0.0               
+zope.interface         5.2.0               
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ pip3 list 
+Package                Version             
+---------------------- --------------------
+appdirs                1.4.4               
+apturl                 0.5.2               
+astroid                2.4.2               
+attrs                  20.3.0              
+Automat                20.2.0              
+autopep8               1.5.4               
+bcrypt                 3.1.7               
+blinker                1.4                 
+Brlapi                 0.7.0               
+certifi                2019.9.11           
+chardet                3.0.4               
+cheroot                8.4.5               
+Click                  7.0                 
+colorama               0.4.3               
+command-not-found      0.3                 
+constantly             15.1.0              
+cryptography           2.8                 
+cssselect              1.1.0               
+cupshelpers            1.0                 
+dbus-python            1.2.16              
+defer                  1.0.6               
+distlib                0.3.1               
+distro                 1.4.0               
+distro-info            0.23ubuntu1         
+dnspython              1.16.0              
+duplicity              0.8.12.0            
+entrypoints            0.3                 
+fasteners              0.14.1              
+filelock               3.0.12              
+Flask                  1.1.1               
+Flask-Login            0.5.0               
+Flask-SQLAlchemy       2.4.1               
+Flask-WTF              0.14.3              
+flup                   1.0.3               
+future                 0.18.2              
+gpg                    1.13.1-unknown      
+h2                     2.6.2               
+hpack                  3.0.0               
+httplib2               0.14.0              
+hyper                  0.7.0               
+hyperframe             3.2.0               
+hyperlink              20.0.1              
+idna                   2.8                 
+incremental            17.5.0              
+isort                  5.6.4               
+itemadapter            0.2.0               
+itemloaders            1.0.4               
+itsdangerous           1.1.0               
+jaraco.functools       3.0.1               
+Jinja2                 2.10.3              
+jmespath               0.10.0              
+keyring                18.0.1              
+language-selector      0.1                 
+launchpadlib           1.10.13             
+lazr.restfulclient     0.14.2              
+lazr.uri               1.0.3               
+lazy-object-proxy      1.4.3               
+lockfile               0.12.2              
+louis                  3.12.0              
+lxml                   4.6.2               
+macaroonbakery         1.3.1               
+Mako                   1.1.0               
+Markdown               3.1.1               
+MarkupSafe             1.1.1               
+mccabe                 0.6.1               
+monotonic              1.5                 
+more-itertools         8.6.0               
+mysqlclient            1.4.4               
+netifaces              0.10.4              
+oauthlib               3.1.0               
+olefile                0.46                
+packaging              20.3                
+paramiko               2.6.0               
+parsel                 1.6.0               
+pexpect                4.6.0               
+Pillow                 7.0.0               
+pip                    20.0.2              
+Protego                0.1.16              
+protobuf               3.6.1               
+psutil                 5.5.1               
+pyasn1                 0.4.8               
+pyasn1-modules         0.2.8               
+pycairo                1.16.2              
+pycodestyle            2.6.0               
+pycrypto               2.6.1               
+pycups                 1.9.73              
+PyDispatcher           2.0.5               
+Pygments               2.3.1               
+PyGObject              3.36.0              
+PyHamcrest             2.0.2               
+PyJWT                  1.7.1               
+pylint                 2.6.0               
+pymacaroons            0.13.0              
+PyNaCl                 1.3.0               
+pyOpenSSL              20.0.0              
+pyparsing              2.4.6               
+pyRFC3339              1.1                 
+python-apt             2.0.0+ubuntu0.20.4.1
+python-dateutil        2.8.1               
+python-debian          0.1.36ubuntu1       
+pytz                   2019.3              
+pyxdg                  0.26                
+PyYAML                 5.1.2               
+queuelib               1.5.0               
+reportlab              3.5.34              
+requests               2.22.0              
+requests-unixsocket    0.2.0               
+schedule               0.6.0               
+Scrapy                 2.4.1               
+SecretStorage          2.3.1               
+service-identity       18.1.0              
+setuptools             45.2.0              
+simplejson             3.16.0              
+six                    1.14.0              
+SQLAlchemy             1.3.10              
+ssh-import-id          5.10                
+systemd-python         234                 
+toml                   0.10.2              
+Twisted                20.3.0              
+ubuntu-advantage-tools 20.3                
+ubuntu-drivers-common  0.0.0               
+ufw                    0.36                
+unattended-upgrades    0.1                 
+urllib3                1.25.6              
+usb-creator            0.3.7               
+virtualenv             20.2.1              
+w3lib                  1.22.0              
+wadllib                1.3.3               
+web.py                 0.61                
+Werkzeug               0.16.0              
+wheel                  0.34.2              
+wrapt                  1.12.1              
+WTForms                2.3.3               
+xkit                   0.0.0               
+zope.interface         5.2.0               
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ pip3 list  | grep flask
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ sudo pip3 list  | grep flask
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./pip3 list  | grep flask
+bash: ./pip3: /home/ahope/jooyeon/flask_prac2/project1/venv/bin/python3: bad interpreter: 그런 파일이나 디렉터리가 없습니다
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ sudo vi pip3
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ sudo vi pip3
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ pip3 list
+Package                Version             
+---------------------- --------------------
+appdirs                1.4.4               
+apturl                 0.5.2               
+astroid                2.4.2               
+attrs                  20.3.0              
+Automat                20.2.0              
+autopep8               1.5.4               
+bcrypt                 3.1.7               
+blinker                1.4                 
+Brlapi                 0.7.0               
+certifi                2019.9.11           
+chardet                3.0.4               
+cheroot                8.4.5               
+Click                  7.0                 
+colorama               0.4.3               
+command-not-found      0.3                 
+constantly             15.1.0              
+cryptography           2.8                 
+cssselect              1.1.0               
+cupshelpers            1.0                 
+dbus-python            1.2.16              
+defer                  1.0.6               
+distlib                0.3.1               
+distro                 1.4.0               
+distro-info            0.23ubuntu1         
+dnspython              1.16.0              
+duplicity              0.8.12.0            
+entrypoints            0.3                 
+fasteners              0.14.1              
+filelock               3.0.12              
+Flask                  1.1.1               
+Flask-Login            0.5.0               
+Flask-SQLAlchemy       2.4.1               
+Flask-WTF              0.14.3              
+flup                   1.0.3               
+future                 0.18.2              
+gpg                    1.13.1-unknown      
+h2                     2.6.2               
+hpack                  3.0.0               
+httplib2               0.14.0              
+hyper                  0.7.0               
+hyperframe             3.2.0               
+hyperlink              20.0.1              
+idna                   2.8                 
+incremental            17.5.0              
+isort                  5.6.4               
+itemadapter            0.2.0               
+itemloaders            1.0.4               
+itsdangerous           1.1.0               
+jaraco.functools       3.0.1               
+Jinja2                 2.10.3              
+jmespath               0.10.0              
+keyring                18.0.1              
+language-selector      0.1                 
+launchpadlib           1.10.13             
+lazr.restfulclient     0.14.2              
+lazr.uri               1.0.3               
+lazy-object-proxy      1.4.3               
+lockfile               0.12.2              
+louis                  3.12.0              
+lxml                   4.6.2               
+macaroonbakery         1.3.1               
+Mako                   1.1.0               
+Markdown               3.1.1               
+MarkupSafe             1.1.1               
+mccabe                 0.6.1               
+monotonic              1.5                 
+more-itertools         8.6.0               
+mysqlclient            1.4.4               
+netifaces              0.10.4              
+oauthlib               3.1.0               
+olefile                0.46                
+packaging              20.3                
+paramiko               2.6.0               
+parsel                 1.6.0               
+pexpect                4.6.0               
+Pillow                 7.0.0               
+pip                    20.0.2              
+Protego                0.1.16              
+protobuf               3.6.1               
+psutil                 5.5.1               
+pyasn1                 0.4.8               
+pyasn1-modules         0.2.8               
+pycairo                1.16.2              
+pycodestyle            2.6.0               
+pycrypto               2.6.1               
+pycups                 1.9.73              
+PyDispatcher           2.0.5               
+Pygments               2.3.1               
+PyGObject              3.36.0              
+PyHamcrest             2.0.2               
+PyJWT                  1.7.1               
+pylint                 2.6.0               
+pymacaroons            0.13.0              
+PyNaCl                 1.3.0               
+pyOpenSSL              20.0.0              
+pyparsing              2.4.6               
+pyRFC3339              1.1                 
+python-apt             2.0.0+ubuntu0.20.4.1
+python-dateutil        2.8.1               
+python-debian          0.1.36ubuntu1       
+pytz                   2019.3              
+pyxdg                  0.26                
+PyYAML                 5.1.2               
+queuelib               1.5.0               
+reportlab              3.5.34              
+requests               2.22.0              
+requests-unixsocket    0.2.0               
+schedule               0.6.0               
+Scrapy                 2.4.1               
+SecretStorage          2.3.1               
+service-identity       18.1.0              
+setuptools             45.2.0              
+simplejson             3.16.0              
+six                    1.14.0              
+SQLAlchemy             1.3.10              
+ssh-import-id          5.10                
+systemd-python         234                 
+toml                   0.10.2              
+Twisted                20.3.0              
+ubuntu-advantage-tools 20.3                
+ubuntu-drivers-common  0.0.0               
+ufw                    0.36                
+unattended-upgrades    0.1                 
+urllib3                1.25.6              
+usb-creator            0.3.7               
+virtualenv             20.2.1              
+w3lib                  1.22.0              
+wadllib                1.3.3               
+web.py                 0.61                
+Werkzeug               0.16.0              
+wheel                  0.34.2              
+wrapt                  1.12.1              
+WTForms                2.3.3               
+xkit                   0.0.0               
+zope.interface         5.2.0               
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./pip3 list
+Package           Version
+----------------- -------
+astroid           2.4.2  
+click             7.1.2  
+Flask             1.1.2  
+isort             5.6.4  
+itsdangerous      1.1.0  
+Jinja2            2.11.2 
+lazy-object-proxy 1.4.3  
+MarkupSafe        1.1.1  
+mccabe            0.6.1  
+pip               20.0.2 
+pkg-resources     0.0.0  
+pylint            2.6.0  
+setuptools        44.0.0 
+six               1.15.0 
+toml              0.10.2 
+Werkzeug          1.0.1  
+wrapt             1.12.1 
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./pip3 list | grep flask
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./pip3 list | grep Flask
+Flask             1.1.2  
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./pip3 install flask-wtf
+Collecting flask-wtf
+  Using cached Flask_WTF-0.14.3-py2.py3-none-any.whl (13 kB)
+Requirement already satisfied: Flask in /home/ahope/jooyeon/flask_study/flask_prac2/project1/venv/lib/python3.8/site-packages (from flask-wtf) (1.1.2)
+Collecting WTForms
+  Using cached WTForms-2.3.3-py2.py3-none-any.whl (169 kB)
+Requirement already satisfied: itsdangerous in /home/ahope/jooyeon/flask_study/flask_prac2/project1/venv/lib/python3.8/site-packages (from flask-wtf) (1.1.0)
+Requirement already satisfied: click>=5.1 in /home/ahope/jooyeon/flask_study/flask_prac2/project1/venv/lib/python3.8/site-packages (from Flask->flask-wtf) (7.1.2)
+Requirement already satisfied: Jinja2>=2.10.1 in /home/ahope/jooyeon/flask_study/flask_prac2/project1/venv/lib/python3.8/site-packages (from Flask->flask-wtf) (2.11.2)
+Requirement already satisfied: Werkzeug>=0.15 in /home/ahope/jooyeon/flask_study/flask_prac2/project1/venv/lib/python3.8/site-packages (from Flask->flask-wtf) (1.0.1)
+Requirement already satisfied: MarkupSafe in /home/ahope/jooyeon/flask_study/flask_prac2/project1/venv/lib/python3.8/site-packages (from WTForms->flask-wtf) (1.1.1)
+Installing collected packages: WTForms, flask-wtf
+Successfully installed WTForms-2.3.3 flask-wtf-0.14.3
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./pip3 list | grep Flask
+Flask             1.1.2  
+Flask-WTF         0.14.3 
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ pip3
+
+Usage:   
+  pip3 <command> [options]
+
+Commands:
+  install                     Install packages.
+  download                    Download packages.
+  uninstall                   Uninstall packages.
+  freeze                      Output installed packages in requirements format.
+  list                        List installed packages.
+  show                        Show information about installed packages.
+  check                       Verify installed packages have compatible dependencies.
+  config                      Manage local and global configuration.
+  search                      Search PyPI for packages.
+  wheel                       Build wheels from your requirements.
+  hash                        Compute hashes of package archives.
+  completion                  A helper command used for command completion.
+  debug                       Show information useful for debugging.
+  help                        Show help for commands.
+
+General Options:
+  -h, --help                  Show help.
+  --isolated                  Run pip in an isolated mode, ignoring environment variables and user
+                              configuration.
+  -v, --verbose               Give more output. Option is additive, and can be used up to 3 times.
+  -V, --version               Show version and exit.
+  -q, --quiet                 Give less output. Option is additive, and can be used up to 3 times
+                              (corresponding to WARNING, ERROR, and CRITICAL logging levels).
+  --log <path>                Path to a verbose appending log.
+  --proxy <proxy>             Specify a proxy in the form [user:passwd@]proxy.server:port.
+  --retries <retries>         Maximum number of retries each connection should attempt (default 5 times).
+  --timeout <sec>             Set the socket timeout (default 15 seconds).
+  --exists-action <action>    Default action when a path already exists: (s)witch, (i)gnore, (w)ipe,
+                              (b)ackup, (a)bort.
+  --trusted-host <hostname>   Mark this host or host:port pair as trusted, even though it does not have
+                              valid or any HTTPS.
+  --cert <path>               Path to alternate CA bundle.
+  --client-cert <path>        Path to SSL client certificate, a single file containing the private key and
+                              the certificate in PEM format.
+  --cache-dir <dir>           Store the cache data in <dir>.
+  --no-cache-dir              Disable the cache.
+  --disable-pip-version-check
+                              Don't periodically check PyPI to determine whether a new version of pip is
+                              available for download. Implied with --no-index.
+  --no-color                  Suppress colored output
+  --no-python-version-warning
+                              Silence deprecation warnings for upcoming unsupported Pythons.
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ pip3 list
+Package                Version             
+---------------------- --------------------
+appdirs                1.4.4               
+apturl                 0.5.2               
+astroid                2.4.2               
+attrs                  20.3.0              
+Automat                20.2.0              
+autopep8               1.5.4               
+bcrypt                 3.1.7               
+blinker                1.4                 
+Brlapi                 0.7.0               
+certifi                2019.9.11           
+chardet                3.0.4               
+cheroot                8.4.5               
+Click                  7.0                 
+colorama               0.4.3               
+command-not-found      0.3                 
+constantly             15.1.0              
+cryptography           2.8                 
+cssselect              1.1.0               
+cupshelpers            1.0                 
+dbus-python            1.2.16              
+defer                  1.0.6               
+distlib                0.3.1               
+distro                 1.4.0               
+distro-info            0.23ubuntu1         
+dnspython              1.16.0              
+duplicity              0.8.12.0            
+entrypoints            0.3                 
+fasteners              0.14.1              
+filelock               3.0.12              
+Flask                  1.1.1               
+Flask-Login            0.5.0               
+Flask-SQLAlchemy       2.4.1               
+Flask-WTF              0.14.3              
+flup                   1.0.3               
+future                 0.18.2              
+gpg                    1.13.1-unknown      
+h2                     2.6.2               
+hpack                  3.0.0               
+httplib2               0.14.0              
+hyper                  0.7.0               
+hyperframe             3.2.0               
+hyperlink              20.0.1              
+idna                   2.8                 
+incremental            17.5.0              
+isort                  5.6.4               
+itemadapter            0.2.0               
+itemloaders            1.0.4               
+itsdangerous           1.1.0               
+jaraco.functools       3.0.1               
+Jinja2                 2.10.3              
+jmespath               0.10.0              
+keyring                18.0.1              
+language-selector      0.1                 
+launchpadlib           1.10.13             
+lazr.restfulclient     0.14.2              
+lazr.uri               1.0.3               
+lazy-object-proxy      1.4.3               
+lockfile               0.12.2              
+louis                  3.12.0              
+lxml                   4.6.2               
+macaroonbakery         1.3.1               
+Mako                   1.1.0               
+Markdown               3.1.1               
+MarkupSafe             1.1.1               
+mccabe                 0.6.1               
+monotonic              1.5                 
+more-itertools         8.6.0               
+mysqlclient            1.4.4               
+netifaces              0.10.4              
+oauthlib               3.1.0               
+olefile                0.46                
+packaging              20.3                
+paramiko               2.6.0               
+parsel                 1.6.0               
+pexpect                4.6.0               
+Pillow                 7.0.0               
+pip                    20.0.2              
+Protego                0.1.16              
+protobuf               3.6.1               
+psutil                 5.5.1               
+pyasn1                 0.4.8               
+pyasn1-modules         0.2.8               
+pycairo                1.16.2              
+pycodestyle            2.6.0               
+pycrypto               2.6.1               
+pycups                 1.9.73              
+PyDispatcher           2.0.5               
+Pygments               2.3.1               
+PyGObject              3.36.0              
+PyHamcrest             2.0.2               
+PyJWT                  1.7.1               
+pylint                 2.6.0               
+pymacaroons            0.13.0              
+PyNaCl                 1.3.0               
+pyOpenSSL              20.0.0              
+pyparsing              2.4.6               
+pyRFC3339              1.1                 
+python-apt             2.0.0+ubuntu0.20.4.1
+python-dateutil        2.8.1               
+python-debian          0.1.36ubuntu1       
+pytz                   2019.3              
+pyxdg                  0.26                
+PyYAML                 5.1.2               
+queuelib               1.5.0               
+reportlab              3.5.34              
+requests               2.22.0              
+requests-unixsocket    0.2.0               
+schedule               0.6.0               
+Scrapy                 2.4.1               
+SecretStorage          2.3.1               
+service-identity       18.1.0              
+setuptools             45.2.0              
+simplejson             3.16.0              
+six                    1.14.0              
+SQLAlchemy             1.3.10              
+ssh-import-id          5.10                
+systemd-python         234                 
+toml                   0.10.2              
+Twisted                20.3.0              
+ubuntu-advantage-tools 20.3                
+ubuntu-drivers-common  0.0.0               
+ufw                    0.36                
+unattended-upgrades    0.1                 
+urllib3                1.25.6              
+usb-creator            0.3.7               
+virtualenv             20.2.1              
+w3lib                  1.22.0              
+wadllib                1.3.3               
+web.py                 0.61                
+Werkzeug               0.16.0              
+wheel                  0.34.2              
+wrapt                  1.12.1              
+WTForms                2.3.3               
+xkit                   0.0.0               
+zope.interface         5.2.0               
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ /etc/b
+bash_completion.d/ binfmt.d/          bluetooth/         brltty/            
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ /var/
+backups/ crash/   local/   log/     metrics/ run/     spool/   www/     
+cache/   lib/     lock/    mail/    opt/     snap/    tmp/     
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ find / -grep "pip3"
+find: unknown predicate `-grep'
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ sudo find / -name "pip3"
+/usr/bin/pip3
+find: ‘/run/user/1000/doc’: 허가 거부
+find: ‘/run/user/1000/gvfs’: 허가 거부
+^C
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ /usr/bin/pip3 list
+Package                Version             
+---------------------- --------------------
+appdirs                1.4.4               
+apturl                 0.5.2               
+astroid                2.4.2               
+attrs                  20.3.0              
+Automat                20.2.0              
+autopep8               1.5.4               
+bcrypt                 3.1.7               
+blinker                1.4                 
+Brlapi                 0.7.0               
+certifi                2019.9.11           
+chardet                3.0.4               
+cheroot                8.4.5               
+Click                  7.0                 
+colorama               0.4.3               
+command-not-found      0.3                 
+constantly             15.1.0              
+cryptography           2.8                 
+cssselect              1.1.0               
+cupshelpers            1.0                 
+dbus-python            1.2.16              
+defer                  1.0.6               
+distlib                0.3.1               
+distro                 1.4.0               
+distro-info            0.23ubuntu1         
+dnspython              1.16.0              
+duplicity              0.8.12.0            
+entrypoints            0.3                 
+fasteners              0.14.1              
+filelock               3.0.12              
+Flask                  1.1.1               
+Flask-Login            0.5.0               
+Flask-SQLAlchemy       2.4.1               
+Flask-WTF              0.14.3              
+flup                   1.0.3               
+future                 0.18.2              
+gpg                    1.13.1-unknown      
+h2                     2.6.2               
+hpack                  3.0.0               
+httplib2               0.14.0              
+hyper                  0.7.0               
+hyperframe             3.2.0               
+hyperlink              20.0.1              
+idna                   2.8                 
+incremental            17.5.0              
+isort                  5.6.4               
+itemadapter            0.2.0               
+itemloaders            1.0.4               
+itsdangerous           1.1.0               
+jaraco.functools       3.0.1               
+Jinja2                 2.10.3              
+jmespath               0.10.0              
+keyring                18.0.1              
+language-selector      0.1                 
+launchpadlib           1.10.13             
+lazr.restfulclient     0.14.2              
+lazr.uri               1.0.3               
+lazy-object-proxy      1.4.3               
+lockfile               0.12.2              
+louis                  3.12.0              
+lxml                   4.6.2               
+macaroonbakery         1.3.1               
+Mako                   1.1.0               
+Markdown               3.1.1               
+MarkupSafe             1.1.1               
+mccabe                 0.6.1               
+monotonic              1.5                 
+more-itertools         8.6.0               
+mysqlclient            1.4.4               
+netifaces              0.10.4              
+oauthlib               3.1.0               
+olefile                0.46                
+packaging              20.3                
+paramiko               2.6.0               
+parsel                 1.6.0               
+pexpect                4.6.0               
+Pillow                 7.0.0               
+pip                    20.0.2              
+Protego                0.1.16              
+protobuf               3.6.1               
+psutil                 5.5.1               
+pyasn1                 0.4.8               
+pyasn1-modules         0.2.8               
+pycairo                1.16.2              
+pycodestyle            2.6.0               
+pycrypto               2.6.1               
+pycups                 1.9.73              
+PyDispatcher           2.0.5               
+Pygments               2.3.1               
+PyGObject              3.36.0              
+PyHamcrest             2.0.2               
+PyJWT                  1.7.1               
+pylint                 2.6.0               
+pymacaroons            0.13.0              
+PyNaCl                 1.3.0               
+pyOpenSSL              20.0.0              
+pyparsing              2.4.6               
+pyRFC3339              1.1                 
+python-apt             2.0.0+ubuntu0.20.4.1
+python-dateutil        2.8.1               
+python-debian          0.1.36ubuntu1       
+pytz                   2019.3              
+pyxdg                  0.26                
+PyYAML                 5.1.2               
+queuelib               1.5.0               
+reportlab              3.5.34              
+requests               2.22.0              
+requests-unixsocket    0.2.0               
+schedule               0.6.0               
+Scrapy                 2.4.1               
+SecretStorage          2.3.1               
+service-identity       18.1.0              
+setuptools             45.2.0              
+simplejson             3.16.0              
+six                    1.14.0              
+SQLAlchemy             1.3.10              
+ssh-import-id          5.10                
+systemd-python         234                 
+toml                   0.10.2              
+Twisted                20.3.0              
+ubuntu-advantage-tools 20.3                
+ubuntu-drivers-common  0.0.0               
+ufw                    0.36                
+unattended-upgrades    0.1                 
+urllib3                1.25.6              
+usb-creator            0.3.7               
+virtualenv             20.2.1              
+w3lib                  1.22.0              
+wadllib                1.3.3               
+web.py                 0.61                
+Werkzeug               0.16.0              
+wheel                  0.34.2              
+wrapt                  1.12.1              
+WTForms                2.3.3               
+xkit                   0.0.0               
+zope.interface         5.2.0               
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ /usr/bin/pip3 list
+Package                Version             
+---------------------- --------------------
+appdirs                1.4.4               
+apturl                 0.5.2               
+astroid                2.4.2               
+attrs                  20.3.0              
+Automat                20.2.0              
+autopep8               1.5.4               
+bcrypt                 3.1.7               
+blinker                1.4                 
+Brlapi                 0.7.0               
+certifi                2019.9.11           
+chardet                3.0.4               
+cheroot                8.4.5               
+Click                  7.0                 
+colorama               0.4.3               
+command-not-found      0.3                 
+constantly             15.1.0              
+cryptography           2.8                 
+cssselect              1.1.0               
+cupshelpers            1.0                 
+dbus-python            1.2.16              
+defer                  1.0.6               
+distlib                0.3.1               
+distro                 1.4.0               
+distro-info            0.23ubuntu1         
+dnspython              1.16.0              
+duplicity              0.8.12.0            
+entrypoints            0.3                 
+fasteners              0.14.1              
+filelock               3.0.12              
+Flask                  1.1.1               
+Flask-Login            0.5.0               
+Flask-SQLAlchemy       2.4.1               
+Flask-WTF              0.14.3              
+flup                   1.0.3               
+future                 0.18.2              
+gpg                    1.13.1-unknown      
+h2                     2.6.2               
+hpack                  3.0.0               
+httplib2               0.14.0              
+hyper                  0.7.0               
+hyperframe             3.2.0               
+hyperlink              20.0.1              
+idna                   2.8                 
+incremental            17.5.0              
+isort                  5.6.4               
+itemadapter            0.2.0               
+itemloaders            1.0.4               
+itsdangerous           1.1.0               
+jaraco.functools       3.0.1               
+Jinja2                 2.10.3              
+jmespath               0.10.0              
+keyring                18.0.1              
+language-selector      0.1                 
+launchpadlib           1.10.13             
+lazr.restfulclient     0.14.2              
+lazr.uri               1.0.3               
+lazy-object-proxy      1.4.3               
+lockfile               0.12.2              
+louis                  3.12.0              
+lxml                   4.6.2               
+macaroonbakery         1.3.1               
+Mako                   1.1.0               
+Markdown               3.1.1               
+MarkupSafe             1.1.1               
+mccabe                 0.6.1               
+monotonic              1.5                 
+more-itertools         8.6.0               
+mysqlclient            1.4.4               
+netifaces              0.10.4              
+oauthlib               3.1.0               
+olefile                0.46                
+packaging              20.3                
+paramiko               2.6.0               
+parsel                 1.6.0               
+pexpect                4.6.0               
+Pillow                 7.0.0               
+pip                    20.0.2              
+Protego                0.1.16              
+protobuf               3.6.1               
+psutil                 5.5.1               
+pyasn1                 0.4.8               
+pyasn1-modules         0.2.8               
+pycairo                1.16.2              
+pycodestyle            2.6.0               
+pycrypto               2.6.1               
+pycups                 1.9.73              
+PyDispatcher           2.0.5               
+Pygments               2.3.1               
+PyGObject              3.36.0              
+PyHamcrest             2.0.2               
+PyJWT                  1.7.1               
+pylint                 2.6.0               
+pymacaroons            0.13.0              
+PyNaCl                 1.3.0               
+pyOpenSSL              20.0.0              
+pyparsing              2.4.6               
+pyRFC3339              1.1                 
+python-apt             2.0.0+ubuntu0.20.4.1
+python-dateutil        2.8.1               
+python-debian          0.1.36ubuntu1       
+pytz                   2019.3              
+pyxdg                  0.26                
+PyYAML                 5.1.2               
+queuelib               1.5.0               
+reportlab              3.5.34              
+requests               2.22.0              
+requests-unixsocket    0.2.0               
+schedule               0.6.0               
+Scrapy                 2.4.1               
+SecretStorage          2.3.1               
+service-identity       18.1.0              
+setuptools             45.2.0              
+simplejson             3.16.0              
+six                    1.14.0              
+SQLAlchemy             1.3.10              
+ssh-import-id          5.10                
+systemd-python         234                 
+toml                   0.10.2              
+Twisted                20.3.0              
+ubuntu-advantage-tools 20.3                
+ubuntu-drivers-common  0.0.0               
+ufw                    0.36                
+unattended-upgrades    0.1                 
+urllib3                1.25.6              
+usb-creator            0.3.7               
+virtualenv             20.2.1              
+w3lib                  1.22.0              
+wadllib                1.3.3               
+web.py                 0.61                
+Werkzeug               0.16.0              
+wheel                  0.34.2              
+wrapt                  1.12.1              
+WTForms                2.3.3               
+xkit                   0.0.0               
+zope.interface         5.2.0               
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ pip3 list
+Package                Version             
+---------------------- --------------------
+appdirs                1.4.4               
+apturl                 0.5.2               
+astroid                2.4.2               
+attrs                  20.3.0              
+Automat                20.2.0              
+autopep8               1.5.4               
+bcrypt                 3.1.7               
+blinker                1.4                 
+Brlapi                 0.7.0               
+certifi                2019.9.11           
+chardet                3.0.4               
+cheroot                8.4.5               
+Click                  7.0                 
+colorama               0.4.3               
+command-not-found      0.3                 
+constantly             15.1.0              
+cryptography           2.8                 
+cssselect              1.1.0               
+cupshelpers            1.0                 
+dbus-python            1.2.16              
+defer                  1.0.6               
+distlib                0.3.1               
+distro                 1.4.0               
+distro-info            0.23ubuntu1         
+dnspython              1.16.0              
+duplicity              0.8.12.0            
+entrypoints            0.3                 
+fasteners              0.14.1              
+filelock               3.0.12              
+Flask                  1.1.1               
+Flask-Login            0.5.0               
+Flask-SQLAlchemy       2.4.1               
+Flask-WTF              0.14.3              
+flup                   1.0.3               
+future                 0.18.2              
+gpg                    1.13.1-unknown      
+h2                     2.6.2               
+hpack                  3.0.0               
+httplib2               0.14.0              
+hyper                  0.7.0               
+hyperframe             3.2.0               
+hyperlink              20.0.1              
+idna                   2.8                 
+incremental            17.5.0              
+isort                  5.6.4               
+itemadapter            0.2.0               
+itemloaders            1.0.4               
+itsdangerous           1.1.0               
+jaraco.functools       3.0.1               
+Jinja2                 2.10.3              
+jmespath               0.10.0              
+keyring                18.0.1              
+language-selector      0.1                 
+launchpadlib           1.10.13             
+lazr.restfulclient     0.14.2              
+lazr.uri               1.0.3               
+lazy-object-proxy      1.4.3               
+lockfile               0.12.2              
+louis                  3.12.0              
+lxml                   4.6.2               
+macaroonbakery         1.3.1               
+Mako                   1.1.0               
+Markdown               3.1.1               
+MarkupSafe             1.1.1               
+mccabe                 0.6.1               
+monotonic              1.5                 
+more-itertools         8.6.0               
+mysqlclient            1.4.4               
+netifaces              0.10.4              
+oauthlib               3.1.0               
+olefile                0.46                
+packaging              20.3                
+paramiko               2.6.0               
+parsel                 1.6.0               
+pexpect                4.6.0               
+Pillow                 7.0.0               
+pip                    20.0.2              
+Protego                0.1.16              
+protobuf               3.6.1               
+psutil                 5.5.1               
+pyasn1                 0.4.8               
+pyasn1-modules         0.2.8               
+pycairo                1.16.2              
+pycodestyle            2.6.0               
+pycrypto               2.6.1               
+pycups                 1.9.73              
+PyDispatcher           2.0.5               
+Pygments               2.3.1               
+PyGObject              3.36.0              
+PyHamcrest             2.0.2               
+PyJWT                  1.7.1               
+pylint                 2.6.0               
+pymacaroons            0.13.0              
+PyNaCl                 1.3.0               
+pyOpenSSL              20.0.0              
+pyparsing              2.4.6               
+pyRFC3339              1.1                 
+python-apt             2.0.0+ubuntu0.20.4.1
+python-dateutil        2.8.1               
+python-debian          0.1.36ubuntu1       
+pytz                   2019.3              
+pyxdg                  0.26                
+PyYAML                 5.1.2               
+queuelib               1.5.0               
+reportlab              3.5.34              
+requests               2.22.0              
+requests-unixsocket    0.2.0               
+schedule               0.6.0               
+Scrapy                 2.4.1               
+SecretStorage          2.3.1               
+service-identity       18.1.0              
+setuptools             45.2.0              
+simplejson             3.16.0              
+six                    1.14.0              
+SQLAlchemy             1.3.10              
+ssh-import-id          5.10                
+systemd-python         234                 
+toml                   0.10.2              
+Twisted                20.3.0              
+ubuntu-advantage-tools 20.3                
+ubuntu-drivers-common  0.0.0               
+ufw                    0.36                
+unattended-upgrades    0.1                 
+urllib3                1.25.6              
+usb-creator            0.3.7               
+virtualenv             20.2.1              
+w3lib                  1.22.0              
+wadllib                1.3.3               
+web.py                 0.61                
+Werkzeug               0.16.0              
+wheel                  0.34.2              
+wrapt                  1.12.1              
+WTForms                2.3.3               
+xkit                   0.0.0               
+zope.interface         5.2.0               
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ /usr/bin/
+Display all 2083 possibilities? (y or n)
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ /usr/bin/py
+py3clean            pydoc2              pygettext2.7        python2             python3-pasteurize
+py3compile          pydoc2.7            pygettext3          python2.7           python3.8
+py3versions         pydoc3              pygettext3.8        python3             python3.8-config
+pyclean             pydoc3.8            pygmentize          python3-config      pyversions
+pycompile           pygettext2          pyjwt3              python3-futurize    
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ /usr/bin/python3 -version
+Unknown option: -e
+usage: /usr/bin/python3 [option] ... [-c cmd | -m mod | file | -] [arg] ...
+Try `python -h' for more information.
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ /usr/bin/python3 --version
+Python 3.8.5
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ll
+합계 76
+drwxrwxr-x 2 ahope ahope 4096 12월  3 17:48 ./
+drwxrwxr-x 6 ahope ahope 4096 12월  3 14:53 ../
+-rw-r--r-- 1 ahope ahope 8834 12월  3 14:53 Activate.ps1
+-rw-r--r-- 1 ahope ahope 2225 12월  3 14:53 activate
+-rw-r--r-- 1 ahope ahope 1277 12월  3 14:53 activate.csh
+-rw-r--r-- 1 ahope ahope 2429 12월  3 14:53 activate.fish
+-rwxrwxr-x 1 ahope ahope  271 12월  3 14:53 easy_install*
+-rwxrwxr-x 1 ahope ahope  271 12월  3 14:53 easy_install-3.8*
+-rwxrwxr-x 1 ahope ahope  272 12월  3 17:07 epylint*
+-rwxrwxr-x 1 ahope ahope  249 12월  3 14:54 flask*
+-rwxrwxr-x 1 ahope ahope  262 12월  3 17:07 isort*
+-rwxrwxr-x 1 ahope ahope  262 12월  3 14:53 pip*
+-rwxrwxr-x 1 ahope ahope  274 12월  3 17:48 pip3*
+-rwxrwxr-x 1 ahope ahope  262 12월  3 14:53 pip3.8*
+-rwxrwxr-x 1 ahope ahope  270 12월  3 17:07 pylint*
+-rwxrwxr-x 1 ahope ahope  276 12월  3 17:07 pyreverse*
+lrwxrwxrwx 1 ahope ahope    7 12월  3 14:53 python -> python3*
+lrwxrwxrwx 1 ahope ahope   16 12월  3 14:53 python3 -> /usr/bin/python3*
+-rwxrwxr-x 1 ahope ahope  272 12월  3 17:07 symilar*
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./python --version
+Python 3.8.5
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./python3 --version
+Python 3.8.5
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./python3 where
+./python3: can't open file 'where': [Errno 2] No such file or directory
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ cd
+(venv) ahope@ahope-B250M-DS3H:~$ /usr/bin/c
+c++                        cd-it8                     clear_console              convert-im6
+c++filt                    chacl                      cmp                        convert-im6.q16
+c89                        chage                      cmuwmtopbm                 corelist
+c89-gcc                    chardet3                   code                       cp
+c99                        chardetect3                codepage                   cpan
+c99-gcc                    chattr                     col                        cpan5.30-i386-linux-gnu
+c_rehash                   chcon                      colcrt                     cpan5.30-x86_64-linux-gnu
+cabextract                 check-language-support     colormgr                   cpio
+cal                        checkgid                   colrm                      cpio-filter
+calendar                   cheese                     column                     cpp
+calibrate_ppa              chfn                       comm                       cpp-9
+canberra-gtk-play          chgrp                      compare                    crc32
+cancel                     chmod                      compare-im6                crontab
+captoinfo                  choom                      compare-im6.q16            csplit
+cat                        chown                      compose                    ctstat
+catchsegv                  chrt                       composite                  cupstestppd
+catman                     chsh                       composite-im6              curl
+cautious-launcher          chvt                       composite-im6.q16          cut
+cc                         ciptool                    conjure                    cvt
+cd-create-profile          ckbcomp                    conjure-im6                cvtsudoers
+cd-fix-profile             cksum                      conjure-im6.q16            
+cd-iccdump                 clear                      convert                    
+(venv) ahope@ahope-B250M-DS3H:~$ /usr/bin/cp
+/usr/bin/cp: 파일 명령어 누락
+Try '/usr/bin/cp --help' for more information.
+(venv) ahope@ahope-B250M-DS3H:~$ /usr/bin/cp --help
+사용법: /usr/bin/cp [옵션]... [-T] 원본 대상
+  또는:  /usr/bin/cp [옵션]... 원본... 디렉터리
+  또는:  /usr/bin/cp [옵션]... -t 디렉터리 원본...
+Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -a, --archive                same as -dR --preserve=all
+      --attributes-only        don't copy the file data, just the attributes
+      --backup[=CONTROL]       make a backup of each existing destination file
+  -b                           like --backup but does not accept an argument
+      --copy-contents          copy contents of special files when recursive
+  -d                           same as --no-dereference --preserve=links
+  -f, --force                  if an existing destination file cannot be
+                                 opened, remove it and try again (this option
+                                 is ignored when the -n option is also used)
+  -i, --interactive            prompt before overwrite (overrides a previous -n
+                                  option)
+  -H                           follow command-line symbolic links in SOURCE
+  -l, --link                   hard link files instead of copying
+  -L, --dereference            always follow symbolic links in SOURCE
+  -n, --no-clobber             do not overwrite an existing file (overrides
+                                 a previous -i option)
+  -P, --no-dereference         never follow symbolic links in SOURCE
+  -p                           same as --preserve=mode,ownership,timestamps
+      --preserve[=ATTR_LIST]   preserve the specified attributes (default:
+                                 mode,ownership,timestamps), if possible
+                                 additional attributes: context, links, xattr,
+                                 all
+      --no-preserve=속성_목록  지정한 속성들을 유지하지 않음
+      --parents                디렉터리 밑 원본 파일의 전체 이름을 사용
+  -R, -r, --recursive          copy directories recursively
+      --reflink[=WHEN]         control clone/CoW copies. See below
+      --remove-destination     remove each existing destination file before
+                                 attempting to open it (contrast with --force)
+      --sparse=WHEN            control creation of sparse files. See below
+      --strip-trailing-slashes  remove any trailing slashes from each SOURCE
+                                 argument
+  -s, --symbolic-link          복사 대신 심볼릭 링크를 만듬
+  -S, --suffix=접미어          일반 백업 접미어를 대신함
+  -t, --target-directory=디렉터리  모든 원본 인자들을 디렉터리로 복사
+  -T, --no-target-directory    대상을 평범한 파일로 다룸
+  -u, --update                 원본 파일이 대상 파일보다 더 새 것이거나
+                                 대상 파일이 존재하지 않을 때만 복사
+  -v, --verbose                무엇을 하고 있는 중인지 설명
+  -x, --one-file-system        이 파일 시스템에 남아있음
+  -Z                           set SELinux security context of destination
+                                 file to default type
+      --context[=CTX]          like -Z, or if CTX is specified then set the
+                                 SELinux or SMACK security context to CTX
+      --help     이 도움말을 표시하고 끝냅니다
+      --version  버전 정보를 출력하고 끝냅니다
+
+By default, sparse SOURCE files are detected by a crude heuristic and the
+corresponding DEST file is made sparse as well.  That is the behavior
+selected by --sparse=auto.  Specify --sparse=always to create a sparse DEST
+file whenever the SOURCE file contains a long enough sequence of zero bytes.
+Use --sparse=never to inhibit creation of sparse files.
+
+When --reflink[=always] is specified, perform a lightweight copy, where the
+data blocks are copied only when modified.  If this is not possible the copy
+fails, or if --reflink=auto is specified, fall back to a standard copy.
+Use --reflink=never to ensure a standard copy is performed.
+
+The backup suffix is '~', unless set with --suffix or SIMPLE_BACKUP_SUFFIX.
+The version control method may be selected via the --backup option or through
+the VERSION_CONTROL environment variable.  Here are the values:
+
+  none, off       백업을 절대로 만들지 않음 (--backup이 주어질지라도)
+  numbered, t     번호 붙인 백업을 만듬
+  existing, nil   번호 붙인 백업이 있으면 번호를 매기고, 그렇지 않으면 간략하게
+  simple, never   항상 간략하게 백업
+
+특별한 경우로, 강제와 백업 옵션이 주어지며 SOURCE와 DEST가 이름이 같고,
+존재하는 일반 파일일 때 cp는 SOURCE의 백업을 만듭니다.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report cp translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/cp>
+or available locally via: info '(coreutils) cp invocation'
+(venv) ahope@ahope-B250M-DS3H:~$ cp --help
+사용법: cp [옵션]... [-T] 원본 대상
+  또는:  cp [옵션]... 원본... 디렉터리
+  또는:  cp [옵션]... -t 디렉터리 원본...
+Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -a, --archive                same as -dR --preserve=all
+      --attributes-only        don't copy the file data, just the attributes
+      --backup[=CONTROL]       make a backup of each existing destination file
+  -b                           like --backup but does not accept an argument
+      --copy-contents          copy contents of special files when recursive
+  -d                           same as --no-dereference --preserve=links
+  -f, --force                  if an existing destination file cannot be
+                                 opened, remove it and try again (this option
+                                 is ignored when the -n option is also used)
+  -i, --interactive            prompt before overwrite (overrides a previous -n
+                                  option)
+  -H                           follow command-line symbolic links in SOURCE
+  -l, --link                   hard link files instead of copying
+  -L, --dereference            always follow symbolic links in SOURCE
+  -n, --no-clobber             do not overwrite an existing file (overrides
+                                 a previous -i option)
+  -P, --no-dereference         never follow symbolic links in SOURCE
+  -p                           same as --preserve=mode,ownership,timestamps
+      --preserve[=ATTR_LIST]   preserve the specified attributes (default:
+                                 mode,ownership,timestamps), if possible
+                                 additional attributes: context, links, xattr,
+                                 all
+      --no-preserve=속성_목록  지정한 속성들을 유지하지 않음
+      --parents                디렉터리 밑 원본 파일의 전체 이름을 사용
+  -R, -r, --recursive          copy directories recursively
+      --reflink[=WHEN]         control clone/CoW copies. See below
+      --remove-destination     remove each existing destination file before
+                                 attempting to open it (contrast with --force)
+      --sparse=WHEN            control creation of sparse files. See below
+      --strip-trailing-slashes  remove any trailing slashes from each SOURCE
+                                 argument
+  -s, --symbolic-link          복사 대신 심볼릭 링크를 만듬
+  -S, --suffix=접미어          일반 백업 접미어를 대신함
+  -t, --target-directory=디렉터리  모든 원본 인자들을 디렉터리로 복사
+  -T, --no-target-directory    대상을 평범한 파일로 다룸
+  -u, --update                 원본 파일이 대상 파일보다 더 새 것이거나
+                                 대상 파일이 존재하지 않을 때만 복사
+  -v, --verbose                무엇을 하고 있는 중인지 설명
+  -x, --one-file-system        이 파일 시스템에 남아있음
+  -Z                           set SELinux security context of destination
+                                 file to default type
+      --context[=CTX]          like -Z, or if CTX is specified then set the
+                                 SELinux or SMACK security context to CTX
+      --help     이 도움말을 표시하고 끝냅니다
+      --version  버전 정보를 출력하고 끝냅니다
+
+By default, sparse SOURCE files are detected by a crude heuristic and the
+corresponding DEST file is made sparse as well.  That is the behavior
+selected by --sparse=auto.  Specify --sparse=always to create a sparse DEST
+file whenever the SOURCE file contains a long enough sequence of zero bytes.
+Use --sparse=never to inhibit creation of sparse files.
+
+When --reflink[=always] is specified, perform a lightweight copy, where the
+data blocks are copied only when modified.  If this is not possible the copy
+fails, or if --reflink=auto is specified, fall back to a standard copy.
+Use --reflink=never to ensure a standard copy is performed.
+
+The backup suffix is '~', unless set with --suffix or SIMPLE_BACKUP_SUFFIX.
+The version control method may be selected via the --backup option or through
+the VERSION_CONTROL environment variable.  Here are the values:
+
+  none, off       백업을 절대로 만들지 않음 (--backup이 주어질지라도)
+  numbered, t     번호 붙인 백업을 만듬
+  existing, nil   번호 붙인 백업이 있으면 번호를 매기고, 그렇지 않으면 간략하게
+  simple, never   항상 간략하게 백업
+
+특별한 경우로, 강제와 백업 옵션이 주어지며 SOURCE와 DEST가 이름이 같고,
+존재하는 일반 파일일 때 cp는 SOURCE의 백업을 만듭니다.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report cp translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/cp>
+or available locally via: info '(coreutils) cp invocation'
+(venv) ahope@ahope-B250M-DS3H:~$ cp
+cp: 파일 명령어 누락
+Try 'cp --help' for more information.
+(venv) ahope@ahope-B250M-DS3H:~$ cp --help
+사용법: cp [옵션]... [-T] 원본 대상
+  또는:  cp [옵션]... 원본... 디렉터리
+  또는:  cp [옵션]... -t 디렉터리 원본...
+Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -a, --archive                same as -dR --preserve=all
+      --attributes-only        don't copy the file data, just the attributes
+      --backup[=CONTROL]       make a backup of each existing destination file
+  -b                           like --backup but does not accept an argument
+      --copy-contents          copy contents of special files when recursive
+  -d                           same as --no-dereference --preserve=links
+  -f, --force                  if an existing destination file cannot be
+                                 opened, remove it and try again (this option
+                                 is ignored when the -n option is also used)
+  -i, --interactive            prompt before overwrite (overrides a previous -n
+                                  option)
+  -H                           follow command-line symbolic links in SOURCE
+  -l, --link                   hard link files instead of copying
+  -L, --dereference            always follow symbolic links in SOURCE
+  -n, --no-clobber             do not overwrite an existing file (overrides
+                                 a previous -i option)
+  -P, --no-dereference         never follow symbolic links in SOURCE
+  -p                           same as --preserve=mode,ownership,timestamps
+      --preserve[=ATTR_LIST]   preserve the specified attributes (default:
+                                 mode,ownership,timestamps), if possible
+                                 additional attributes: context, links, xattr,
+                                 all
+      --no-preserve=속성_목록  지정한 속성들을 유지하지 않음
+      --parents                디렉터리 밑 원본 파일의 전체 이름을 사용
+  -R, -r, --recursive          copy directories recursively
+      --reflink[=WHEN]         control clone/CoW copies. See below
+      --remove-destination     remove each existing destination file before
+                                 attempting to open it (contrast with --force)
+      --sparse=WHEN            control creation of sparse files. See below
+      --strip-trailing-slashes  remove any trailing slashes from each SOURCE
+                                 argument
+  -s, --symbolic-link          복사 대신 심볼릭 링크를 만듬
+  -S, --suffix=접미어          일반 백업 접미어를 대신함
+  -t, --target-directory=디렉터리  모든 원본 인자들을 디렉터리로 복사
+  -T, --no-target-directory    대상을 평범한 파일로 다룸
+  -u, --update                 원본 파일이 대상 파일보다 더 새 것이거나
+                                 대상 파일이 존재하지 않을 때만 복사
+  -v, --verbose                무엇을 하고 있는 중인지 설명
+  -x, --one-file-system        이 파일 시스템에 남아있음
+  -Z                           set SELinux security context of destination
+                                 file to default type
+      --context[=CTX]          like -Z, or if CTX is specified then set the
+                                 SELinux or SMACK security context to CTX
+      --help     이 도움말을 표시하고 끝냅니다
+      --version  버전 정보를 출력하고 끝냅니다
+
+By default, sparse SOURCE files are detected by a crude heuristic and the
+corresponding DEST file is made sparse as well.  That is the behavior
+selected by --sparse=auto.  Specify --sparse=always to create a sparse DEST
+file whenever the SOURCE file contains a long enough sequence of zero bytes.
+Use --sparse=never to inhibit creation of sparse files.
+
+When --reflink[=always] is specified, perform a lightweight copy, where the
+data blocks are copied only when modified.  If this is not possible the copy
+fails, or if --reflink=auto is specified, fall back to a standard copy.
+Use --reflink=never to ensure a standard copy is performed.
+
+The backup suffix is '~', unless set with --suffix or SIMPLE_BACKUP_SUFFIX.
+The version control method may be selected via the --backup option or through
+the VERSION_CONTROL environment variable.  Here are the values:
+
+  none, off       백업을 절대로 만들지 않음 (--backup이 주어질지라도)
+  numbered, t     번호 붙인 백업을 만듬
+  existing, nil   번호 붙인 백업이 있으면 번호를 매기고, 그렇지 않으면 간략하게
+  simple, never   항상 간략하게 백업
+
+특별한 경우로, 강제와 백업 옵션이 주어지며 SOURCE와 DEST가 이름이 같고,
+존재하는 일반 파일일 때 cp는 SOURCE의 백업을 만듭니다.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report cp translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/cp>
+or available locally via: info '(coreutils) cp invocation'
+(venv) ahope@ahope-B250M-DS3H:~$ /usr/bin/cp
+/usr/bin/cp: 파일 명령어 누락
+Try '/usr/bin/cp --help' for more information.
+(venv) ahope@ahope-B250M-DS3H:~$ /usr/bin/cp --help
+사용법: /usr/bin/cp [옵션]... [-T] 원본 대상
+  또는:  /usr/bin/cp [옵션]... 원본... 디렉터리
+  또는:  /usr/bin/cp [옵션]... -t 디렉터리 원본...
+Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -a, --archive                same as -dR --preserve=all
+      --attributes-only        don't copy the file data, just the attributes
+      --backup[=CONTROL]       make a backup of each existing destination file
+  -b                           like --backup but does not accept an argument
+      --copy-contents          copy contents of special files when recursive
+  -d                           same as --no-dereference --preserve=links
+  -f, --force                  if an existing destination file cannot be
+                                 opened, remove it and try again (this option
+                                 is ignored when the -n option is also used)
+  -i, --interactive            prompt before overwrite (overrides a previous -n
+                                  option)
+  -H                           follow command-line symbolic links in SOURCE
+  -l, --link                   hard link files instead of copying
+  -L, --dereference            always follow symbolic links in SOURCE
+  -n, --no-clobber             do not overwrite an existing file (overrides
+                                 a previous -i option)
+  -P, --no-dereference         never follow symbolic links in SOURCE
+  -p                           same as --preserve=mode,ownership,timestamps
+      --preserve[=ATTR_LIST]   preserve the specified attributes (default:
+                                 mode,ownership,timestamps), if possible
+                                 additional attributes: context, links, xattr,
+                                 all
+      --no-preserve=속성_목록  지정한 속성들을 유지하지 않음
+      --parents                디렉터리 밑 원본 파일의 전체 이름을 사용
+  -R, -r, --recursive          copy directories recursively
+      --reflink[=WHEN]         control clone/CoW copies. See below
+      --remove-destination     remove each existing destination file before
+                                 attempting to open it (contrast with --force)
+      --sparse=WHEN            control creation of sparse files. See below
+      --strip-trailing-slashes  remove any trailing slashes from each SOURCE
+                                 argument
+  -s, --symbolic-link          복사 대신 심볼릭 링크를 만듬
+  -S, --suffix=접미어          일반 백업 접미어를 대신함
+  -t, --target-directory=디렉터리  모든 원본 인자들을 디렉터리로 복사
+  -T, --no-target-directory    대상을 평범한 파일로 다룸
+  -u, --update                 원본 파일이 대상 파일보다 더 새 것이거나
+                                 대상 파일이 존재하지 않을 때만 복사
+  -v, --verbose                무엇을 하고 있는 중인지 설명
+  -x, --one-file-system        이 파일 시스템에 남아있음
+  -Z                           set SELinux security context of destination
+                                 file to default type
+      --context[=CTX]          like -Z, or if CTX is specified then set the
+                                 SELinux or SMACK security context to CTX
+      --help     이 도움말을 표시하고 끝냅니다
+      --version  버전 정보를 출력하고 끝냅니다
+
+By default, sparse SOURCE files are detected by a crude heuristic and the
+corresponding DEST file is made sparse as well.  That is the behavior
+selected by --sparse=auto.  Specify --sparse=always to create a sparse DEST
+file whenever the SOURCE file contains a long enough sequence of zero bytes.
+Use --sparse=never to inhibit creation of sparse files.
+
+When --reflink[=always] is specified, perform a lightweight copy, where the
+data blocks are copied only when modified.  If this is not possible the copy
+fails, or if --reflink=auto is specified, fall back to a standard copy.
+Use --reflink=never to ensure a standard copy is performed.
+
+The backup suffix is '~', unless set with --suffix or SIMPLE_BACKUP_SUFFIX.
+The version control method may be selected via the --backup option or through
+the VERSION_CONTROL environment variable.  Here are the values:
+
+  none, off       백업을 절대로 만들지 않음 (--backup이 주어질지라도)
+  numbered, t     번호 붙인 백업을 만듬
+  existing, nil   번호 붙인 백업이 있으면 번호를 매기고, 그렇지 않으면 간략하게
+  simple, never   항상 간략하게 백업
+
+특별한 경우로, 강제와 백업 옵션이 주어지며 SOURCE와 DEST가 이름이 같고,
+존재하는 일반 파일일 때 cp는 SOURCE의 백업을 만듭니다.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report cp translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/cp>
+or available locally via: info '(coreutils) cp invocation'
+(venv) ahope@ahope-B250M-DS3H:~$ /usr/bin/cp -help
+/usr/bin/cp: 부적절한 옵션 -- 'h'
+Try '/usr/bin/cp --help' for more information.
+(venv) ahope@ahope-B250M-DS3H:~$ /usr/bin/cp --h
+사용법: /usr/bin/cp [옵션]... [-T] 원본 대상
+  또는:  /usr/bin/cp [옵션]... 원본... 디렉터리
+  또는:  /usr/bin/cp [옵션]... -t 디렉터리 원본...
+Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -a, --archive                same as -dR --preserve=all
+      --attributes-only        don't copy the file data, just the attributes
+      --backup[=CONTROL]       make a backup of each existing destination file
+  -b                           like --backup but does not accept an argument
+      --copy-contents          copy contents of special files when recursive
+  -d                           same as --no-dereference --preserve=links
+  -f, --force                  if an existing destination file cannot be
+                                 opened, remove it and try again (this option
+                                 is ignored when the -n option is also used)
+  -i, --interactive            prompt before overwrite (overrides a previous -n
+                                  option)
+  -H                           follow command-line symbolic links in SOURCE
+  -l, --link                   hard link files instead of copying
+  -L, --dereference            always follow symbolic links in SOURCE
+  -n, --no-clobber             do not overwrite an existing file (overrides
+                                 a previous -i option)
+  -P, --no-dereference         never follow symbolic links in SOURCE
+  -p                           same as --preserve=mode,ownership,timestamps
+      --preserve[=ATTR_LIST]   preserve the specified attributes (default:
+                                 mode,ownership,timestamps), if possible
+                                 additional attributes: context, links, xattr,
+                                 all
+      --no-preserve=속성_목록  지정한 속성들을 유지하지 않음
+      --parents                디렉터리 밑 원본 파일의 전체 이름을 사용
+  -R, -r, --recursive          copy directories recursively
+      --reflink[=WHEN]         control clone/CoW copies. See below
+      --remove-destination     remove each existing destination file before
+                                 attempting to open it (contrast with --force)
+      --sparse=WHEN            control creation of sparse files. See below
+      --strip-trailing-slashes  remove any trailing slashes from each SOURCE
+                                 argument
+  -s, --symbolic-link          복사 대신 심볼릭 링크를 만듬
+  -S, --suffix=접미어          일반 백업 접미어를 대신함
+  -t, --target-directory=디렉터리  모든 원본 인자들을 디렉터리로 복사
+  -T, --no-target-directory    대상을 평범한 파일로 다룸
+  -u, --update                 원본 파일이 대상 파일보다 더 새 것이거나
+                                 대상 파일이 존재하지 않을 때만 복사
+  -v, --verbose                무엇을 하고 있는 중인지 설명
+  -x, --one-file-system        이 파일 시스템에 남아있음
+  -Z                           set SELinux security context of destination
+                                 file to default type
+      --context[=CTX]          like -Z, or if CTX is specified then set the
+                                 SELinux or SMACK security context to CTX
+      --help     이 도움말을 표시하고 끝냅니다
+      --version  버전 정보를 출력하고 끝냅니다
+
+By default, sparse SOURCE files are detected by a crude heuristic and the
+corresponding DEST file is made sparse as well.  That is the behavior
+selected by --sparse=auto.  Specify --sparse=always to create a sparse DEST
+file whenever the SOURCE file contains a long enough sequence of zero bytes.
+Use --sparse=never to inhibit creation of sparse files.
+
+When --reflink[=always] is specified, perform a lightweight copy, where the
+data blocks are copied only when modified.  If this is not possible the copy
+fails, or if --reflink=auto is specified, fall back to a standard copy.
+Use --reflink=never to ensure a standard copy is performed.
+
+The backup suffix is '~', unless set with --suffix or SIMPLE_BACKUP_SUFFIX.
+The version control method may be selected via the --backup option or through
+the VERSION_CONTROL environment variable.  Here are the values:
+
+  none, off       백업을 절대로 만들지 않음 (--backup이 주어질지라도)
+  numbered, t     번호 붙인 백업을 만듬
+  existing, nil   번호 붙인 백업이 있으면 번호를 매기고, 그렇지 않으면 간략하게
+  simple, never   항상 간략하게 백업
+
+특별한 경우로, 강제와 백업 옵션이 주어지며 SOURCE와 DEST가 이름이 같고,
+존재하는 일반 파일일 때 cp는 SOURCE의 백업을 만듭니다.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report cp translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/cp>
+or available locally via: info '(coreutils) cp invocation'
+(venv) ahope@ahope-B250M-DS3H:~$ cd ~/jooyeon/flask_
+flask_memo/  flask_study/ 
+(venv) ahope@ahope-B250M-DS3H:~$ cd ~/jooyeon/flask_study/flask_prac2/project1/
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ ll
+합계 40
+drwxrwxr-x 6 ahope ahope 4096 12월  3 17:42 ./
+drwxrwxr-x 3 ahope ahope 4096 12월  3 14:52 ../
+-rw-r--r-- 1 root  root    58 12월  3 17:42 1
+drwxrwxr-x 2 ahope ahope 4096 12월  3 17:42 __pycache__/
+drwxrwxr-x 5 ahope ahope 4096 12월  3 17:16 app/
+-rw-rw-r-- 1 ahope ahope   59 12월  3 17:09 config.py
+-rw-rw-r-- 1 ahope ahope  110 12월  3 14:58 hello.py
+-rwxrwxr-x 1 ahope ahope   58 12월  3 17:42 run.py*
+drwxrwxr-x 2 ahope ahope 4096 12월  3 15:17 tmp/
+drwxrwxr-x 6 ahope ahope 4096 12월  3 14:53 venv/
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1$ cd venv/bin/
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ll
+합계 76
+drwxrwxr-x 2 ahope ahope 4096 12월  3 17:48 ./
+drwxrwxr-x 6 ahope ahope 4096 12월  3 14:53 ../
+-rw-r--r-- 1 ahope ahope 8834 12월  3 14:53 Activate.ps1
+-rw-r--r-- 1 ahope ahope 2225 12월  3 14:53 activate
+-rw-r--r-- 1 ahope ahope 1277 12월  3 14:53 activate.csh
+-rw-r--r-- 1 ahope ahope 2429 12월  3 14:53 activate.fish
+-rwxrwxr-x 1 ahope ahope  271 12월  3 14:53 easy_install*
+-rwxrwxr-x 1 ahope ahope  271 12월  3 14:53 easy_install-3.8*
+-rwxrwxr-x 1 ahope ahope  272 12월  3 17:07 epylint*
+-rwxrwxr-x 1 ahope ahope  249 12월  3 14:54 flask*
+-rwxrwxr-x 1 ahope ahope  262 12월  3 17:07 isort*
+-rwxrwxr-x 1 ahope ahope  262 12월  3 14:53 pip*
+-rwxrwxr-x 1 ahope ahope  274 12월  3 17:48 pip3*
+-rwxrwxr-x 1 ahope ahope  262 12월  3 14:53 pip3.8*
+-rwxrwxr-x 1 ahope ahope  270 12월  3 17:07 pylint*
+-rwxrwxr-x 1 ahope ahope  276 12월  3 17:07 pyreverse*
+lrwxrwxrwx 1 ahope ahope    7 12월  3 14:53 python -> python3*
+lrwxrwxrwx 1 ahope ahope   16 12월  3 14:53 python3 -> /usr/bin/python3*
+-rwxrwxr-x 1 ahope ahope  272 12월  3 17:07 symilar*
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ cd ..
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv$ ./bin/pip
+pip     pip3    pip3.8  
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv$ ./bin/pip3
+pip3    pip3.8  
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv$ binpip3
+bin/  bind  
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv$ bin/pip3
+easy_install      flask             pip3              pyreverse         symilar           
+easy_install-3.8  isort             pip3.8            python            
+epylint           pip               pylint            python3           
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv$ cd bin
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./pip
+pip     pip3    pip3.8  
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ ./pip3 list
+Package           Version
+----------------- -------
+astroid           2.4.2  
+click             7.1.2  
+Flask             1.1.2  
+Flask-WTF         0.14.3 
+isort             5.6.4  
+itsdangerous      1.1.0  
+Jinja2            2.11.2 
+lazy-object-proxy 1.4.3  
+MarkupSafe        1.1.1  
+mccabe            0.6.1  
+pip               20.0.2 
+pkg-resources     0.0.0  
+pylint            2.6.0  
+setuptools        44.0.0 
+six               1.15.0 
+toml              0.10.2 
+Werkzeug          1.0.1  
+wrapt             1.12.1 
+WTForms           2.3.3  
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ V
+V: 명령을 찾을 수 없습니다
+(venv) ahope@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/project1/venv/bin$ 
+

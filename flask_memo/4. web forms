@@ -1,0 +1,13 @@
+
+
+@Flask_WTF
+	- flask_wtf는 플라스크 프레임 워크의 폼 검증 모듈로, 쉽게 폼을 생성 할 수 있으며, json 데이터 상호 작용을 위한 검증 도구로도 사용할 수 있다.
+
+@설치
+	pip install Flask-WTF
+	(가상환경에서는 상대경로 지정해줘야됨, pip가 urs에도 있어서 전역이므)
+
+from flask_wtf import FlaskForm
+from wtforms import StringField
+from wtforms.validators import DataRequired
+

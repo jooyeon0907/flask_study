@@ -1,0 +1,67 @@
+
+
+@ 암호해싱
+* Werkzeug
+	- WSGI 웹 애플리케이션 라이브러리 
+	- 암호 해싱을 구현하는 패키지. 종속서이므로 이미 가상환경에 설치되어 있음
+
+* 암호해시 하는 방법
+	>>> from werkzug.security impoert generate_password_hash
+	>>> hash = generate_password_hasg('foobar')
+	>>> hash
+	'pbkdf2:sha256:50000$vT9fkZM8$04dfa35c6476acf7e788a1b5b3c35e217c78dc04539d295f011f01f18cd2175f'
+
+	- 'foobar'는 일련의 암호화 작업을 통해 긴 인코딩 된 문자열로 변환됨.
+	- 해시 된 암호를 얻은 사람은 암호를 사용하여 원래 암호를 얻을 수 없음 
+
+* 암호 확인하기
+	>>> from werkzeug.security import check_password_hash
+	>>> check_password_hash(hash, 'foobar')
+	True
+	>>> check_password_hash(hash, 'barfoo')
+	False
+
+
+@ Flask 로그인
+
+* Flask-Login 
+	- 사용자 로그인 상태를 관리하는 확장 프로그램
+	- 사용자가 브라우저 창을 닫은 후에도 로그인 상태를 유지 
+* Flask-login 설치
+	 (venv) $ pip install flask-login
+
+* app / __ init__.py : Flask-Login 초기화
+
+
+
+@ 플라스크 로그인 사용자 믹스 인 클래스 
+	- 사용자(유저) 클래스에 필요한 속성
+	- 유저 클래스 구현(implement) 하는 것을 쉽게 하기 위해서, UserMixin 으로부터 상속 받을 수 있다. 
+	- Usermixin은 모든 프로퍼티와 메서드를 위해서 디폴트 구현을 제공한다. 
+
+ - is_authenticated
+인증된 경우 True, 그렇지 않은 경우 False
+
+ - is_active
+계정이 활성화된 경우 True, 그렇지 않은 경우 False
+
+ - is_anonymous
+익명 사용자는 True, 그렇지 않은 경우 False
+
+ - get_id()
+사용자의 고유 식별 문자를 보여주는 메소드
+
+=> 이 4가지의 구현이 일반적이므로 Flask-Login은 이에 적합한 사용자 모델 클래스 구현을 지원하는 믹스 인 클래스를 제공한다.
+
+
+
+
+@ 
+
+
+
+
+
+
+
+
