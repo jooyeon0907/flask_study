@@ -1,0 +1,10 @@
+
+@
+	>>> ssh ahope@172.16.3.100	
+	>>> password :
+
+@다른 호스트에서 앱 실행하기 
+	>>> flask run -h 0.0.0.0 (host 인자 넘김)
+	네트워크를 '0.0.0.0'으로 지정하면 어떤 호스트에서도 연결 가능
+
+https://snacky.tistory.com/9

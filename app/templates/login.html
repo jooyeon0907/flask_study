@@ -3,8 +3,9 @@
 {% block content %}
     <h1>Sign In</h1>
     <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
+        {{ form.hidden_tag() }}  <!-- CSRF 공격에 대한 양식을 보호하는 데 사용되는 토큰을 포함하는 숨겨진 필드 생성-->
+                                     
+        <p>>
             {{ form.username.label }}<br>
             {{ form.username(size=32) }}
             {% for error in form.username.errors %}

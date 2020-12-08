@@ -1,5 +1,5 @@
 
-
+FLASK_ENV=development flask run
 @Flask_WTF
 	- flask_wtf는 플라스크 프레임 워크의 폼 검증 모듈로, 쉽게 폼을 생성 할 수 있으며, json 데이터 상호 작용을 위한 검증 도구로도 사용할 수 있다.
 
@@ -11,3 +11,28 @@ from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired
 
+
+
+
+
+@ 양식을 보호하는 방법
+1. form.hidden_tag() - CSRF 공격에 대한 양식을 보호하는 데 사용되는 토큰을 포함하는 숨겨진 필드를 생성
+2. SECRET_KEY - Flask 구성에 변수를 정의
+	* config.py : 비밀 키 구성
+	import os
+
+	class Config(object):
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
+
+- 이 두가지를 처리하면 Flask-WTF가 나머지 작업을 처리해줌
+
+
+@ 파이썬 시스템 변수(환경변수) 참조하기
+
+>> import os
+
+>> os.environ['환경변수 이름']    # 없는 값이면 'KeyError' 발생
+
+>> os.environ.get('환경변수 이름' )    # 없는 값이면 'None' 리턴
+
+>> os.getenv('환경변수 이름' , default_value)    # 없는 값이면 default_value 리턴

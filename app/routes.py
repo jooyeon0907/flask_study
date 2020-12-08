@@ -1,7 +1,7 @@
 # pylint: disable=no-member
 from flask import render_template ,flash, redirect, url_for
 from app import app, db
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 from flask import request
@@ -35,8 +35,8 @@ def index():
 def login():
     if current_user.is_authenticated: # is_authenticated : True 사용자가 유효한 자격 증명을 가지고 있는지 여부를 나타내는 속성. 사용자의 로그인 여부 확인.
         return redirect(url_for('index'))   # 사용자가 이미 로그인되어 있으면 인덱스 페이지로 redirect함 
-    form = LoginForm()
-    if form.validate_on_submit():
+    form = LoginForm() ####
+    if form.validate_on_submit(): 
         user = User.query.filter_by(username=form.username.data).first() # filter_by() -  결과물을 필터링
                                                                 # first() - 결과가 1개 or 0개 뿐이므로 사용자 개체가 있거나 없는 경우 none 반환. 하나의 결과만 필요로할 때 쿼리 실행 
         if user is None or not user.check_password(form.password.data): #  
@@ -74,21 +74,21 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-# 사용자 프로필보기 기능
-@app.route('/user/<username>') # <username> : 동적 구성 요소 , 사용자 이름으롤 쿼리를 사용하여 데이터베이스에서 사용자를 로드
+# 사용자 프로필보기 기능  
+@app.route('/user/<username>') # <변수명> : 동적 구성 요소 , 사용자 이름으로 쿼리를 사용하여 데이터베이스에서 사용자를 로드
 @login_required
-def user(username):
+def user(username):  # <username> 이랑 변수명 맞춰줘야됨.
     # username에 맞는 값 가져오기 시도하여 성공하면 결과 가지고, 실패하면 404 에러 페이지 출력 
     #   -> 사용자 이름이 데이터베이스에 존재하지 않으면 함수가 반환되지 않고 대신 404예외가 발생하기 때문에 쿼리가 사용자를 반환했는지 확인하지 않아도 됨.
-    user = User.query.filter_by(username=username).first_or_404()
+    user = User.query.filter_by(username=username).first_or_404() 
+                              #(db에있는 column= 변수명)
     # posts에 출력될 데이터 넣기
     posts = [
-        {'author':user, 'body': 'Test Post #1'},
-        {'author':user, 'body': 'Test Post #2'}
+        {'author': user, 'body': 'Test post #1'},
+        {'author': user, 'body': 'Test post #2'}
     ]
     # 성공하면 user 변수를 user에 넣고, posts 변수를 posts에 넣어 user.html 열기
-    return render_template('user.html', user=user, posts=posts)
-
+    return render_template('user.html', user=user, posts=posts) 
 
 # 마지막 방문 시간 기록
 @app.before_request # before_request 데코레이터는 뷰 함 수 바로 전에 실행할 데코 레이팅 된 함수를 등록 
@@ -100,6 +100,22 @@ def before_request():
         db.session.commit()
         # 커미하기 전 db.session.add()가 없는 이유? Flask-Login이 사용자 로더 콜백 함수를 호출하여 대상 사용자를 데이터베이스 세션에 넣는 데이터베이스 쿼리를 실행한다.
 
+
+@app.route('/edit_profile', methods=['GET', 'POST'])
+@login_required
+def edit_profile():
+    #form = EditProfileForm()
+    form = EditProfileForm(current_user.username) # 프로필 편집 양식에서 사용자의 이름을 확인
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.about_me = form.about_me.data
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('edit_profile'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.about_me.data = current_user.about_me
+    return render_template('edit_profile.html', title='Edit Profile', form=form)
 
 
 

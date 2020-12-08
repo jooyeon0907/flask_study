@@ -36,11 +36,26 @@
 
 
 
-## 
+@ 환경 변수 설정하여 Flask 가져 오는 방법
+
+(venv) $ export FLASK_APP=microblog.py
+(venv) $ flask run
+ * Serving Flask app "microblog"
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+
+ *** 새 터미널 창을 열 때마다 환경 변수를 설정해야함 -> flask 명령을 실행할 때 자동으로 가져 오려는 환경변수 등록하기
+ 	* python-dotenv 패키지 설치
+ 	(venv) $ pip install python-dotenv
+ 	* .flaskenv 파일에 환경 변수 설정하기 (프로젝트의 최상위 디렉토리에 만들기)
+ 		FLASK_APP=microblog.py  -> 어플리케이션 실행 
+
+ 		FLASK_ENV=development   -> Environment: development로 설정 (총 3가지 환경이 있음 - development, test, production)              -> 먼저 export 해주고 나서 설정하기 
+https://wikidocs.net/81074
 
 
 
-
-
-
-
+@@@@ .flaskenv , .env    -> 프로젝트 최상위 디렉토리에 위치 
+	* .flaskenv 
+		- falsk 관련된 환경변수 설정
+	* .env
+		- 그 외? 일반적인? 환경변수 설정

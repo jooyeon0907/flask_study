@@ -40,8 +40,11 @@ class User(UserMixin, db.Model): # 만들 데이터 모델을 나타내는 객�
 
     # 사용자 아바타 URL
     def avatar(self, size):
-        digest = md5(self.email.lower().encode('utf=8')).hexdigest()
-        return f'https://www.gravatar.com./avatar/{digest}?d=identicon&s={size}'
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest() 
+        # MD5 해시를 생성하려면 Gravatar 서비스에 필요한 이메일을 소문자로 변환 
+        # -> Python의 MD5 지원은 문자열이 아닌 바이트에서 작동하기 때문에 해시 함수에 전달하기 전에 문자열을 바이트로 인코딩
+        return f'https://www.gravatar.com./avatar/{digest}?d=identicon&s={size}' # 요청된 크기(픽셀)로 조정된 사용자 아바타 이미지의 URL을 반환
+                                                                                # 아바타가 등록되지 않은 사용자의 경우 idention 이미지가 생성
 
     # 사용자 모델의 새 필드
     about_me = db.Column(db.String(140))
