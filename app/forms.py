@@ -52,4 +52,10 @@ class EditProfileForm(FlaskForm):
                 raise ValidationError('Plaese use a diffrerent username.')
                 # raise - 오류를 강제로 발생시키기 
 
-
+# 팔로우 및 언 팔로우를 위한 빈 양식
+class EmptyForm(FlaskForm):
+    submit = SubmitField('Submit')
+ #  데이터 필드가 없이 작업을 수행하지만,
+ #  숨겨진 필드로 구현되고(@app.route('/user/<username>')에서)
+ #  Flask-WTF에 의해 자동으로 추가되는 CSRF 토큰과 사용자가 작업을 트리거하기 위해 클릭해야하는 제출 버튼
+ #  GET 요청으로 구현하면 CSRF 공격에서 악용 될 수 있음 (보호하기가 더 어려움)

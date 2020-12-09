@@ -1,0 +1,40 @@
+@ .html
+ {{ form.hidden_tag() }}  -> form사용할때마다 항상 배치 ?  데이터 전송할때마다 보호
+
+@ models.py
+#사용자 로더 기능 - 애플리케이션이 ID가 주어진 사용자를 로드하기 위해 호출 할 수 있는 사용자 로더 기능 구성
+@login.user_loader
+def load_usber(id):
+    return User.query.get(int(id)) # 문자열을 정소로 변환 할 필요가 있도록 인수가 문자열이 될 것.
+#### -> 이 데코레이터가 젤 위에 있었을때 회원가입 오류남 
+#  flask-SQLAlchemy OperationalError: (sqlite3.OperationalError) no such table
+
+
+@ routes.py@login_required
+def follow(username): # <username> 과 변수명 일치 
+    form = EmptyForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=username).first()
+                                  #(db에있는 column= 변수명)
+        if user is None:
+            flash(f'User {username} not found')
+            return redirect(url_for('index'))
+        if user == current_user: # 현재 유저 본인이라면
+            flash('You cannot follow yourself!')
+        current_user.follow(user) 
+        db.session.commit()
+        flash(f'You are followung {username!}')
+        return redirect(url_for('user', username=username)) ### 이미 위에 username=username 했는데 또? 그냥 username 으로 하면 ?
+    
+@@ 어느 모듈에 있는 데이터인지 알 수 있는 방법 ?   
+
+
+@ 8장
+팔로우 및 언 팔로우 작업은 애플리케이션에 변경 사항을 도입하기 때문에 POST웹 양식을 제출 한 결과 웹 브라우저에서 트리거되는 요청 으로 구현할 것 입니다. 이러한 경로를 GET요청 으로 구현하는 것이 더 쉬울 수 있지만 CSRF 공격 에서 악용 될 수 있습니다 . GET요청은 CSRF로부터 보호하기가 더 어렵 기 때문에 상태 변경을 도입하지 않는 작업에만 사용해야합니다. 양식 제출의 결과로이를 구현하면 CSRF 토큰을 양식에 추가 할 수 있기 때문에 더 좋습니다.
+-> CSRF 토큰이  config.py에서 구성한 SECRET_KEY ?
+
+
+@ 어떻게 user() 경로에 의해 렌더링 되는지?   ===> @app.route('/user/<username>')에 form = EmptyForm()
+# 다른 양식과 달리 자체 페이지가 없으며 양식은 user()경로에 의해 렌더링 되며 사용자의 프로필 페이지에 나타남.
+# 제출 부분만 구현하면 되므로 간단한 양식임 
+@app.route('/follow/<username>', methods=['POST'])

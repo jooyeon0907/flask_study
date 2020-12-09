@@ -7,11 +7,6 @@ from flask_login import UserMixin
 from app import login
 from hashlib import md5 # 사용자 아바타 URL
 
-#사용자 로더 기능 - 애플리케이션이 ID가 주어진 사용자를 로드하기 위해 호출 할 수 있는 사용자 로더 기능 구성
-@login.user_loader
-def load_user(id):
-    return User.query.get(int(id)) # 문자열을 정소로 변환 할 필요가 있도록 인수가 문자열이 될 것.
-
 
 
 # 추종자 연관 테이블
@@ -23,7 +18,7 @@ followers = db.Table(
     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
 )
 
-###### ???  type 알아내기
+###### ???  type 알아내기 -> ex) type(u.about_me)
 class User(UserMixin, db.Model): # 만들 데이터 모델을 나타내는 객체 선언 , SQLAchmey의 기능을 사용하기 위해 db.Model을 상속받는다.
    ##  __table_name__ = 'user' : 테이블 이름은 자동으로 정의되지만 __table_name__을 이용해 명시적으로 정할 수 있다.  
 
@@ -76,7 +71,7 @@ class User(UserMixin, db.Model): # 만들 데이터 모델을 나타내는 객�
                                                                                 # 아바타가 등록되지 않은 사용자의 경우 idention 이미지가 생성
    
     # 팔로워 추가 및 제거
-    def follow(self, user): #### user Table?? user.id 
+    def follow(self, user): 
         if not self.is_following(user):# Flase이면 팔로잉 안한 상태이므로 추가 
             self.followed.append(user)
 
@@ -128,13 +123,12 @@ class User(UserMixin, db.Model): # 만들 데이터 모델을 나타내는 객�
         
         
         
-
-    
-
-
-
-
-            
+#사용자 로더 기능 - 애플리케이션이 ID가 주어진 사용자를 로드하기 위해 호출 할 수 있는 사용자 로더 기능 구성
+@login.user_loader
+def load_usber(id):
+    return User.query.get(int(id)) # 문자열을 정소로 변환 할 필요가 있도록 인수가 문자열이 될 것.
+#### -> 이 데코레이터가 젤 위에 있었을때 회원가입 오류남 
+#  flask-SQLAlchemy OperationalError: (sqlite3.OperationalError) no such table
 
 
 

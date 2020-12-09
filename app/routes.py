@@ -1,12 +1,13 @@
 # pylint: disable=no-member
 from flask import render_template ,flash, redirect, url_for
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 from flask import request
 from werkzeug.urls import url_parse
 from datetime import datetime
+
 
 ## route - uri를 정리해주는 것 
 @app.route('/')
@@ -88,7 +89,11 @@ def user(username):  # <username> 이랑 변수명 맞춰줘야됨.
         {'author': user, 'body': 'Test post #2'}
     ]
     # 성공하면 user 변수를 user에 넣고, posts 변수를 posts에 넣어 user.html 열기
-    return render_template('user.html', user=user, posts=posts) 
+    
+    form = EmptyForm()
+    # 팔로우or언팔로우 버튼을 렌더링하기 위해 EmptyForm 객체를 인스턴스화 하여 user.html 템플릿에 전달  
+    
+    return render_template('user.html', user=user, posts=posts, form=form) 
 
 # 마지막 방문 시간 기록
 @app.before_request # before_request 데코레이터는 뷰 함 수 바로 전에 실행할 데코 레이팅 된 함수를 등록 
@@ -116,6 +121,48 @@ def edit_profile():
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile', form=form)
+
+
+# 경로를 따르고 팔로우, 언팔로우
+# 다른 양식과 달리 자체 페이지가 없으며 양식은 user()경로에 의해 렌더링 되며 사용자의 프로필 페이지에 나타남. (user 경로에 EmptyForm 객체 인스턴스화 )
+# 제출 부분만 구현하면 되므로 간단한 양식임 
+@app.route('/follow/<username>', methods=['POST'])
+@login_required
+def follow(username): # <username> 과 변수명 일치 
+    form = EmptyForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=username).first()
+                                  #(db에있는 column= 변수명)
+        if user is None:
+            flash(f'User {username} not found')
+            return redirect(url_for('index'))
+        if user == current_user: # 현재 유저 본인이라면
+            flash('You cannot follow yourself!')
+        current_user.follow(user) 
+        db.session.commit()
+        flash(f'You are followung {username!}')
+        return redirect(url_for('user', username=username)) 
+    else:
+        return redirect(url_for('index'))
+
+@app.route('/unfollow/<username>', methods=['POST'])
+@login_required
+def unfollow(username):
+    form = EmptyForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=username).first()
+        if user is None:
+            flash(f'User {username} not found')
+            return redirect(url_for('index'))
+        if user == current_user:
+            flash('You cannot unfollow yourself!')
+            return redirect(url_for('user',username=username))
+        current_user.unfollow(user) 
+        db.session.commit()
+        flash(f'You are not followinng {username}')
+    else:   # validate_on_submit() 호출이 실패 할 수 있는 유일한 이유는 CSRF 토큰이 없거나 유효하지 않은 경우
+        return redirect(url_for('index')) # 이 경우 애플리케이션을 홈페이지로 다시 리디렉션함
+
 
 
 

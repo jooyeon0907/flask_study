@@ -90,12 +90,17 @@ class UserModelCase(unittest.TestCase):
 
 if __name__ == '__main__':
 
-    unittest.main(verbosity=2)  #### verbosity=2 
+    unittest.main(verbosity=2)  #### verbosity=2  ** 2(verbose)
     # __name__ 내장변수 : 현재 모듈의 이름을 담고 있는 내장 변수.
     # 직접 실행된 모듈의 경우 __main__이라는 값을 가지게 되며,
     # 직접 실행되지 않은 import된 모듈은 모듈의 이름(파일명)을 가지게 된다. 
     # https://medium.com/@chullino/if-name-main-%EC%9D%80-%EC%99%9C-%ED%95%84%EC%9A%94%ED%95%A0%EA%B9%8C-bc48cba7f720
 
+    """
+    0 (조용함) : 실행 된 총 테스트 수와 전체 결과를 얻습니다.
+    1 (기본값) : 모든 성공적인 테스트에 대해 동일한 플러스 점 또는 모든 실패에 대해 F를 얻습니다.
+    2 (verbose) : 모든 테스트의 도움말 문자열과 결과를 얻습니다.   (-v)
+    """
 
 
 """

@@ -8,9 +8,26 @@
                 <h1>User: {{ user.username }}</h1>
                 {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
                 {% if user.last_seen %}<p>Last seen on: {{ user.last_seen }}</p>{% endif %}
-                {% if user == current_user %}
-            <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
-            {% endif%}
+                <!-- 경우1. 사용자가 자신의 프로필을 보고 있는 경우 -> "프로필 편집" 링크가 표시-->
+                {% if user == current_user %} 
+                <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
+                <!-- 경우2. 사용자가 현재 팔로우하지 않는 사용자를 보고 있는 경우 "팔로우" 양식이 표시됨-->
+                {% elif not current_user.is_following(user) %} 
+                <p>
+                    <form action="{{ url_for('follow', username=user.username) }}" method="post">
+                        {{ form.hidden_tag() }}
+                        {{ form.submit(value='Follow')}}
+                    </form>
+                </p>
+                <!-- 경우3. 사용자가 현재 팔로우 중인 사용자를 보고 있는 경우 "언 팔로우" 양식이 표시됨.-->
+                {% else %}
+                <p>
+                    <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
+                    {{ form.hidden_tag() }}
+                    {{ form.submit(value='unfollow') }} <!-- -->
+                    </form>
+                </p>
+                {% endif %}
             </td>
         </tr>
     </table>    
