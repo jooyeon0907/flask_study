@@ -21,7 +21,7 @@ login.login_view = 'login' # Flask-Login에서 로그인 처리하는 보기 기
 
 
 if not app.debug:
-    # 이메일 오류 기록
+    ## 이메일 오류 기록
     if app.config['MAIL_SERVER']:
         auth = None
         if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
@@ -29,16 +29,18 @@ if not app.debug:
         secure = None
         if app.config['MAIL_USE_TLS']:
             secure = ()
-        mail_handler = SMTPHandler(
+        mail_handler = SMTPHandler(  # 1. SMTPHandler 인스턴스 만들기
             mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
             fromaddr='no-reply@' + app.config['MAIL_SERVER'],
             toaddrs=app.config['ADMINS'], subject='Microblog Failure',
             credentials=auth, secure=secure)
-        mail_handler.setLevel(logging.ERROR)
+        mail_handler.setLevel(logging.ERROR) # 2. 오류만 보고하도록 로깅수준 설정 
         app.logger.addHandler(mail_handler)
 
 
-    # 파일에 로깅
+
+
+    ## 파일에 로깅
     if not os.path.exists('logs'):  # logs 존재하지 않는 경우 생성
         os.mkdir('logs')
    # log 출력 형식
@@ -52,8 +54,8 @@ if not app.debug:
     file_handler.setLevel(logging.INFO)  
     app.logger.addHandler(file_handler) 
     
-    app.logger.setLevel(logging.INFO)
-    app.logger.info('Microblog startup')
+    #app.logger.setLevel(logging.INFO)
+    #app.logger.info('Microblog startup')
     
     # 로깅 레벨 
     # 로깅 범주 DEBUG < INFO < WARNING < ERROR < CRITICAL

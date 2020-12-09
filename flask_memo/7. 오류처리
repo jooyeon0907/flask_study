@@ -22,16 +22,16 @@
 	(venv) $ MAIL_SERVER=localhost MAIL_PORT=8025 
 	(venv) $ flask run
 
-	다른 터널에 서버 실행 
+	* 다른 터널에 서버 실행 
 	(venv) $ python -m smtpd -n -c DebuggingServer localhost:8025
-	* 오류 발생시 , 이메일을 보내는 대신 콘솔에 출력해줌 
+	 ->오류 발생시 , 이메일을 보내는 대신 콘솔에 출력해줌 
 
 
-@@@2 
+2. 파일에 로깅하기 
 
 
 
-@ 로그레벨 
+@@ 로그레벨 
 TRACE > DEBUG > INFO > WARN > ERROR > FATAL 
 # Log Level
 # TRACE : 추적 레벨은 Debug보다 좀더 상세한 정보를 나타냄
@@ -42,3 +42,6 @@ TRACE > DEBUG > INFO > WARN > ERROR > FATAL
 # FATAL :  아주 심각한 에러가 발생한 상태, 시스템적으로 심각한 문제가 발생해서 어플리케이션 작동이 불가능할 경우
 
 https://hamait.tistory.com/880
+
+
+@ 중복된 사용자 이름 버그 수정
