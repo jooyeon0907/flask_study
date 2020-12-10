@@ -1,34 +1,65 @@
 # pylint: disable=no-member
 from flask import render_template ,flash, redirect, url_for
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm, ResetPasswordRequestForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import User ,Post
 from flask import request
 from werkzeug.urls import url_parse
 from datetime import datetime
+from app.email import send_password_reset_email
 
 
 ## route - uri를 정리해주는 것 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 @login_required # Flask-Login이 익명 사용자로부터 뷰 기능을 데코레이터로 보호.
                 # @app.route 아래에 있는 뷰 함수에 추가하면 함수가 보호되고(/index 접근 유저는 인증된 유저여야만 함.), 인증되지 않은 사용자에게 액세스를 허용X 로그인이 필요한 페이지로 설정.
 def index():
-    posts = [
-        {
-            'author': {'username': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
-    return render_template('index.html', title='Home Page', posts=posts)
- # 렌더링 - 템플릿을 완전한 HTML 페이지로 변환하는 작업 
+    form = PostForm()   # 게시글 작성하기 폼
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('index'))
+        # 웹 양식을 제출한 후 사용자가 실수로 페이지를 새로고침할 때 중복으로 게시물이 삽입되지 않도록 하기 위해 
+        # redirection으로 응답해줌 -> Post/Redirect/Get 패턴  (그래서 POST,GET 두 경로에서 요청을 수락하도록 설정함 )
+        # ==> POST 요청이 리디렉션으로 응답되면 이제 브라우저는 리디렉션에 표시된 페이지를 가져오기 위해 
+        #     GET 요청을 보내도록 지시 받으므로 마지막 요청은 더 이상 POST 요청이 아님 -> 새로 고침할 때 중복 게시물 삽입되는 것을 방지
+    """
+        posts = [
+            {
+                'author': {'username': 'John'},
+                'body': 'Beautiful day in Portland!'
+            },
+            {
+                'author': {'username': 'Susan'},
+                'body': 'The Avengers movie was so cool!'
+            }
+        ]
+    """
+    # posts = current_user.followed_posts().all() # 팔로우한 유저의 게시글들 가져오기
+    # 페이지 매김해서 게시글 가져오기 
+    page = request.args.get('page', 1 ,type=int)     # 1. page 쿼리 문자열 인수 또는 기본값 1에서 표시할 페이지 번호를 결정한 다음, 
+    posts = current_user.followed_posts().paginate(  # 2. 원하는 결과 페이지만 검색하기 위해 paginate() 메서드 사용
+        page, app.config['POSTS_PER_PAGE'], False)    # 페이지 크기를 결정하는 POSTS_PER_PAGE 구성 항목은 app.config 개체를 통해 액세스됩니다.
+    
+    # 다음 및 이전 페이지 링크 생성하기
+    next_url = url_for('index', page=posts.next_num) \
+        if posts.has_next else None
+    prev_url = url_for('index', page=posts.prev_num) \
+        if posts.has_prev else None
+     # view 함수의 next_url 및 prev_url은 (Flask-SQLAlchemy의 Pagination 클래스 객체에 있음)
+     # 해당 방향에 페이지가 있는 경우에만 url_for()에서 반환하는 URL로 설정.
+                
+    return render_template('index.html', title='Home Page', form=form, posts=posts.items, 
+                                                            next_url=next_url, prev_url=prev_url)
+        # 렌더링 - 템플릿을 완전한 HTML 페이지로 변환하는 작업 
         # render_template() - {{ ... }} 블록을 render_template() 호출에 제공된 인수로 해당 값 대체
         #                   - 첫 번째 아규먼트로 렌더링 할 html 파일명을 넘겨주고, 그 이후에는 html 파일에 전달한 변수를 넘겨줌 
+
+    
 
 
 
@@ -44,17 +75,19 @@ def login():
             flash('Invalid username or passsword')  # flash() - 사용자에게 메시지를 표시하는 유용한 방법
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data) # 이름과 비번이 모두 일치시 login_user() 호출 
-                                                         # -> 사용자가 로그인된 상태로 등록하므로 사용자가 탐색하는 향후 페이지에 해당 사용자에 대한 current_user 변수가 설정됨
+       
         next_page = request.args.get('next') 
-        if not next_page or url_parse(next_page).netloc != '': # URL이 상대적인지 절대적인지 확인하기 위해 werkzeug의 url_parse() 함수로 구문 분석한 다음 net loc 구성요소가 설정되었는지 확인 (애플리케이션 보안을 강화하기 위함)
+        # URL이 상대적인지 절대적인지 확인하기 위해 werkzeug의 url_parse() 함수로 구문 분석한 다음 net loc 구성요소가 설정되었는지 확인 (애플리케이션 보안을 강화하기 위함)
+        if not next_page or url_parse(next_page).netloc != '': 
             next_page = url_for('index')    # 로그인 URL에 next 인수가 없으면 사용자는 인덱스 페이지로 리디렉션 
         return redirect(next_page)  # redirect() - 클라이언트 웹 브라우저가 인수로 지정된 다른 페이지로 자동으로 이동하도록 지시. 사용자를 애플리케이션의 색인 페이지로 리디렉션함.
     return render_template('login.html',  title='Sign In', form=form)
 
+
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('index')) # url_for('index') : index 함수에 대한 url을 얻어냄.
 
 
 # 사용자 등록하기
@@ -75,25 +108,36 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
+
 # 사용자 프로필보기 기능  
 @app.route('/user/<username>') # <변수명> : 동적 구성 요소 , 사용자 이름으로 쿼리를 사용하여 데이터베이스에서 사용자를 로드
-@login_required
+@login_required                # URL을 통해 전달받은 <username> 값으로 로직을 탄다. 
 def user(username):  # <username> 이랑 변수명 맞춰줘야됨.
     # username에 맞는 값 가져오기 시도하여 성공하면 결과 가지고, 실패하면 404 에러 페이지 출력 
     #   -> 사용자 이름이 데이터베이스에 존재하지 않으면 함수가 반환되지 않고 대신 404예외가 발생하기 때문에 쿼리가 사용자를 반환했는지 확인하지 않아도 됨.
     user = User.query.filter_by(username=username).first_or_404() 
                               #(db에있는 column= 변수명)
-    # posts에 출력될 데이터 넣기
+    """
     posts = [
         {'author': user, 'body': 'Test post #1'},
         {'author': user, 'body': 'Test post #2'}
     ]
-    # 성공하면 user 변수를 user에 넣고, posts 변수를 posts에 넣어 user.html 열기
-    
-    form = EmptyForm()
+    """
+    # 사용자 프로필 보기 기능의 페이지 매김
+    page = request.args.get('page', 1, type=int) 
+    posts = user.posts.order_by(Post.timestamp.desc()).paginate(
+        page , app.config['POSTS_PER_PAGE'], False)
+    next_url = url_for('user', username=user.username, page=posts.next_num) \
+        if posts.has_next else None
+    prev_url = url_for('user', username=user.username, page=posts.prev_num) \
+        if posts.has_prev else None
+   # print(f'>>>>>>>>>>>>>    {posts.items}') # [<Post post6>, <Post post5>, <Post post4>, <Post post3>, <Post post2>]
+    # app.config['POSTS_PER_PAGE'] 만큼 출력 
+    #print('>>>>> {next_url} , {prev_url}' )
+
     # 팔로우or언팔로우 버튼을 렌더링하기 위해 EmptyForm 객체를 인스턴스화 하여 user.html 템플릿에 전달  
-    
-    return render_template('user.html', user=user, posts=posts, form=form) 
+    form = EmptyForm()
+    return render_template('user.html', user=user, posts=posts.items, next_url=next_url, prev_url=prev_url, form=form)  # 성공하면 user 변수를 user에 넣고, posts 변수를 posts에 넣어 user.html 열기
 
 # 마지막 방문 시간 기록
 @app.before_request # before_request 데코레이터는 뷰 함 수 바로 전에 실행할 데코 레이팅 된 함수를 등록 
@@ -140,7 +184,7 @@ def follow(username): # <username> 과 변수명 일치
             flash('You cannot follow yourself!')
         current_user.follow(user) 
         db.session.commit()
-        flash(f'You are followung {username!}')
+        flash(f'You are followung {username}!')
         return redirect(url_for('user', username=username)) 
     else:
         return redirect(url_for('index'))
@@ -162,6 +206,39 @@ def unfollow(username):
         flash(f'You are not followinng {username}')
     else:   # validate_on_submit() 호출이 실패 할 수 있는 유일한 이유는 CSRF 토큰이 없거나 유효하지 않은 경우
         return redirect(url_for('index')) # 이 경우 애플리케이션을 홈페이지로 다시 리디렉션함
+
+# 탐색보기 기능
+@app.route('/explore')
+@login_required
+def explore():
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(
+        page, app.config['POSTS_PER_PAGE'], False)
+
+    # 다음 및 이전 페이지 링크 생성하기
+    next_url = url_for('explore', page=posts.next_num) \
+        if posts.has_next else None
+    prev_url = url_for('explore', page=posts.prev_num) \
+        if posts.has_prev else None 
+        
+    return render_template('index.html', title='Explore', posts = posts.items,
+                                        next_url=next_url, prev_url=prev_url)
+                        # 이 페이지는 메인페이지(index)와 유사하므로 템플릿 재사용 
+                        # but, 메인페이지에서 사용한 게시글 작성 폼은 탐색페이지에서 필요하지 않으므로 , 템플릿 호출에 form 인수를 포함하지 않는다.
+
+
+
+# 비밀번호 재설정 요청보기 기능.
+@app.route('/reset_password_request', methods=['GET', 'POST'])
+def reset_password_request():
+    if current_user.is_authenticated:  # 인증된 유저라면
+        return redirect(url_for('index'))
+    form = ResetPasswordRequestForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user: # 존재하는 email이라면
+            send_password_reset_email(user)
+        
 
 
 

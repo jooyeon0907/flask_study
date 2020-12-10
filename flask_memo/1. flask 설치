@@ -57,5 +57,22 @@ https://wikidocs.net/81074
 @@@@ .flaskenv , .env    -> 프로젝트 최상위 디렉토리에 위치 
 	* .flaskenv 
 		- falsk 관련된 환경변수 설정
+		ex)
+		FLASK_APP=microblog.py
+		FLASK_ENV=development
+
 	* .env
 		- 그 외? 일반적인? 환경변수 설정
+		ex)
+		MAIL_SERVER=localhost
+		MAIL_PORT=8025
+
+	=> 이름 = 값 형식으로 입력	
+
+@@ github에 push 할 때 .gitignore 파일에 .env 파일 추가해서 보안하기 
+
+https://m.blog.naver.com/PostView.nhn?blogId=couponpapa&logNo=221233091940&proxyReferer=https:%2F%2Fwww.google.com%2F
+
+
+@@@ 가상환경 이용하는 이유 
+	- 

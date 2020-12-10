@@ -55,7 +55,19 @@ class EditProfileForm(FlaskForm):
 # 팔로우 및 언 팔로우를 위한 빈 양식
 class EmptyForm(FlaskForm):
     submit = SubmitField('Submit')
- #  데이터 필드가 없이 작업을 수행하지만,
+ #  데이터 필드가 없이 작업을 수행하지만,sqlite3.OperationalError: no such table: user
  #  숨겨진 필드로 구현되고(@app.route('/user/<username>')에서)
  #  Flask-WTF에 의해 자동으로 추가되는 CSRF 토큰과 사용자가 작업을 트리거하기 위해 클릭해야하는 제출 버튼
  #  GET 요청으로 구현하면 CSRF 공격에서 악용 될 수 있음 (보호하기가 더 어려움)
+
+
+# 사용자가 새 게시물을 입력할 수 있는 양식
+class PostForm(FlaskForm):
+    post = TextAreaField('Say something', validators=[
+        DataRequired(), Length(min=1, max=140)])
+    submit = SubmitField('게시글올리기')
+
+# 비밀번호 재설정 요청 양식
+class ResetPasswordRequestForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Request Password Reset')

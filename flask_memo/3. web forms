@@ -36,3 +36,8 @@ from wtforms.validators import DataRequired
 >> os.environ.get('환경변수 이름' )    # 없는 값이면 'None' 리턴
 
 >> os.getenv('환경변수 이름' , default_value)    # 없는 값이면 default_value 리턴
+
+
+@ url_for()
+
+https://roksf0130.tistory.com/96

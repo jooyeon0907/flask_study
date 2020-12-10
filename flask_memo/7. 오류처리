@@ -16,7 +16,7 @@
 	* 
 
 
-@ 이메일오류 기록 
+@ 오류 기록 
 1. SMTP 디버깅 서버를 사용하기
 	** 디버그 OFF 상태여야됨  -> export FLASK_DEBUG=false
 	(venv) $ MAIL_SERVER=localhost MAIL_PORT=8025 
@@ -26,6 +26,16 @@
 	(venv) $ python -m smtpd -n -c DebuggingServer localhost:8025
 	 ->오류 발생시 , 이메일을 보내는 대신 콘솔에 출력해줌 
 
+1-2. 이메일 오류 발송
+	* config.env에 작성
+	 	MAIL_SERVER=smtp.googlemail.com
+		MAIL_PORT=587
+		MAIL_USE_TLS=1
+		MAIL_USERNAME=<your-gmail-username>
+		MAIL_PASSWORD=<your-gmail-password>
+
+	* Gmail 게정에 대한 "보안 수준이 낮은 앱" 액세스를 명시적으로 허용해서 테스트용으로 보내보기 
+	
 
 2. 파일에 로깅하기 
 

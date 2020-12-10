@@ -1,0 +1,11 @@
+
+https://pythonhosted.org/Flask-Mail/
+@ Flask-Mail
+	- Flask에는 작업을 매우 쉽게 만들 수 있는 인기있는 확장 기능 
+	(venv) $ pip install flask-mail
+
+	- 암호 재설정 링크에는 보안 토큰이 있다. 
+	  이러한 토큰을 생성하기 위해 인기있는 Python 패키지 JSON WEB Tokens 사용
+	(venv) $ pip install pyjwt
+
+

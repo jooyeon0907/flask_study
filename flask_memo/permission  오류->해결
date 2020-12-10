@@ -1,0 +1,29 @@
+@ permission  오류
+
+ahope 계정에서 만든 가상환경(venv)에서 pip 패키지를 설치했어서 
+
+(10장)
+(venv) $ pip install flask-mail
+(venv) $ pip install pyjwt
+할 때 permission 에러남 
+
+@ 해결 
+	* 최상위 디렉토리에서 
+	* pip freeze : 현재 작업 환경(가상환경)에 설치되어 있는 패키지의 리스트들을 모두 출력해줌. 
+	* pip 패키지 리스트들 txt 파일로 옮겨 쓰기 
+	(venv) $ pip freeze > requirements.txt 
+
+	* 파일 읽어서 잘 옮겨졌는지 확인하기 
+	(venv) $ less requirements.txt	
+
+	* 기존 가상환경 삭제하기
+	(venv) $ rm - rf venv/
+
+	* reload하고 가상환경 다시 설치
+	 $ python3 -m venv venv 
+	* 가상환경 들어가서
+	 $ source vnev/bin/activate
+
+	* 이전에 있던 pip 패키지 목록들 다시 설치하기 
+	(venv) $ pip install -r requirements.txt
+

@@ -7,7 +7,7 @@ from flask_login import LoginManager
 import logging 
 from logging.handlers import SMTPHandler, RotatingFileHandler # SMTPHandler - 오류시 이메일 보내기 , RotatingFileHandler - 파일 기반 로그 활성화
 import os
-
+from flask_mail import Mail
 
 
 app = Flask(__name__)
@@ -18,6 +18,10 @@ migrate = Migrate(app, db)
 login = LoginManager(app) # 로그인  초기화
 login.login_view = 'login' # Flask-Login에서 로그인 처리하는 보기 기능. 즉, url_for() URL 을 가져오기 위해 호출에 사용할 이름.
 # routes와 데이터베이스 구조 정의하는 models 호출
+
+# Flask-Mail 인스턴스 생성
+#  - Flask 확장과 마찬가지로 Flask-Mail 확장도 Flask 애플리케이션을 만든 직후 인스턴스를 만들어야하기 때문에 __init__.py에 작성
+mail = Mail(app)
 
 
 if not app.debug:

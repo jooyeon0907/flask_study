@@ -1,0 +1,28 @@
+(venv) jooyeon@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/microblog$ pip install pyjwt
+Collecting pyjwt
+  Downloading PyJWT-1.7.1-py2.py3-none-any.whl (18 kB)
+Installing collected packages: pyjwt
+ERROR: Could not install packages due to an EnvironmentError: [Errno 13] 허가 거부: '/home/ahope/jooyeon/flask_study/flask_prac2/microblog/venv/lib/python3.8/site-packages/jwt'
+Consider using the `--user` option or check the permissions.
+
+(venv) jooyeon@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/microblog$ sudo pip install pyjwt
+[sudo] jooyeon의 암호: 
+sudo: pip: 명령이 없습니다
+(venv) jooyeon@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/microblog$ sudo pipe install pyjwt
+sudo: pipe: 명령이 없습니다
+(venv) jooyeon@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/microblog$ sudo pip3 install pyjwt
+Requirement already satisfied: pyjwt in /usr/lib/python3/dist-packages (1.7.1)
+(venv) jooyeon@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/microblog$ sudo pip install flask-mail
+sudo: pip: 명령이 없습니다
+(venv) jooyeon@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/microblog$ sudo pip3 install flask-mail
+Processing /root/.cache/pip/wheels/98/bc/8c/34c329e4d7efeaf7b9886db0c76d0b23170e54de443f688e3c/Flask_Mail-0.9.1-py3-none-any.whl
+Requirement already satisfied: Flask in /usr/local/lib/python3.8/dist-packages (from flask-mail) (1.1.2)
+Requirement already satisfied: blinker in /usr/lib/python3/dist-packages (from flask-mail) (1.4)
+Requirement already satisfied: Jinja2>=2.10.1 in /usr/local/lib/python3.8/dist-packages (from Flask->flask-mail) (2.11.2)
+Requirement already satisfied: itsdangerous>=0.24 in /usr/local/lib/python3.8/dist-packages (from Flask->flask-mail) (1.1.0)
+Requirement already satisfied: click>=5.1 in /usr/lib/python3/dist-packages (from Flask->flask-mail) (7.0)
+Requirement already satisfied: Werkzeug>=0.15 in /usr/local/lib/python3.8/dist-packages (from Flask->flask-mail) (1.0.1)
+Requirement already satisfied: MarkupSafe>=0.23 in /usr/lib/python3/dist-packages (from Jinja2>=2.10.1->Flask->flask-mail) (1.1.0)
+Installing collected packages: flask-mail
+Successfully installed flask-mail-0.9.1
+(venv) jooyeon@ahope-B250M-DS3H:~/jooyeon/flask_study/flask_prac2/microblog$ 
