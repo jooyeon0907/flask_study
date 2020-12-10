@@ -1,11 +1,18 @@
 
 https://pythonhosted.org/Flask-Mail/
 @ Flask-Mail
-	- Flask에는 작업을 매우 쉽게 만들 수 있는 인기있는 확장 기능 
 	(venv) $ pip install flask-mail
+	- Flask에는 작업을 매우 쉽게 만들 수 있는 인기있는 확장 기능 
 
+	(venv) $ pip install pyjwt
 	- 암호 재설정 링크에는 보안 토큰이 있다. 
 	  이러한 토큰을 생성하기 위해 인기있는 Python 패키지 JSON WEB Tokens 사용
-	(venv) $ pip install pyjwt
+	- JWT는 자체 포함되어있어서, 
+	- 이메일로 사용자에게 토큰을 보낼 수 있으며
+	- 사용자가 토큰을 애플리케이션에 다시 공급하는 링크를 클릭하면 자체적으로 확인 할 수 있다. 
 
+@  _external=True
+<p>{{ url_for('reset_password', token=token, _external=True) }}</p>
+ _external=True가 인수로 전달되면 전체 URL 생성 ex)http : // localhost : 5000 / user /susan
+ 
 

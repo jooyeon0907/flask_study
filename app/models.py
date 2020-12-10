@@ -1,11 +1,13 @@
 # 데이터베이스와 관련된 코드
 # pylint: disable=no-member
 from datetime import datetime
-from app import db
+from app import db , app
 from werkzeug.security import generate_password_hash , check_password_hash # password 암호화를 위해 사용 
 from flask_login import UserMixin
 from app import login
 from hashlib import md5 # 사용자 아바타 URL
+from time import time
+import jwt
 
 
 
@@ -119,11 +121,56 @@ class User(UserMixin, db.Model): # 만들 데이터 모델을 나타내는 객�
         # UNION은 행의 모든 값이 일치하는 중복된 행이 제외됨
         # UNION ALL은 중복된 행이 그대로 있음
 
+    ## 비밀번호 토큰 생성 및 확인 기능 - 토큰은 사용자의 소유이므로 User 모델의 메소드로 작성
+    def get_reset_password_token(self, expires_in=600): # expires_in : 토큰 ㅏㄴ료 시간 
+        return jwt.encode(
+            {'reset_password':self.id, 'exp': time() + expires_in}, # 암호 재설정 토큰에 사용할 페이로드는 형식 -> {'reset_password':user_id, 'exp' :token_expration} 
+                                                                    # exp 필드는 JWT의 표준이며 존재하는 경우 토큰의 만료시간을 나타냄 
+            app.config['SECRET_KEY'], algorithm='HS256').decode('utf-8') 
+            # 토큰의 보안을 유지하려면 암호화 서명을 만드는데 사용할 비밀 키를 제공해야함. -> config.py에 구성된 비밀키 제공하기
+            # algorithm 인수는 토큰 생성 방법을 지정 -> HS256 알고리즘이 가장 널리 사용됨.
 
+     # JWT 토큰을 문자열로 생성 
+     # jwt.encode() 함수는 토큰을 바이트 시퀀스로 반환하는데 응용프로그램에서는 
+     # 토큰을 문자열로 사용하는 것이 더 편리하기 때문에 decode('utf-8')을 사용한다.
+     # ** 인코딩 - 문자열을 바이트코드로 변환함. encode = 코드화 = 암호화
+     #   -> 파이썬에서 문자열은 유니코드로처리 - 유니코드를 utf-8, euc-kr, ascii 형식의 byte코드로 변환함을 의미
+     # ** 디코딩 - 바이트를 문자열로 변환. decode = 역 코드화 = 복호화
+     #          - utf-8, euc-kr, ascii 형식의 byte코드를 문자열로 변환 
+    
+    # 토큰을 안전하게 만드는 것은  페이로드가 서명된다는 것 
+    # 누군가 토큰의 페이로드를 위조하거나 변조하려고 하면 서명이 무효화 되고 새 서명을 생성하려면 비밀 키가 필요함. 
+    # 토큰이 확인되면 페이로드의 내용이 디코딩되어 호출자에게 다시 반환됨.
+    # 토큰의 서명이 검증 된 경우 페이로드를 인증 된 것으로 신뢰할 수 있음.
+
+    # 암호 재설정 토큰에 사용할 페이로드 형식 -  {'reset_password':user_id, 'exp' :token_expration} 
+    # 사용자가 이메일 링크를 클릭하면 토큰이 URL의 일부로 애플리케이션에 다시 전송되며 
+    #  이 URL을 처리하는 보기 기능이 가장 먼저 수행하는 작업은 이를 확인 하는 것
+    # 서명이 유효하면 페이로드에 저장된 ID로 사용자를 식별 할 수 있다.
+    # 사용자의 신원이 확인되면 애플리케이션은 새 비밀번호를 요청하고 사용자 계정에 설정할 수 있다.
+
+    ## 토큰 확인 방법
+    @staticmethod
+    def verify_reset_password_token(token):
+        try:  
+          # 토큰을 가져와 PyJWT의 jwt.decode() 함수를 호출하여 디코딩을 시도.
+            id = jwt.decode(token, app.config['SECRET_KEY'],
+                            algorithm=['HS256'])['reset_password']
+          # 토큰이 유효하면 토큰 페이로드의 reset_password 키 값이 사용자의 id이므로 사용자를 로드하고 반환 할 수 있음.
+           
+            print(f'verify_reset_password_token(token): >>>>>{id}')
+            print(f'verify_reset_password_token(token): >>>>>{User.query.get(id)}')
+        except:
+      # 토큰의 유효성을 검사 할 수 없거나 만료되면 예외가 발생하고 이 경우 오류를 방지하기 위해 포착한 다음 None을 호출자에게 반환
+            return
+        return User.query.get(id)
+    # verify_reset_password_token()은 정적 메서드이므로 클래스에서 직접 호출 할 수 있다.
+    # 정적 메서드(staticmethod)는 클래스를 첫번째 인수로 받지 않는다.(slef를 받지 않으므로 인스턴스 속송에 접근 X )
+    #   -> 인스턴스 내용과는 상관없이 결과만 구할때 사용.  # https://dojang.io/mod/page/view.php?id=2379
         
         
         
-#사용자 로더 기능 - 애플리케이션이 ID가 주어진 사용자를 로드하기 위해 호출 할 수 있는 사용자 로더 기능 구성
+## 사용자 로더 기능 - 애플리케이션이 ID가 주어진 사용자를 로드하기 위해 호출 할 수 있는 사용자 로더 기능 구성
 @login.user_loader
 def load_usber(id):
     return User.query.get(int(id)) # 문자열을 정소로 변환 할 필요가 있도록 인수가 문자열이 될 것.

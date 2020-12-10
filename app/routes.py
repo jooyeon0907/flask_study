@@ -1,13 +1,14 @@
 # pylint: disable=no-member
 from flask import render_template ,flash, redirect, url_for
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm, ResetPasswordRequestForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User ,Post
 from flask import request
 from werkzeug.urls import url_parse
 from datetime import datetime
 from app.email import send_password_reset_email
+from app.forms import ResetPasswordRequestForm, ResetPasswordForm
 
 
 ## route - uri를 정리해주는 것 
@@ -228,18 +229,38 @@ def explore():
 
 
 
-# 비밀번호 재설정 요청보기 기능.
+## 비밀번호 재설정 요청보기 기능.
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
     if current_user.is_authenticated:  # 인증된 유저라면
         return redirect(url_for('index'))
     form = ResetPasswordRequestForm()
+    user = User.query.filter_by(email=form.email.data).first()
+    print(f'::::::::::::::/reset_password_request >>>>{form.email.data}')
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
+        print(f'/:::::::reset_password_request >>>> user : {user}')
         if user: # 존재하는 email이라면
-            send_password_reset_email(user)
-        
+            send_password_reset_email(user) 
+        flash('Check your email for the instructions to reset your password')
+        return redirect(url_for('login'))
+    return render_template('reset_password_request.html', 
+                            title='Reset Password', form=form )
 
 
-
-
+## 비밀번호 재설정 보기 기능.
+@app.route('/reset_password/<token>', methods=['GET','POST'])
+def reset_password(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    user = User.verify_reset_password_token(token) # 토큰 확인 방법을 호출하여 사용자가 누구인지 확인하기
+    if not user: # 토큰 사용 결과 인증 실패시 
+        return redirect(url_for('index'))
+    form = ResetPasswordForm()
+    print(f'!!!!!!%%%% reset_password %%%%!!!!!!!!!! {user}')
+    if form.validate_on_submit():
+        user.set_password(form.password.data) # 비밀번호 재설정
+        db.session.commit()
+        flash('Your password has been reset.')
+        return redirect(url_for('login'))
+    return render_template('reset_password.html', form=form)

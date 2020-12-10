@@ -28,3 +28,6 @@ flask 확장 / __init__
 
 
 current_user
+
+정적메소드 클래스메소드
+상대/절대 url
