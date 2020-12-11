@@ -1,0 +1,11 @@
+
+@ Application and Request ContextsPermalink
+ 	* 어플리케이션 컨텍스트
+		current_app	-	활성화된 어플리케이션을 위한 인스턴스
+		g				-	리퀘스트를 처리하는 동안 어플리케이션에서 임시 스토리지를 사용할 수 있는 오브젝트
+	
+	* 리퀘스트 컨텍스트
+		request		- 클라이언트에 의해 송신된 HTTP 리퀘스트의 콘텐츠를 캡슐화 하는 리퀘스트 오브젝트
+		session		- 사용자 세션이며, 어플리케이션이 리퀘스트 사이의 “remembered” 인 값들을 저장하는데 사용하는 딕셔너리
+
+	

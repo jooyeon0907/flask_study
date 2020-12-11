@@ -8,9 +8,21 @@ import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler # SMTPHandler - 오류시 이메일 보내기 , RotatingFileHandler - 파일 기반 로그 활성화
 import os
 from flask_mail import Mail
+from flask_bootstrap import Bootstrap
+from flask_moment import Moment
+from flask_babel import Babel
+from flask import request
+from flask_babel import lazy_gettext as _l
 
+## 초기화
+# 모든 Flask 애플리케이션은 '애플리케이션 인스턴스'를 생성해야 한다.
+# 웹 서버는 클라이언트로부터 수신한 모든 request를 오브젝트에서 처리하는데
+#   이때 웹 서버 게이트웨이 인터페이스(Web Server Gateway Interfase)라는 프로토콜을 사용함. - WSGI
+#   WSGI : 파이썬에서 어플리케이션, 즉 파이썬 스크립트(웹 어플리케이션)가 웹 서버와 통신하기 위한 인터페이스 (프로토콜 개념으로 이해할 수 있음 )
 
-app = Flask(__name__)
+app = Flask(__name__) # 애플리케이션 인스턴스는 Flask클래스의 오브젝트이다. 
+                      # Flask 클래스 생성자에 필요한 인자는 메인 모듈의 이름이나 애플리케이션 패키지 이름이다.
+                      #     대부분의 어플리케이션에서는 파이썬의 __name__ 변수가 적절한 값. 
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -18,10 +30,26 @@ migrate = Migrate(app, db)
 login = LoginManager(app) # 로그인  초기화
 login.login_view = 'login' # Flask-Login에서 로그인 처리하는 보기 기능. 즉, url_for() URL 을 가져오기 위해 호출에 사용할 이름.
 # routes와 데이터베이스 구조 정의하는 models 호출
+login.login_message = _l('Please log in to access this page.')
+
+
+
 
 # Flask-Mail 인스턴스 생성
 #  - Flask 확장과 마찬가지로 Flask-Mail 확장도 Flask 애플리케이션을 만든 직후 인스턴스를 만들어야하기 때문에 __init__.py에 작성
 mail = Mail(app)
+
+bootstarp = Bootstrap(app)
+# Flask-Bootstrap 확장이 초기화되면 
+#   - bootstrap /base.html 템플릿이 사용 가능해지며 
+#   - extends 절이 있는 애플리 케이션 템플릿에서 참조 될 수 있음
+
+moment = Moment(app)
+# 다른 확장과 달리 Flask-Momonet는 moment.js 와 함께 작동하므로 애플리케이션의 모든 템플릿에는 라이브러리가 포함되어야함.
+# 수행하는 방법 1. 라이브러리를 가져오는 <script>태그를 명시적으로 추가
+#              2. <script>태그를 생성하는 moment.include_moment()함수를 노출하여 더 쉽게 만듦.
+
+babel = Babel(app)
 
 
 if not app.debug:
@@ -72,6 +100,17 @@ if not app.debug:
     # FATAL :  아주 심각한 에러가 발생한 상태, 시스템적으로 심각한 문제가 발생해서 어플리케이션 작동이 불가능할 경우
 
     """
+
+# 각 요청에 대해 호출되어 해당 요청에 사용할 언어 번역을 선택
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+# accept_languages : Flask의 request 객체 속성
+# 클라이언트가 요청과 함께 보내는 Accept-Language 헤더와 함께 작동하는 고급 인터페이스를 제공
+# Accept-Language 헤더는 클라이언트 언어 및 로케일 기본 설정을 가중치 목록으로 지정.
+# 이 헤더의 내용은 브라우저의 기본 설정 페이지에서 구성할 수 있으며 기본값은 일반적으로 컴퓨터 운영 체제의 언어 설정에 가져온다.
+#			-> 선호자가 선호하는 언어 목록을 제공 할 수 있으므로 유용함.
+
 
 
 # 순환 임포트

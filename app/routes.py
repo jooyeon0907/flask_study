@@ -235,13 +235,13 @@ def reset_password_request():
     if current_user.is_authenticated:  # 인증된 유저라면
         return redirect(url_for('index'))
     form = ResetPasswordRequestForm()
-    user = User.query.filter_by(email=form.email.data).first()
-    print(f'::::::::::::::/reset_password_request >>>>{form.email.data}')
+    # user = User.query.filter_by(email=form.email.data).first()
+    # print(f'::::::::::::::/reset_password_request >>>>{form.email.data}')
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         print(f'/:::::::reset_password_request >>>> user : {user}')
         if user: # 존재하는 email이라면
-            send_password_reset_email(user) 
+            send_password_reset_email(user)  
         flash('Check your email for the instructions to reset your password')
         return redirect(url_for('login'))
     return render_template('reset_password_request.html', 

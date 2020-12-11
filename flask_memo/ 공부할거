@@ -31,3 +31,12 @@ current_user
 
 정적메소드 클래스메소드
 상대/절대 url
+
+
+@@ flask basic
+https://has3ong.github.io/flask-basicstructure/
+
+@@ wsgi
+https://brownbears.tistory.com/350
+https://khanrc.tistory.com/entry/WSGI%EB%A1%9C-%EB%B3%B4%EB%8A%94-%EC%9B%B9-%EC%84%9C%EB%B2%84%EC%9D%98-%EA%B0%9C%EB%85%90
+    -> 콜백함수? https://dalkomit.tistory.com/65

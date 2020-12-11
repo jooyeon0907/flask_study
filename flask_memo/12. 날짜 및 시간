@@ -1,0 +1,31 @@
+
+@ Momnet 및 Flask-Momnet
+	* Momnet.js 
+		- 상상할 수 있는 모든 형식화 옵션을 제공하는 오픈소스 Javascript 라이브러리 
+	* Flask-Momnet
+		- momonet.js를 애플리케이셔에 쉽게 통합 할 수 있는 Flask 확장 프로그램
+		(venv) $ pip install flask-moment
+
+@ Moment.js 사용 
+	moment('2017-09-28T21:45:23Z').format('L')
+	"09/28/2017"
+	moment('2017-09-28T21:45:23Z').format('LL')
+	"September 28, 2017"
+	moment('2017-09-28T21:45:23Z').format('LLL')
+	"September 28, 2017 2:45 PM"
+	moment('2017-09-28T21:45:23Z').format('LLLL')
+	"Thursday, September 28, 2017 2:45 PM"
+	moment('2017-09-28T21:45:23Z').format('dddd')
+	"Thursday"
+	moment('2017-09-28T21:45:23Z').fromNow()
+	"7 hours ago"
+	moment('2017-09-28T21:45:23Z').calendar()
+	"Today at 2:45 PM"
+
+	* format() - Python의 striftime함수와 유사하 ㄴ형식 문자열로 출력형식을 제어
+	* fromNot() 및 calendar() 메서드는 현재 시간과 관련하여 타임 스탬프를 렌더링
+
+	** JavaScript 라이브러리의 구문과 유사한 구문을 사용하지만, 
+		moment()에 대한 인수가 이제 ISO 8601 문자열이 아니라 Python datetime 객체이다.
+		템플릿에서 실행 된 moment() 호출은 DOM의 적절한 위치에 렌더링 된 타임 스탬프를 삽입하는데 필요한 JavaScript 코드도 자동으로 생성 
+

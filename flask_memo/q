@@ -18,3 +18,15 @@ class Config(object):
 next_url = url_for('explore', page=posts.next_num) \
         if posts.has_next else None
          
+
+
+
+
+
+   -------------------------------------------
+
+
+
+  @ with       
+자바에서 Try-with-resources와 같은 역핳
+https://codechacha.com/ko/java-try-with-resources/

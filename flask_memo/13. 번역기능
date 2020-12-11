@@ -1,0 +1,103 @@
+
+https://medium.com/@maxtortime_88708/flask-babel-%EC%82%AC%EC%9A%A9%EB%B2%95-125b4604cd9b
+
+@ Flask-Babel
+	* 설치
+		(venv) $ pip install flask-babel
+
+	* 초기화 (app / __ init__.py )
+		from flask_babel import Babel
+		babel = Babel(app)
+
+	* 구성 변수 추가하기 (config.py)
+		- 지원되는 언어 목록을 추적
+		Class Config(object):
+			LANCUAGES = ['eb', 'es']
+
+	* 적합한 언어 선택하기
+		- Babel 인스턴스가 제공하는 localeselector로 데코레이터
+		- 데코레이팅 된 함수는 각 요청에 대해 호출되어 해당 요청에 사용할 언어 번역을 선택한다.
+		app / __ init__.py 
+
+		from flask import request
+		@babel.locaeselector
+		def get_locale():
+			return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
+		- 여기에서는 accept_languages라는 Flask의 요청 객체 속성을 사용하고 있다.
+		- 이 객체는 클라이언트가 요청과 함께 보내는 Accept-Language 헤더와 함께 작동하는 고급 인터페이스 제공
+
+		- 이 헤더는 클라이언트 언어 및 로케일 기본 설정을 가중치 목록으로 지정.
+		- 이 헤더의 내용은 브라우저의 기본 설정 페이지에서 구성할 수 있으며 기본값은 일반적으로 컴퓨터 운영 체제의 언어 설정에 가져온다.
+			-> 선호자가 선호하는 언어 목록을 제공 할 수 있으므로 유용함.
+			* Accept_Languages의 예) Accept-Language: da, en-gb;q=0.8, en;q=0.7
+		
+		- 최상의 언어를 선택하려면 클라이언트가 요청한 언어 목록을 응용 프로그램이 지원하는 언어와 비교하고 
+			클라이언트가 제공한 가중치를 사용하여 최상의 언어를 찾아야 한다.
+		- best_match() 메서드에 캡슐화되어 응용 프로그램에서 제공하는 언어 목록을 인수로 사용하고 최상의 선택을 반환
+
+@ 번역할 단어 표시
+	 - python 코드에서는 gettext, html에서는 _('문자열')을 써서 번역한 단어 표시 
+
+
+
+@ 번역 할 테스트 추출
+	- 모든 _() 및 _ㅣ() 제자리에 있는 응용 프로그램이 있으면 pybabel 명령을 사용하여 
+		이식 가능한 개체 템플릿을 나타내는 .pot 파일로 추추랄 수 있음
+	- 번역이 필요한 것으로 표시된 모든 텍스트가 포함된 텍스트 파일.
+	- 이 파일의 목적은 각 언어에 대한 번역 파일을 만드는 템플릿 역할을 하는 것.
+
+	* 응용 프로그램을 위해 구성 파일 만들기
+		- 추출 프로세스에는 번역 가능한 텍스트에 대해 스캔해야하는 파일을 pybabel에 알려주는 작은 구성 파일이 필요
+		    * babel.cfg (Pybabel 구성파일)
+			
+			[python: app/**.py]
+			[jinja2: app/templates/**.html]
+			extensions=jinja2.ext.autoescape,jinja2.ext.with_
+
+			- 처음 두 줄은 각각 Pythn 및 Jinja2 템플릿 파일의 파일 이름 패턴을 정의.
+			- 세 번째 줄은 Flask-Babel이 템플릿 파일을 올바르게 구문 분석하는데 도움이 되는 
+			 	Jinja2 템플릿 엔진에서 제공하는 두가지 확장을 정의함.
+
+	* 모든 텍스트를 .pot 파일로 문자열을 추출하는 명령 
+	(venv) $ pybabel extract -F babel.cfg -k _l -o messages.pot .
+
+	- 이 pybabel extract 명령은 -F 옵션에 제공된 구성 파일을 읽은 다음 
+	  명령에 지정된 디렉토리(이 경우 현재 디렉토리 또는 .)에서 시작하여 
+	  구성된 소스와 일치하는 디렉토리의 모든 코드 및 템플릿 파일을 스캔한다.
+	- 기본적으로 pybabel은 텍스트 마커로 _()를 찾지만 
+	   _ㅣ()로 가져온 lazy버전도 사용했으므로 도구에 -k _l 로도 찾도록 지시해야한다.
+	- -o 옵션은 출력 파일의 이름을 제공.
+
+	- .pot 파일이 프로젝트에 통합 될 필요가 있는 파일이 아님.
+	- 위의 명령을 다시 실행하기만하면 필요할 때마다 쉽게 다시 생성 할 수 있는 파일이여서
+		파일을 소스 제어에 커밋 할 필요는 X
+
+@ 언어 카탈로그 생성
+	- 새로운 언어를 번역할 수 있는 명령어. 
+		(venv) $ pybabel init -i messages.pot -d app/translations -l 'ise 언어코드(ko, en, 등)' 
+		creating catalog app/translations/es/LC_MESSAGES/messages.po based on messages.pot
+	- 위 명렁어 실행 후 translations/언어코드/LC_MESSAGES/messages.po 파일이 생성됨 
+	
+	- pybabel init 명령은 messages.pot 파일을 입력으로 사용하고 
+	  	-l 옵션에 지정된 언어에 대한 -d 옵션에 제공된 디렉토리에 새 언어 카탈로그를 작성.
+	- Flask-Babel이 기본적으로 번역 파일을 예상하는 곳이기 때문에 app / translations 디렉토리에 모든 번역을 설치할 것.
+	
+	- 다른 언어를 지원하려면 원하는 각 언어 코드로 위의 명령을 반복하여
+		각 언어가 messages.po 파일이 있는 자체 저장소를 얻도록 함.
+
+	- 각 언어 저장소에서 생성된 messages.po 파일은 언어 번역을 위한 
+	  사실상의 표준 형식인 gettext 유틸리티에서 사용하는 형식을 사용.
+
+
+
+
+
+
+
+
+
+
+** 로케일이란 ?
+https://www.lesstif.com/lpt/locale-87949397.html

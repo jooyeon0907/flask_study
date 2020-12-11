@@ -6,7 +6,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 load_dotenv(os.path.join(basedir, 'config.env'))  ## .env 파일 불러오기
 
-
+# 구성 변수 설정하기
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess' 
     # 양식을 보호하기 위해 비밀키 구성하기 **Flaskk 애플리케이션에서 중요한 부분!
@@ -51,3 +51,5 @@ class Config(object):
     페이지 3 : http : // localhost : 5000 / index? page = 3
     """
     
+    # 지원되는 언어 목록을 추적하기
+    LANGUAGES = ['en', 'es']

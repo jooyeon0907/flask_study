@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+    <h1>Hi, {{ current_user.username }}!</h1> {# user -> current_user : 현재 사용자를 템플릿으로 전달#}
+     {# /index와 /explore가 같은 양식을 불러내어 expolre에서 존재하지 않은 웹 양식(explore엔 form 인수 포함안했음)을 
+           렌더링 하려고할 때 템플릿 충돌 하는것을 방지하기위해 조건문 걸기 #}
+     {% if form %}
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.post.label }}<br>
+            {{ form.post(cols=32, rows=4) }}<br>
+            {% for error in form.post.errors %}
+            <span style="color:red;">[ {{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    {% endif %}
+    {# 블로그 게시물 하위 템플릿 사용하기#}
+    {% for post in posts %}
+    {# <div><p>{{ post.author.username }} says : <b>{{ post.body }}</b></p></div> #}
+        {%include '_post.html'  %}
+    {% endfor %}
+
+
+    {# 재설계된 페이지 매김 링크 (bootstrap 에서 제공하는 기능 사용)#}
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous{% if not prev_url %} disabled{% endif %}">  {# 이전 페이지 없으면 페이지 링크 비활성화 상태 적용하여 링크가 회색으로 표시됨.#}
+                <a href="{{ prev_url or '#' }}">
+                    <span aria-hidden="true">&larr;</span> Newer posts
+                </a>
+            </li>
+            <li class="next{% if not next_url %} disabled{% endif %}">
+                <a href="{{ next_url or '#' }}">
+                     Older posts <span aria-hidden="true">&larr;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+     <!-- Before 페이지 매김 링크 -->
+    {% if prev_url %}
+    <a href="{{ prev_url }}">Newer posts</a>
+    {% endif %}
+    {% if next_url %}
+    <a href="{{ next_url }}">Older posts</a>
+    {% endif %}
+
+{% endblock %}

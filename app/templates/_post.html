@@ -1,9 +1,23 @@
-<table>
-    <tr valign="top">
-        <td><img src="{{ post.author.avatar(36) }}"></td> 
+<table class="table table-bover">
+    <tr>
+        <td width="70px">
+            <a href="{{ url_for('user', username=post.author.username) }}">
+                <img src="{{ post.author.avatar(70) }}"></td> 
+            </a>
         <td>
-            <a href="{{ url_for('user', username=post.author.username) }}">{{ post.author.username }}</a>
-             says:<br>{{ post.body }}
+            {% set user_link %}
+            <a href="{{ url_for('user', username=post.author.username) }}">
+                {{ post.author.username }}
+            </a>
+            {% endset %}
+            {{ _('%(username)s said %(when)s',
+            username=user_link, when=moment(post.timestamp).fromNow()) }}
+            {#
+                여기서 username은 이름 뿐만 아니라 사용자의 프로필 페이지를 가리키는 링크가 되길 원하기 때문에
+                set, endset 템플릿 지시문을 사용하여 user_link라는 중간 변수를 만든 다음 전달해야한다
+            #}
+             <br>
+             {{ post.body }}
         </td>
     </tr>
 </table>
