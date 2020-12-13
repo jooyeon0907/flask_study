@@ -134,7 +134,7 @@ def create_app(config_class=Config):
 # 각 요청에 대해 호출되어 해당 요청에 사용할 언어 번역을 선택
 @babel.localeselector
 def get_locale():
-   return request.accept_languages.best_match(app.config['LANGUAGES'])
+   return request.accept_languages.best_match(current_app.config['LANGUAGES'])
   # return 'es'  # best_match() 없이 반환값을  바로 설정하기
 # accept_languages : Flask의 request 객체 속성
 # 클라이언트가 요청과 함께 보내는 Accept-Language 헤더와 함께 작동하는 고급 인터페이스를 제공

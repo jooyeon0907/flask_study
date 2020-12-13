@@ -66,7 +66,7 @@ def index():
     # 페이지 매김해서 게시글 가져오기 
     page = request.args.get('page', 1 ,type=int)     # 1. page 쿼리 문자열 인수 또는 기본값 1에서 표시할 페이지 번호를 결정한 다음, 
     posts = current_user.followed_posts().paginate(  # 2. 원하는 결과 페이지만 검색하기 위해 paginate() 메서드 사용
-        page, app.config['POSTS_PER_PAGE'], False)    # 페이지 크기를 결정하는 POSTS_PER_PAGE 구성 항목은 app.config 개체를 통해 액세스됩니다.
+        page, current_app.config['POSTS_PER_PAGE'], False)    # 페이지 크기를 결정하는 POSTS_PER_PAGE 구성 항목은 app.config 개체를 통해 액세스됩니다.
     
     # 다음 및 이전 페이지 링크 생성하기
     next_url = url_for('main.index', page=posts.next_num) \
@@ -104,7 +104,7 @@ def user(username):  # <username> 이랑 변수명 맞춰줘야됨.
     # 사용자 프로필 보기 기능의 페이지 매김
     page = request.args.get('page', 1, type=int) 
     posts = user.posts.order_by(Post.timestamp.desc()).paginate(
-        page , app.config['POSTS_PER_PAGE'], False)
+        page , current_app.config['POSTS_PER_PAGE'], False)
     next_url = url_for('main.user', username=user.username, page=posts.next_num) \
         if posts.has_next else None
     prev_url = url_for('main.user', username=user.username, page=posts.prev_num) \
@@ -181,7 +181,7 @@ def unfollow(username):
 def explore():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
-        page, app.config['POSTS_PER_PAGE'], False)
+        page, current_app.config['POSTS_PER_PAGE'], False)
 
     # 다음 및 이전 페이지 링크 생성하기
     next_url = url_for('main.explore', page=posts.next_num) \
