@@ -1,0 +1,66 @@
+
+@ 청사진 (Blueprint)
+    - FLask에서 청사진은 애플리케이션의 하위 집합을 나타내는 논리적 구조.
+    - Blueprint에는 경로,보기 기능, 양식, 템플릿 및 정적 파일과 같은 요소가 포함될 수 있따.
+    - 청사진을 별도의 Python 패키지로 작성하면 애플리케이션의 특정기능과 관련된 요소를 캡슐화하는 구성요소가 있따.
+
+
+
+1. 캡슐화 하기
+
+2-1. __init__.py 모듈에서 블루프린트 수행되게하기 
+
+    from flask import Blueprint
+    bp = Blueprint('', __name__)
+
+2-2. 블루프린트에서 경로를 정의 할 때 @app.route 대신 @bp.route 데코레이트 사용하기
+     URL을 빌드하기 위해 url_for()에서 사용되는 구문도 변경해야함.
+
+
+3. app/__init__.py에 새로 만든 블르프린트 등록하기 
+
+    
+@ 애플리케이션 팩토리 기능
+app/__init__.py
+    *before : 응용 프로그램이 전역 변수로 존재하는 경우
+
+    app = Flask(__name__)
+    app.config.from_object(config_class)
+    db = SQLAlchemy(app)
+    migrate = Migrate(app)
+
+    -> 대부분의 Flask 확장은 확장의 인스턴스를 만들고 애플리케이션을 인수로 전달하여 초기화 됨
+
+
+    *after : 응용 프로그램이 전역 변수로 존재하지 않는 경우
+
+    db = SQLAlchemy()
+    migrate = Migrate()
+
+    def create_app(config_class=Config):
+        app = Flask(__name__)
+        app.config.from_object(config_class)
+
+        db.init_app(app)
+        migrate.init_app(app,db)
+
+    -> 확장이 두단계로 초기화되는 대체 모드.
+        확장 인스턴스는 이전과 같이 전역 범위에서 먼저 생성되지만 인수가 전달X
+        -> 응용 프로그램에 연결되지 않은 확장의 인스턴스가 생성됨
+        팩토리 함수에서 애플리케이션 인스턴스가 생성될 때 현재 알려진 애플리케이션에 바인딩 하려면
+        확장 인스턴스에서 init_app() 메서드를 호출해야한다.
+
+    if not app.debug and not app.testing:
+        - not app.testing 절을 추가하여 단위 테스트 중에 모든 로깅을 건너 뜀
+        - 구성에서 TESTING 변수가 True로 설정되어 있기 때문에 단위 테스트를 실행할 때 app.testing 플래그가 True가 됨 
+
+
+
+
+
+
+
+
+
+
+

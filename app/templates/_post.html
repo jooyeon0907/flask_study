@@ -16,8 +16,26 @@
                 여기서 username은 이름 뿐만 아니라 사용자의 프로필 페이지를 가리키는 링크가 되길 원하기 때문에
                 set, endset 템플릿 지시문을 사용하여 user_link라는 중간 변수를 만든 다음 전달해야한다
             #}
-             <br>
-             {{ post.body }}
+            <br>
+            {# 각 블로그 게시물에 ID 추가하기 
+            - 각 게시물에 고유 식별자가 생기므로 jQeury를 사용하여 해당 게시물의 요소를 찾고 그 안의 텍스트를 추출할 수 있음 #}
+            <span id="post{{ post.id }}">{{ post.body }}</span>
+           
+            {% if post.language and post.language != g.locale %}{# 언어가 감지된 게시물에만 번역 링크가 표시됨 #}
+            <br><br>
+            {# 번역 링크에도 ID 추가하기 #}
+             <span id="translation{{ post.id }}">
+                    <a href="javascript:translate(
+                                '#post{{ post.id }}',
+                                '#translation{{ post.id }}',
+                                '{{ post.language }}',
+                                '{{ g.locale }}');">
+                                {{ _('Translate') }}</a>
+            </span>
+            {# 이 링크는 클라이언트가 페이지를 요청할 때 서버에서 렌더링되므로 
+                {{}} 표현식을 사용하여 함수에 대한 4개의 인수를 생성. 
+                각 게시물에는 고유하게 생성된 인수와 함께 자체 번역 링크가 있음. #}
+            {% endif %}
         </td>
     </tr>
 </table>

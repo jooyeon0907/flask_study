@@ -1,15 +1,15 @@
 # 데이터베이스와 관련된 코드
 # pylint: disable=no-member
 from datetime import datetime
-from app import db , app
 from werkzeug.security import generate_password_hash , check_password_hash # password 암호화를 위해 사용 
 from flask_login import UserMixin
 from app import login
 from hashlib import md5 # 사용자 아바타 URL
 from time import time
 import jwt
-
-
+# from app import db , app
+from app import db
+from flask import current_app
 
 # 추종자 연관 테이블
 # 외래 키 외에 데이터가 없는 보조 테이블이므로 연결된 모델 클래스 없이 만듦.
@@ -186,6 +186,8 @@ class Post(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow) # 게시일의 경우에는 기본값을 'datetime.utcnow()'를 사용함으로써 명시적으로 게시일을 나타내지 않은 경우 현재시간을 게시해줌
     # user테이블의 id를 외래키로 하는 user_id     #'테이블명.필드명'
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) 
+    language = db.Column(db.String(5))
+    
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)

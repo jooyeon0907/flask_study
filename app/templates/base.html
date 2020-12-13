@@ -53,6 +53,56 @@
 {% block scripts %}
     {{ super() }} {# 기본 콘텐츠를 잃지 않고 moment.js 라이브러리를 추가하기위해 사용 #}
     {{ moment.include_moment() }}
+    {{ moment.lang(g.locale) }}
+    
+    <script>
+        function translate(sourceElem, destElem, sourceLang, destLang ){
+            console.log( sourceElem )
+            console.log( destElem )
+            console.log( sourceLang )
+            console.log(destLang)
+
+            $(destElem).html('<img src="{{ url_for('static',filename='loading.gif') }}">');
+            $.post('/translate', {
+                text: $(sourceElem).text(),
+                source_language: sourceLang,
+                dest_language: destLang
+            }).done(function(response) {
+                // success callback
+                $(destElem).text(response['text'])
+            }).fail(function() {
+                // error callback
+                $(destElem).text("{{ _('Error: Could not contact server.') }}");
+            });
+        }
+    </script>
+        {#
+                @ 클라이언트 측 번역기능 
+                - 정의한 /translate URL로 POST 요청을 보내기 @app.route('/translate',methods=['POST'])
+                - 이를 위해 $.post() 함수 사용. 
+                -> 브라우저가 웹 양식을 제출 하는 방식과 유사한 형식으로 서버에 데이터를 제출
+                - 이는 FLask가 데이터를 reqeuset.form 사전에 통합 할 수 있기 때문에 편리.done
+                - $.post()에 대한 인수는 두 개로, ( $.post( '/translate', {...} ))
+                -   먼저 요청을 보낸 URL과 
+                -   서버가 예상하는 세 개의 데이터 항목이 있는 딕셔너리(또는 JavaScript에서 호출되는 객체)
+
+                ** $.post()
+                - 서버에 POST 방식의 HTTP 요청을 보낼 수 있다.
+                - $.(URL주소 [,데이터] [,콜백함수]);
+                    * URL 주소 : 클라이언트가 HTTP 요청을 보낼 서버의 주소이다.
+                    * 데이터 : HTTP 요청과 함께 서버로 보낼 데이터를 전달한다.
+                    * 콜백 함수 : HTTP 요청이 성공했을 때 실행할 함수를 정의한다. 
+
+                @ promise사용하여 콜백 함수 제공
+                - 코드가 명확해짐
+                - 콜백을 $.post() 호출의 반환 값에 연결할 수 있음 
+                - 
+                $.post(<url>, <data>).done(function(response) {
+                    // success callback
+                }).fail(function() {
+                    // error callback
+                })
+        #}
 {% endblock %}
 
 {#

@@ -1,8 +1,15 @@
 # pylint: disable=no-member
 from datetime import datetime, timedelta
 import unittest
-from app import app, db
+# from app import app, db
+from app import create_app, db
 from app.models import User, Post
+from config import Config
+
+
+class TestConfig(Config):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite://'
 
 # 사용자 모델 단위 테스트
 
@@ -12,12 +19,17 @@ class UserModelCase(unittest.TestCase):
     # tearDown(): 테스트가 끝난 후 정리를 수행 할 수 있는 기회를 제공(해제)
    ####
     def setUp(self): # 단위 테스트가 개발에 사용하는 일반 데이터베이스를 사용하지 못하도록 serUp()에서 약간의 해킹을 구현
-        app.config['SQLALCHEMY_DATABASE_URI']  = 'sqlite://' 
+        #app.config['SQLALCHEMY_DATABASE_URI']  = 'sqlite://' 
+        self.app = create_app(TestConfig)
+        self.app_context = self.app.app_context()
+        self.app_context.push()
         db.create_all() # 모든 데이터베이스 테이블을 만듦 -> 테스트에 유용한 데이터베이스를 처음부터 빠르게 만드는 방법 
-    
+
+
     def tearDown(self):
         db.session.remove()
         db.drop_all()
+        self.app_context.pop() ## 
     
     def test_password_hasing(self):
         u = User(username='susan')

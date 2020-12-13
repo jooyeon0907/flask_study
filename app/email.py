@@ -1,8 +1,9 @@
 ## 이메일 발송 래퍼 기능.
-from flask_mail import Message
-from app import mail, app
-from flask import render_template
 from threading import Thread
+from flask_mail import Message
+from app import mail
+#from app import mail, app
+from flask import current_app
 
 
 # 이메일을 비동기적으로 보내기
@@ -33,7 +34,8 @@ def send_email(subject, sender, recipients, text_body, html_body ):
     msg.html = html_body
     #mail.send(msg)   # -> 이메일 비동기적으로 보내기위해 send_async_email() 함수에서 작성함.
     
-    Thread( target=send_async_email, args=(app, msg) ).start() 
+    Thread( target=send_async_email, args=(current_app._get_current_object(), msg) ).start() 
+    #Thread( target=send_async_email, args=(app, msg) ).start() 
     # threading 모듈의 Thread 클래스를 통해 호출되는 백그라운드 스레드에서 실행됨 
     # 이메일 전송은 스레드에서 실행되며 프로세스가 완료되면 스레드가 종료되고 스스로 정리됨
     # msg 인수 뿐만아니라 응용프로그램 인스턴스도 전송함
@@ -50,12 +52,4 @@ def send_email(subject, sender, recipients, text_body, html_body ):
 
 
 
-# 비밀번호 재설정 이메일 보내기 기능
-def send_password_reset_email(user):
-    token = user.get_reset_password_token()
-    send_email( '[Microblog] Reset Your Password',
-                sender=app.config['ADMINS'][0],
-                recipients=[user.email],
-                text_body=render_template('email/reset_password.txt', user=user, token=token),
-                html_body=render_template('email/reset_password.html', user=user, token=token))
 

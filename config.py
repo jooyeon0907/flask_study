@@ -53,3 +53,7 @@ class Config(object):
     
     # 지원되는 언어 목록을 추적하기
     LANGUAGES = ['en', 'es']
+
+    # Microsoft Translator 키를 추가
+    MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY') 
+    
