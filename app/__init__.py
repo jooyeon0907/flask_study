@@ -51,14 +51,16 @@ moment = Moment()
 babel = Babel()
 
 
+## app을 current_app 변수로 바꾸면 애플리케이션 인스턴스를 전역 변수로 가져올 필요가 X
 
-##
+
 def create_app(config_class=Config):
     app = Flask(__name__) # 애플리케이션 인스턴스는 Flask클래스의 오브젝트이다. 
                       # Flask 클래스 생성자에 필요한 인자는 메인 모듈의 이름이나 애플리케이션 패키지 이름이다.
                       #     대부분의 어플리케이션에서는 파이썬의 __name__ 변수가 적절한 값. 
     app.config.from_object(config_class)
 
+    
     db.init_app(app)
     migrate.init_app(app, db)
     login.init_app(app)
@@ -78,7 +80,7 @@ def create_app(config_class=Config):
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
     # register_bluteprint() 호출에는 url_prefix 인수  (필수는 X 선택사항)
-    #  -> 블루프린트에 정의 된 모든 경로는 URL에서 이 접두사('/auth'를 가져온다
+    #  -> 블루프린트에 정의 된 모든 경로는 URL에서 이 접두사('/auth')를 가져온다
     #  ex) http://localhost:5000/auth/login
 
     from app.main import bp as main_bp

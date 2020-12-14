@@ -25,12 +25,21 @@ class UserModelCase(unittest.TestCase):
         self.app_context.push()
         db.create_all() # 모든 데이터베이스 테이블을 만듦 -> 테스트에 유용한 데이터베이스를 처음부터 빠르게 만드는 방법 
 
-
     def tearDown(self):
         db.session.remove()
         db.drop_all()
         self.app_context.pop() ## 
-    
+
+    """
+    -> context가 없으면 어떤 애플리케이션이 활성 상태인지 알 수 없으므로 current_app 예외가 발생.
+    -> 보기 함수를 호출하기 전에, Flask는 애플리케이션 컨텍스트를 push하여 current_app 및 g 에 생며을 불어 넣음
+    -> 요청이 완료되면 이러한 변수와 함게 컨텐스트가 제거됨
+    -> 단위 테스트 setUp() 메서드에서 작동하는 db.create_all() 호출을 위해 방금 만든 응용 프로그램 인스턴스에 대한 
+        응용 프로그램 컨텍스트를 푸시함. -> db.create_all()은 current_app.config를 사용하여 어디에 있는지 알 수 있음. 
+        그럼 다움 tearDown() 메서드에서 컨텍스트를 pop 하여 모든 것을 깨끗한 상태로 재설정
+    """
+
+
     def test_password_hasing(self):
         u = User(username='susan')
         u.set_password('cat')

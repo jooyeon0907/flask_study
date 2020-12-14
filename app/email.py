@@ -35,6 +35,8 @@ def send_email(subject, sender, recipients, text_body, html_body ):
     #mail.send(msg)   # -> 이메일 비동기적으로 보내기위해 send_async_email() 함수에서 작성함.
     
     Thread( target=send_async_email, args=(current_app._get_current_object(), msg) ).start() 
+                        # current_app._get_current_object() 표현식은 프록시 객체 내부에서 실제 응용 프로그램 인스턴스를 추출하므로 스레드에 인수로 전달함 
+
     #Thread( target=send_async_email, args=(app, msg) ).start() 
     # threading 모듈의 Thread 클래스를 통해 호출되는 백그라운드 스레드에서 실행됨 
     # 이메일 전송은 스레드에서 실행되며 프로세스가 완료되면 스레드가 종료되고 스스로 정리됨

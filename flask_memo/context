@@ -1,5 +1,5 @@
 
-@ Application and Request ContextsPermalink
+@ Application and Request Contexts
  	* 어플리케이션 컨텍스트
 		current_app	-	활성화된 어플리케이션을 위한 인스턴스
 		g				-	리퀘스트를 처리하는 동안 어플리케이션에서 임시 스토리지를 사용할 수 있는 오브젝트

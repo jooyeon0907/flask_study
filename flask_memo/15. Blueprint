@@ -1,9 +1,11 @@
 
 @ 청사진 (Blueprint)
-    - FLask에서 청사진은 애플리케이션의 하위 집합을 나타내는 논리적 구조.
-    - Blueprint에는 경로,보기 기능, 양식, 템플릿 및 정적 파일과 같은 요소가 포함될 수 있따.
+    - FLask에서 청사진은 애플리케이션의 하위 집합을 나타내는 논리적 구조. 
+    - Blueprint에는 경로,보기 기능, 양식, 템플릿 및 정적 파일과 같은 요소가 포함될 수 있따. 
+    - url의 path를 나누어 사용 
     - 청사진을 별도의 Python 패키지로 작성하면 애플리케이션의 특정기능과 관련된 요소를 캡슐화하는 구성요소가 있따.
-
+        -> 큰 application을 단순화시키는 역할을 하고, Flask extension(확장 프로그램, 라이브러리 등) 등록을 위한 중심 수단으로 쓰임
+    
 
 
 1. 캡슐화 하기
@@ -17,7 +19,7 @@
      URL을 빌드하기 위해 url_for()에서 사용되는 구문도 변경해야함.
 
 
-3. app/__init__.py에 새로 만든 블르프린트 등록하기 
+3. app/__init__.py에 새로 만든 블루프린트 등록하기 
 
     
 @ 애플리케이션 팩토리 기능
@@ -30,6 +32,7 @@ app/__init__.py
     migrate = Migrate(app)
 
     -> 대부분의 Flask 확장은 확장의 인스턴스를 만들고 애플리케이션을 인수로 전달하여 초기화 됨
+
 
 
     *after : 응용 프로그램이 전역 변수로 존재하지 않는 경우
@@ -52,14 +55,36 @@ app/__init__.py
 
     if not app.debug and not app.testing:
         - not app.testing 절을 추가하여 단위 테스트 중에 모든 로깅을 건너 뜀
-        - 구성에서 TESTING 변수가 True로 설정되어 있기 때문에 단위 테스트를 실행할 때 app.testing 플래그가 True가 됨 
+        - 구성에서(tests.py) TESTING 변수가 True로 설정되어 있기 때문에 단위 테스트를 실행할 때 app.testing 플래그가 True가 됨 
 
 
 
 
 
+    >>> from flask import current_app
+    >>> current_app.config['SQLALCHEMY_DATABASE_URI']
+    Traceback (most recent call last):
+        ...
+    RuntimeError: Working outside of application context.
+
+    >>> from app import create_app
+    >>> app = create_app()
+    >>> app.app_context().push()
+    >>> current_app.config['SQLALCHEMY_DATABASE_URI']
+    'sqlite:////home/miguel/microblog/app.db'
 
 
+    -> context가 없으면 어떤 애플리케이션이 활성 상태인지 알 수 없으므로 current_app 예외가 발생.
+    -> 보기 함수를 호출하기 전에, Flask는 애플리케이션 컨텍스트를 push하여 current_app 및 g 에 생며을 불어 넣음
+    -> 요청이 완료되면 이러한 변수와 함게 컨텐스트가 제거됨
+    -> 단위 테스트 setUp() 메서드에서 작동하는 db.create_all() 호출을 위해 방금 만든 응용 프로그램 인스턴스에 대한 
+        응용 프로그램 컨텍스트를 푸시함. -> db.create_all()은 current_app.config를 사용하여 어디에 있는지 알 수 있음. 
+        그럼 다움 tearDown() 메서드에서 컨텍스트를 pop 하여 모든 것을 깨끗한 상태로 재설정
+
+
+
+@ 
+    - app을 바로 참조하는 대신, 현재 활동을 다루는 애플리케이션을 가리키는 current.app 프록시를 사용 
 
 
 

@@ -172,6 +172,7 @@ def unfollow(username):
         current_user.unfollow(user) 
         db.session.commit()
         flash(f'You are not followinng {username}')
+        return redirect(url_for('main.user',username=username))
     else:   # validate_on_submit() 호출이 실패 할 수 있는 유일한 이유는 CSRF 토큰이 없거나 유효하지 않은 경우
         return redirect(url_for('main.index')) # 이 경우 애플리케이션을 홈페이지로 다시 리디렉션함
 
