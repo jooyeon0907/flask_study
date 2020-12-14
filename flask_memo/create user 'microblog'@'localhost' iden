@@ -1,0 +1,9 @@
+create user 'microblog'@'localhost' identified by '<db-password>';
+
+grant all privileges on microblog.* to 'microblog'@'localhost';
+
+mysql+pymysql://microblog:<db-password>@localhost:3306/microblog
+
+
+mysql+pymysql://계정명:계정비밀번호@DB-주소:DB-포트/DB명
+
