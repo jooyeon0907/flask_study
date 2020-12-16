@@ -1,0 +1,39 @@
+ 
+
+ @ MYSQL 설정 부분에서
+	(venv) $ flask db upgrade  
+	 -> 에러남
+		 raise RuntimeError("'cryptography' package is required for sha256_password or caching_sha2_password auth methods")
+		RuntimeError: 'cryptography' package is required for sha256_password or caching_sha2_password auth methods
+
+	*
+	설치파일 누락되었는지 다시 
+	(venv) $ pip install -r requirements.txt 로 다시 해보았지만 이미 다 already
+	*
+	cryptography가 설치 되지 않은거여서
+	pip3 install cryptography 해줌  (https://yomi-tory.tistory.com/287)
+
+	* 다시시도
+	(venv) $ flask db upgrade  
+	-> 에ㅓ러남
+		sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1193, "Unknown system variable 'tx_isolation'")
+
+	* 이전 버전의 SQLAlchemy를 사용했기 때문
+	* 업그레이드 해주기
+		(venv) $ pip install --upgrade SQLAlchemy
+		( https://stackoverflow.com/questions/50156520/cannot-connect-to-a-local-mysql-db-with-sqlalchemy-on-windows-machine )
+
+		./venv/lib/python3.8/site-packages (1.3.20)로 업그레이드 됨 
+
+		
+
+
+
+
+
+
+
+
+
+
+

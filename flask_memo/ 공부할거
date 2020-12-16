@@ -6,6 +6,13 @@ chmod
 ll
 vi
 
+
+
+
+curl
+https://johngrib.github.io/wiki/curl/
+https://shutcoding.tistory.com/23
+
 @flask
 render_template 함수 (flask 프레임 워크)
 
@@ -40,3 +47,6 @@ https://has3ong.github.io/flask-basicstructure/
 https://brownbears.tistory.com/350
 https://khanrc.tistory.com/entry/WSGI%EB%A1%9C-%EB%B3%B4%EB%8A%94-%EC%9B%B9-%EC%84%9C%EB%B2%84%EC%9D%98-%EA%B0%9C%EB%85%90
     -> 콜백함수? https://dalkomit.tistory.com/65
+
+
+

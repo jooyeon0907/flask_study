@@ -1,0 +1,122 @@
+
+@ 안전하게 암호없이 로그인하기 
+    
+    & ssh ahope@172.16.3.101
+	& password :
+    -> ssh 접속할 때마다 직접 비밀번호를 입력해서 들어가면 번거롭기도 하지만 노출의 위험도 있다.
+    -> 공개키를 만든 뒤, 인증해서 로그인하기 
+
+    * 로컬 컴퓨터(ssh client)에서 터미널을 열어  ~/.ssh 디렉토리의 내용 확인하기 -> 키가 생성되어 있는지 확인
+        & jooyeon@ahope-B250M-DS3H:~$ ls ~/.ssh
+         known_hosts
+        (키가 생성이 안된 상태임)
+    
+    1. SSH Key 만들기 
+        $ ssh-keygen
+        Generating public/private rsa key pair.
+        Enter file in which to save the key (/home/jooyeon/.ssh/id_rsa): <SSH 키글 저장할 위치를 지정. 엔터를 누르면 기본 경로($ HOME/.ssh)에 저장됨>
+        Enter passphrase (empty for no passphrase): <passharase입력하기. 일종의 비밀번호로 비공개키를 입력한 값으로 암호화 함. 생략 가능함(생략하면 자동 로그인됨) >
+        Enter same passphrase again:  
+
+        ** 완료
+        Your identification has been saved in secondKey
+        Your public key has been saved in secondKey.pub
+        The key fingerprint is:
+        SHA256:HQbsTpNK8hvH6u6Rutot/5UWP/X3G55dLMg91JSL7xE jooyeon@ahope-B250M-DS3H
+        The key's randomart image is:
+        +---[RSA 3072]----+
+        |       ..        |
+        |        ..      .|
+        |       . .o    ..|
+        |    . . =o .  .o.|
+        |     + =S.o  .oE.|
+        |      +.+  = =.o.|
+        |      o=  + = ++=|
+        |   ..oo. o   .ooO|
+        |  ..+B*..      =+|
+        +----[SHA256]-----+
+
+    2.
+    ** 키 생성 됐는지 확인하기 ( .ssh 디렉토리 안에 생성됨 )
+        $ jooyeon@ahope-B250M-DS3H:~$ ls -al ~/.ssh/
+        합계 20
+        drwx------  2 jooyeon jooyeon 4096 12월 16 12:31 .
+        drwxr-xr-x 25 jooyeon jooyeon 4096 12월 16 14:52 ..
+        -rw-------  1 jooyeon jooyeon 2610 12월 16 12:29 id_rsa
+        -rw-r--r--  1 jooyeon jooyeon  578 12월 16 12:29 id_rsa.pub
+        -rw-r--r--  1 jooyeon jooyeon  444 12월 14 16:22 known_hosts
+
+    ** SSH Client를 식별하기 위한 제 3자에게 제공할 공개키가 담긴 파일 
+        $ jooyeon@ahope-B250M-DS3H:~$ more ~/.ssh/id_rsa.pub 
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDgz1Pw5UMF9Mf0eFSH9OkOn7XCPNXrMtdoYYUfXgysJAQT1gz0nKVUJLWUPIsGcl/dh2cVdHmmqPLmYRvVJWaeAoHufDbNqYjvZOgloQheUweIJ2qO6rwrvwtiyxDROc7/Q5t1izFVKWEI7AZBXLfZ04VyEwXwTT8BK3gqH1VvhanRDw/pdVIkcvwYJii3XQ2xGcPcg2JOxBcvLPENAjHaBG/srZhUwLx9qmFEcgIF12kFnnH42A1rpSDDQbfMq6gaOfgRLLebLKLgArp/0Fb1xqB24WnQWlWghrMqQ1NOWzu/RzTFhUbMo9nbZaQGT7m8D6S89WGkmUgP/eCG1mjyVTOhQvJSEMNXv5hRGRjKfqbGtnfuQKcr4aG5OayZC9MgTiG3Zooh+5OW8mgJR+tAZJ7hp+9yDLTugiT/3Ib2QSWptUCi7E+3WW6nZvsqtFeWbOvlAnM0UmKWQS1icKZwY+/jhA+4QaE/f9cjDipDQEihw8uD844NLVcFstcytHs= jooyeon@ahope-B250M-DS3H
+        jooyeon@ahop
+
+
+    3. SSH public key를 SSH Server에 복사하기 
+        $ ssh-copy-id 타겟 서버
+        예) $ ssh-copy-id ahope@172.16.3.101
+
+        * ssh-copy-id : 키를 원격호스트의 ahope@172.16.3.101
+
+    4. ssh를 통해 타겟 서버 접속 
+        $ ssh ahope@172.16.3.101 
+        -> SSH Client 공개키와 접속하려는 SSH Sever의 공개키가 같음이 인증되어 암호없이 로그인이 된다 
+     
+        $ ahope@ubuntu:~$ ls ~/.ssh
+         authorized_keys  known_hosts
+        ->  복사한 SSH Server의 공개키가 있는 authorized_keys 파일이 생김
+
+        $ ahope@ubuntu:~$ more ~/.ssh/authorized_keys 
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDgz1Pw5UMF9Mf0eFSH9OkOn7XCPNXrMtdoYYUfXgysJAQT1gz0nKVUJ
+        LWUPIsGcl/dh2cVdHmmqPLmYRvVJWaeAoHufDbNqYjvZOgloQheUweIJ2qO6rwrvwtiyxDROc7/Q5t1izFVKWEI7AZBXL
+        fZ04VyEwXwTT8BK3gqH1VvhanRDw/pdVIkcvwYJii3XQ2xGcPcg2JOxBcvLPENAjHaBG/srZhUwLx9qmFEcgIF12kFnnH
+        42A1rpSDDQbfMq6gaOfgRLLebLKLgArp/0Fb1xqB24WnQWlWghrMqQ1NOWzu/RzTFhUbMo9nbZaQGT7m8D6S89WGkmUgP
+        /eCG1mjyVTOhQvJSEMNXv5hRGRjKfqbGtnfuQKcr4aG5OayZC9MgTiG3Zooh+5OW8mgJR+tAZJ7hp+9yDLTugiT/3Ib2Q
+        SWptUCi7E+3WW6nZvsqtFeWbOvlAnM0UmKWQS1icKZwY+/jhA+4QaE/f9cjDipDQEihw8uD844NLVcFstcytHs= jooye
+        on@ahope-B250M-DS3H
+
+    **** 다른 키 이용하기
+    $ ssh -i path/to/key server@address
+     -> ssh-copy-id 말고 다른 키를 만든 경로를 지정해서 복사해줌 
+
+
+@ 서버 보안
+    * 루트 로그인 비활성화  
+        / etc / ssh / sshd_config 파일 편집 
+        PermitRootLogin no  # no로 설정 
+
+    * 암호 로그인 비활성화
+       / etc / ssh / sshd_config 파일 편집 
+        PasswordAuthentication no # no로 설정
+
+    * SSH 구성 편집을 완료 한 후 변경 사항 적용하기 -> 서비스 다시 시작해야됨
+        $ sudo service ssh restart
+
+    * 방화벽 설치 - ufw
+        - 명시적으로 활성화 되지 않은 포트에서 서버에 대한 액세스를 차단하는 소프트웨어 
+        $ sudo apt-get install -y ufw
+        $ sudo ufw allow ssh
+        $ sudo ufw allow http
+        $ sudo ufw allow 443/tcp
+        $ sudo ufw --force enable
+        $ sudo ufw status
+           
+
+
+           
+@ scp : 다른 서버에서 파일 복사하기 (Copying files between local and remote computers)
+    $ scp path/to/local/file server@address:/remote/destination/path
+
+    $ scp server@address:/remote/file/path path/to/local/file/destination 
+
+    -> 이 방법으로 로컬에 있는 코드를 원격 서버에 복사해서 사용할 수 있다.
+
+
+
+
+
+ * gunicorn이 구동되는지 확인 
+            ps aux | grep gunicorn
+
+* ssh key
+https://opentutorials.org/module/432/3742

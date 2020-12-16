@@ -1,0 +1,41 @@
+
+@ 가상 머신 만들기 
+
+    * virtualBox 설치
+        https://www.virtualbox.org/wiki/Downloads
+    
+    * VM 사양 설정 
+        VirtualBox VMs 디렉토리에 파일 만들기 
+
+
+
+
+
+@ varant 
+
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/focal64"
+  config.vm.network "private_network", ip: "172.16.3.101"
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "1024"
+  end
+end
+
+* 호스트명 설정 
+    config.vm.hostname=""
+
+
+    https://apophis0.tistory.com/48
+
+
+    * supervisor
+    http://supervisord.org/
+
+
+* vagrant 
+https://anewhope.tistory.com/entry/vagant-%EB%A1%9C-%EB%A1%9C%EC%BB%AC-%ED%85%8C%EC%8A%A4%ED%8A%B8-%ED%99%98%EA%B2%BD%EC%9D%84-%EB%A7%8C%EB%93%A4%EC%96%B4-%EB%B3%B4%EC%9E%90
+https://medium.com/@cratios48/%EB%B2%A0%EC%9D%B4%EA%B7%B8%EB%9F%B0%ED%8A%B8-%ED%8C%8C%EC%9D%BC-%EC%84%A4%EC%A0%95-803aaaf52eb
+
+* 두개 만들기
+https://teamsmiley.github.io/2018/03/17/vagrant-ssh-root/

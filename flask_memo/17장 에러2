@@ -1,0 +1,39 @@
+
+@ 에러난 부분
+(venv) ahope@ubuntu:~/microblog$ gunicorn -b localhost:8000 -w 4 microblog:app
+[2020-12-15 06:13:50 +0000] [13706] [INFO] Starting gunicorn 20.0.4
+[2020-12-15 06:13:50 +0000] [13706] [ERROR] Connection in use: ('localhost', 8000)
+[2020-12-15 06:13:50 +0000] [13706] [ERROR] Retrying in 1 second.
+[2020-12-15 06:13:51 +0000] [13706] [ERROR] Connection in use: ('localhost', 8000)
+[2020-12-15 06:13:51 +0000] [13706] [ERROR] Retrying in 1 second.
+[2020-12-15 06:13:52 +0000] [13706] [ERROR] Connection in use: ('localhost', 8000)
+[2020-12-15 06:13:52 +0000] [13706] [ERROR] Retrying in 1 second.
+[2020-12-15 06:13:53 +0000] [13706] [ERROR] Connection in use: ('localhost', 8000)
+[2020-12-15 06:13:53 +0000] [13706] [ERROR] Retrying in 1 second.
+[2020-12-15 06:13:54 +0000] [13706] [ERROR] Connection in use: ('localhost', 8000)
+[2020-12-15 06:13:54 +0000] [13706] [ERROR] Retrying in 1 second.
+[2020-12-15 06:13:55 +0000] [13706] [ERROR] Can't connect to ('localhost', 8000)
+
+
+
+
+@ 이유
+(venv) ahope@ubuntu:~/microblog$ ps aux | grep gunicorn
+ahope      13610  0.0  1.1  27352 22208 ?        S    05:41   0:00 /home/ahope/microblog/venv/bin/python3 /home/ahope/microblog/venv/bin/gunicorn -b localhost:8000 -w 4 microblog:app
+ahope      13612  0.0  2.4  64264 49512 ?        S    05:41   0:00 /home/ahope/microblog/venv/bin/python3 /home/ahope/microblog/venv/bin/gunicorn -b localhost:8000 -w 4 microblog:app
+ahope      13613  0.0  2.4  64264 49512 ?        S    05:41   0:00 /home/ahope/microblog/venv/bin/python3 /home/ahope/microblog/venv/bin/gunicorn -b localhost:8000 -w 4 microblog:app
+ahope      13614  0.0  2.5  65256 50644 ?        S    05:41   0:00 /home/ahope/microblog/venv/bin/python3 /home/ahope/microblog/venv/bin/gunicorn -b localhost:8000 -w 4 microblog:app
+ahope      13615  0.0  2.5  64828 50304 ?        S    05:41   0:00 /home/ahope/microblog/venv/bin/python3 /home/ahope/microblog/venv/bin/gunicorn -b localhost:8000 -w 4 microblog:app
+ahope      13704  0.0  0.0    568     4 pts/1    R+   06:12   0:00 grep --color=auto gunicorn
+
+
+
+
+
+---
+(venv) ahope@ubuntu:~/microblog$ curl localhost:8000
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>Redirecting...</title>
+<h1>Redirecting...</h1>
+<p>You should be redirected automatically to target URL: <a href="/auth/login?next=%2F">/auth/login?next=%2F</a>.  If not click the link.(venv) ahope@ubuntu:~/mic(venv) aho(venv) ahope@ubunt(venv) a(ven(ven(v(venv)(v(v(v
+

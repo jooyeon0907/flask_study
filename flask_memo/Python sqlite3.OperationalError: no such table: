@@ -1,0 +1,15 @@
+Python sqlite3.OperationalError: no such table:
+
+
+ >>> db
+   <SQLAlchemy engine=sqlite:////home/ahope/jooyeon/flask_study/flask_prac2/microblog/app.db>
+
+>>> db
+<SQLAlchemy engine=sqlite:////home/jooyeon/jooyeon/flask_study/flask_prac2/microblog/app.db>
+
+app.db 삭제하고 다시 생성
+	flask db upgrade
+
+
+	** db보는 툴
+	sudo apt-get install sqlitebrowser

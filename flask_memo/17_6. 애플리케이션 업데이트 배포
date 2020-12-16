@@ -1,0 +1,14 @@
+(
+@ 애플리케이션 업데이트 
+배포
+
+venv) $ git pull                              # download the new version
+(venv) $ sudo supervisorctl stop microblog     # stop the current server
+(venv) $ flask db upgrade                      # upgrade the database
+(venv) $ flask translate compile               # upgrade the translations
+(venv) $ sudo supervisorctl start microblog    # start a new server
+
+현재 실행중인 서버 프로세스는 이미 읽고 메모리에 저장된 이전 코드로 계속 실행 중이므로,
+업그레이드를 트리거하려면 현재 서버를 중지하고, 새 서버를 시작하여 모든 코드를 다시 읽도록 해야함.
+
+

@@ -1,0 +1,28 @@
+
+@ SSL, TLS
+	- 웹 서버와 사용자의 웹 브라우저 간 통신을 암호화 하는데 사용되는 프로토콜 
+		-> 보안서버의 기반이 되는 프로토콜 
+	- 공개 키와 개인 키를 교환하여 보안 세션을 생성하여 통신을 암호화하는 방식을 사용
+	- TLS는 MAC 함수 생성을 위해 다른 암호화 알고리즘 사용하며, 이는 이전 버전의 SSL보다 많은 경고 코드를 포함함 
+	- 정보통신망법의 개정으로 홈페이지 운영 시 개인정보를 취급하고 있다면 웹사이트 개인정보보호 의무조치 안내를 해야함. 
+
+
+@  SSL (Secure Socket Layer) : 보안 소켓 계층
+	-  인터넷을 통해 전달되는 정보 보안의 안전한 거래를 허용하기 위해 
+
+
+@ TLS (Transport Layer Security)
+
+
+
+
+
+
+
+*
+https://howhttps.works/ko/https-ssl-tls-differences/
+
+* ssl
+https://yagi815.tistory.com/168
+*비교
+https://waspro.tistory.com/161

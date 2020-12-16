@@ -1,0 +1,44 @@
+
+@ HTTP (Hyper Text Transfer Protocol)
+	- 인터넷에서 데이터를 주고받을 수 있는 응용 계층 프로토콜 (80번 포트) 
+	- 정보를 평문(하이퍼 텍스트 문서)으로 주고받기 대문에 오가는 정보를 중간에서 탈취당할 위험이 큼 -> HTTPS로 보안 
+
+	* HTTP 메시지
+		- 서버가 응답할 때 응답에 대한 정보를 담아 클리어언트에게 보내는 메시지 
+		- 시작줄, 헤더, 본문으로 구성 
+
+		ex) 요청 HTTP 메시지
+		## 시작줄 
+		GET https://www.zerocho.com HTTP/1.1  
+		## 헤더 : 요청에 대한 정보를 담고 있음. 
+		User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) ...
+		Upgrade-Insecure-Requests: 1
+
+		## 헤더에서 한 줄 띄고 본문 시작. 요청을 할 때 함께 보낼 데이터를 담는 부분. 
+		(본문 없음)
+
+		ex) 응답 HTTP 메시지
+		# 첫 줄은 버전 상태코드 상태메시지 (200은 성공적인 요청)
+		HTTP/1.1 200 OK
+		# 두 번째 줄부터는 헤더 : 웅답에 대한 정보를 담고 있음 
+		Connection: keep-alive
+		Content-Encoding: gzip
+		Content-Length: 35653
+		Content-Type: text/html;
+
+		# 본문 : 요청한 데이터를 담음 
+		<!DOCTYPE html><html lang="ko" data-reactroot=""><head><title...
+
+@ HTTPS (Hyper Text Transfer Protocol Secure)
+	HTTP + SSL
+	- HTTP를 통한 데이터의 보안을 위한 조치 
+	- SSL을 사용해 데이터를 한쪽에서 다른 한쪽으로 안전히게 보낼 수 있는지 여부 
+		-> 웹서버와 브라우저간 정보를 암호화된 상태로 주고 받음. 
+
+
+*
+https://medium.com/@lunay0ung/protocol-http%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C-84a896c5fc93
+
+
+*프로토콜 종류
+https://helloworld-88.tistory.com/146
