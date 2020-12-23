@@ -62,7 +62,7 @@ NAT
 
 
 	-> 고정 IP 설정시 dhcp4:no 추가하기 
-	-> gatewqy4 : 4는 ipv4 를 뜻함 
+	-> gatewqy4 : 4는 IPv4 를 뜻함 
 	 https://m.blog.naver.com/PostView.nhn?blogId=hostinggodo&logNo=220589113088&proxyReferer=https:%2F%2Fwww.google.com%2F
 
 	 -> 브릿지 네트워크 연결로 101 로 
