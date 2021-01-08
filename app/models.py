@@ -30,7 +30,7 @@ class User(UserMixin, db.Model): # 만들 데이터 모델을 나타내는 객�
     username = db.Column(db.String(64), index=True, unique=True) # 최대 길이를 명시하여 공간 절약 -> String(64) , 'username'과 'email'은 서로 중복되지 않아야 함(unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-   # user테이블과 post케이블의 관계를 명시해줌  # db.relationship(연결된 객체명, backref=가상 필드명, loding relationship)
+   # user테이블과 post테이블의 관계를 명시해줌  # db.relationship(연결된 객체명, backref=가상 필드명, loding relationship)
     posts = db.relationship('Post', backref='author', lazy='dynamic') 
         # 사용자가 작성했던 모든 게시물에 대한 정보는 user.posts를 이용해 접근할 수 있으며
         # 이 게시물을 작성한 게시자를 post.author 를 이용해 접근할 수 있음

@@ -9,6 +9,13 @@ NAT
 	- virtual box 사용
 	- 하드 디스크 파일 종류 : VDI(VirtualBox Disk Image) , 고정 크기로 설정했음 
 	- 램 2GB, 하드 5GB
+	
+	* Storage configuration
+		-> 하드 5GB 여서 어떻게 쪼갤지?
+ 		사진 참고
+
+
+
 
 *** 다른 방법(메가튜토리얼)
 	* vagrant 구성
@@ -16,7 +23,7 @@ NAT
 	Vagrant.configure("2") do |config|
 	  config.vm.box = "ubuntu/xenial64"  	## xenial: ubuntu version names ,64 : 64bit
 	  config.vm.network "private_network",  ## 네트워크 연결 설정
-	  ip: "192.168.33.10"  ## ip 할당
+	  ip: "172.16.3.103"  ## ip 할당
 	  config.vm.provider "virtualbox" do |vb|
 	    vb.memory = "1024"
 	  end
