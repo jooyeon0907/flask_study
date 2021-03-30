@@ -49,14 +49,15 @@ NAT
 
 		network:
 			ethernets:
-				enp0s31f6:
+				enp0s3:
 					dhcp4: no
-					addresses: [172.16.3.101/16]
+					addresses: [172.16.3.101/16] 
 					gateway4: 172.16.0.1
 					nameservers:
-					addresses: [8.8.8.8, 8.8.8.4]
+						addresses: [8.8.8.8, 8.8.8.4]
 			version: 2
-
+	-> addresses: [172.16.3.101/16]  에 ip 할당해주기 (172.16.3.101)
+			** ip 주소 중복되면 안됨
 	 * 설정 반영
 		$ sudo netplan apply
 
